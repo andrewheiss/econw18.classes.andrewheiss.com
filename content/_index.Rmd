@@ -1,0 +1,6 @@
+---
+title: "MPA Economics"
+author: "Andrew Heiss"
+---
+
+^[{-} `r blogdown::shortcode("courseinfo")`] <span class="newthought">This site contains</span> the syllabus, schedule, and assignments for MPA 612: Economic Decision-Making for Managers, held during Winter 2018 at Brigham Young University.
