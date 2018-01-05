@@ -1,0 +1,171 @@
+lessons:
+  - title: '<span class="fake-header-table">Core principles</span>'
+  - title: "Markets and measurement I"
+    date: "January 8 (M)"
+    reading: "01-reading"
+  
+  - title: "Markets and measurement II"
+    date: "January 10 (W)"
+  
+  - title: "Lab 1"
+    date: "January 12 (F)"
+  
+  - title: "*No class; Martin Luther King Jr. Day*"
+    date: "January 15 (M)"
+  
+  - title: "Scarcity and productivity I"
+    date: "January 17 (W)"
+  
+  - title: "Lab 2"
+    date: "January 19 (F)"
+    
+  - title: "⊞ **Problem set 1 due**"
+    assignment: "01-assignment"
+  
+  - title: "Scarcity and productivity II"
+    date: "January 22 (M)"
+  
+  - title: "Social interactions and incentives I"
+    date: "January 24 (W)"
+  
+  - title: "Lab 3"
+    date: "January 26 (F)"
+  
+  - title: "⊞ **Problem set 2 due**"
+    assignment: "02-assignment"
+  
+  - title: "Social interactions and incentives II"
+    date: "January 29 (M)"
+  
+  - title: "Incentives and human behavior"
+    date: "January 31 (W)"
+  
+  - title: "Lab 4"
+    date: "February 2 (F)"
+  
+  - title: "Firms and labor I"
+    date: "February 5 (M)"
+  
+  - title: "Firms and labor II"
+    date: "February 7 (W)"
+  
+  - title: "Lab 5"
+    date: "February 9 (F)"
+    
+  - title: "⊞ **Problem set 3 due**"
+    assignment: "04-assignment"
+  
+  - title: "Firms and customers I"
+    date: "February 12 (M)"
+  
+  - title: "Firms and customers II"
+    date: "February 14 (W)"
+  
+  - title: "Lab 6"
+    date: "February 16 (F)"
+    
+  - title: "⊞ **Problem set 4 due**"
+    assignment: "05-assignment"
+  
+  - title: "*No class; Presidents' Day*"
+    date: "February 19 (M)"
+  
+  - title: "Firms and markets I"
+    date: "February 21 (W)"
+  
+  - title: "Lab 7"
+    date: "February 23 (F)"
+  
+  - title: "Firms and markets II"
+    date: "February 26 (M)"
+  
+  - title: "Markets and macroeconomics"
+    date: "February 28 (W)"
+  
+  - title: "Lab 8"
+    date: "March 2 (F)"
+  
+  - title: "⊞ **Problem set 5 due**"
+    assignment: "06-assignment"
+  
+  - title: '<span class="fake-header-table">Justifying policies</span>'
+  - title: "Institutions I"
+    date: "March 5 (M)"
+  
+  - title: "Institutions II"
+    date: "March 7 (W)"
+  
+  - title: "Lab 9"
+    date: "March 9 (F)"
+  
+  - title: "⊞ **Problem set 6 due**"
+    assignment: "07-assignment"
+  
+  - title: "Government institutions I"
+    date: "March 12 (M)"
+  
+  - title: "Government institutions II"
+    date: "March 14 (W)"
+  
+  - title: "Lab 10"
+    date: "March 16 (F)"
+  
+  - title: "⊞ **Problem set 7 due**"
+    assignment: "08-assignment"
+  
+  - title: "When governments go wrong"
+    date: "March 19 (M)"
+  
+  - title: "Institutional alternatives"
+    date: "March 21 (W)"
+  
+  - title: "Lab 11"
+    date: "March 23 (F)"
+  
+  - title: '<span class="fake-header-table">Evaluating and implementing policies</span>'
+  - title: "Cost-benefit analysis I"
+    date: "March 26 (M)"
+    
+  - title: "⊞ **Sign up for an economic briefing**"
+  
+  - title: "Cost-benefit analysis II"
+    date: "March 28 (W)"
+  
+  - title: "Lab 12"
+    date: "March 30 (F)"
+  
+  - title: "⊞ **Problem set 8 due**"
+    assignment: "09-assignment"
+  
+  - title: "Cost-benefit analysis III"
+    date: "April 2 (M)"
+  
+  - title: "Other policy analysis methods"
+    date: "April 4 (W)"
+  
+  - title: "Lab 13"
+    date: "April 6 (F)"
+
+  - title: "⊞ **Problem set 9 due**"
+    assignment: "03-assignment"
+
+  - title: "⊞ **Complete economic briefing**"
+  
+  - title: "Politics and institutions I"
+    date: "April 9 (M)"
+  
+  - title: "Politics and institutions II"
+    date: "April 11 (W)"
+  
+  - title: "Lab 14"
+    date: "April 13 (F)"
+  
+  - title: "Policy formation"
+    date: "April 16 (M)"
+  
+  - title: "Markets, public policy, and public administration"
+    date: "April 18 (W)"
+    
+  - title: '<span class="fake-header-table">Final</span>'
+  - title: "**Final project due** (submit online by 11:59 PM)"
+    date: "April 25 (W)"
