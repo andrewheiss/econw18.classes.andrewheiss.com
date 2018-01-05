@@ -1,0 +1,10 @@
+---
+title: Reference
+slug: reference
+output:
+  blogdown::html_page:
+    template: ../pandoc/toc-title_html.template
+    toc: true
+---
+
+Helpful resources, references, and definitions will go here soon. Super soon. [Sooner than this.](https://www.nytimes.com/interactive/2017/09/27/upshot/trump-statements-soon.html)
