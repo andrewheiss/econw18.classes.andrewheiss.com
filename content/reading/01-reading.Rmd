@@ -1,0 +1,15 @@
+---
+title: "Markets and measurement I"
+date: "2018-01-08"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- Chapter 1 in *Naked Economics* [@Wheelan:2010]
+- 1.1–1.5 in *The Economy* [@core-econ]
+- Larry Elliott, ["Heretics welcome! Economics needs a new Reformation"](https://www.theguardian.com/business/2017/dec/17/heretics-welcome-economics-needs-a-new-reformation)
+- ["Dismal ignorance of the “dismal science”—a response to Larry Elliot"](https://www.prospectmagazine.co.uk/economics-and-finance/dismal-ignorance-of-the-dismal-science-a-response-to-larry-elliot)
+- Tom Nichols, ["How We Killed Expertise (And why we need it back.)"](https://www.politico.com/magazine/story/2017/09/05/how-we-killed-expertise-215531)
