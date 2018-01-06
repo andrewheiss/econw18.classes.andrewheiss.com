@@ -1,0 +1,13 @@
+---
+title: "Institutions I"
+date: "2018-03-05"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 5.1–5.7 in *The Economy* [@core-econ]
+- Chapter 12 in *Naked Economics* [@Wheelan:2010]
+- Other readings TBA

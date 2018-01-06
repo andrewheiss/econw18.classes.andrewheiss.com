@@ -1,0 +1,12 @@
+---
+title: "Social interactions and incentives II"
+date: "2018-01-29"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 4.8–4.14 in *The Economy* [@core-econ]
+- Other readings TBA

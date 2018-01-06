@@ -1,0 +1,13 @@
+---
+title: "Government institutions I"
+date: "2018-03-12"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 12.1–12.5 in *The Economy* [@core-econ]
+- Chapter 3 in *Naked Economics* [@Wheelan:2010]
+- Other readings TBA

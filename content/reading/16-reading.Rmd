@@ -1,0 +1,12 @@
+---
+title: "Institutions II"
+date: "2018-03-07"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 5.8–5.14 in *The Economy* [@core-econ]
+- Other readings TBA

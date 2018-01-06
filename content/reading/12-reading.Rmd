@@ -1,0 +1,12 @@
+---
+title: "Firms and markets I"
+date: "2018-02-21"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 8.1–8.6 in *The Economy* [@core-econ]
+- Other readings TBA

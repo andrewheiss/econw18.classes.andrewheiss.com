@@ -1,0 +1,12 @@
+---
+title: "Markets and macroeconomics"
+date: "2018-02-28"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- Chapters 7 and 10 in *Naked Economics* [@Wheelan:2010]
+- Other readings TBA

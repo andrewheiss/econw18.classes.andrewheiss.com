@@ -16,6 +16,7 @@ lessons:
   
   - title: "Scarcity and productivity I"
     date: "January 17 (W)"
+    reading: "03-reading"
   
   - title: "Lab 2"
     date: "January 19 (F)"
@@ -25,9 +26,11 @@ lessons:
   
   - title: "Scarcity and productivity II"
     date: "January 22 (M)"
+    reading: "04-reading"
   
   - title: "Social interactions and incentives I"
     date: "January 24 (W)"
+    reading: "05-reading"
   
   - title: "Lab 3"
     date: "January 26 (F)"
@@ -37,135 +40,162 @@ lessons:
   
   - title: "Social interactions and incentives II"
     date: "January 29 (M)"
+    reading: "06-reading"
   
   - title: "Incentives and human behavior"
     date: "January 31 (W)"
+    reading: "07-reading"
   
   - title: "Lab 4"
     date: "February 2 (F)"
   
   - title: "Firms and labor I"
     date: "February 5 (M)"
+    reading: "08-reading"
   
   - title: "Firms and labor II"
     date: "February 7 (W)"
+    reading: "09-reading"
   
   - title: "Lab 5"
     date: "February 9 (F)"
     
   - title: "⊞ **Problem set 3 due**"
-    assignment: "04-assignment"
+    assignment: "03-assignment"
   
   - title: "Firms and customers I"
     date: "February 12 (M)"
+    reading: "10-reading"
   
   - title: "Firms and customers II"
     date: "February 14 (W)"
+    reading: "11-reading"
   
   - title: "Lab 6"
     date: "February 16 (F)"
     
   - title: "⊞ **Problem set 4 due**"
-    assignment: "05-assignment"
+    assignment: "04-assignment"
   
   - title: "*No class; Presidents' Day*"
     date: "February 19 (M)"
   
   - title: "Firms and markets I"
     date: "February 21 (W)"
+    reading: "12-reading"
   
   - title: "Lab 7"
     date: "February 23 (F)"
   
   - title: "Firms and markets II"
     date: "February 26 (M)"
+    reading: "13-reading"
   
   - title: "Markets and macroeconomics"
     date: "February 28 (W)"
+    reading: "14-reading"
   
   - title: "Lab 8"
     date: "March 2 (F)"
   
   - title: "⊞ **Problem set 5 due**"
-    assignment: "06-assignment"
+    assignment: "05-assignment"
   
   - title: '<span class="fake-header-table">Justifying policies</span>'
   - title: "Institutions I"
     date: "March 5 (M)"
+    reading: "15-reading"
   
   - title: "Institutions II"
     date: "March 7 (W)"
+    reading: "16-reading"
   
   - title: "Lab 9"
     date: "March 9 (F)"
   
-  - title: "⊞ **Problem set 6 due**"
-    assignment: "07-assignment"
+  - title: "⊞ **Midterm 1 due by 11:59 PM**"
   
   - title: "Government institutions I"
     date: "March 12 (M)"
+    reading: "17-reading"
   
   - title: "Government institutions II"
     date: "March 14 (W)"
+    reading: "18-reading"
   
   - title: "Lab 10"
     date: "March 16 (F)"
   
-  - title: "⊞ **Problem set 7 due**"
-    assignment: "08-assignment"
+  - title: "⊞ **Problem set 6 due**"
+    assignment: "06-assignment"
   
   - title: "When governments go wrong"
     date: "March 19 (M)"
+    reading: "19-reading"
   
   - title: "Institutional alternatives"
     date: "March 21 (W)"
+    reading: "20-reading"
   
   - title: "Lab 11"
     date: "March 23 (F)"
+    
+  - title: "⊞ **Problem set 7 due**"
+    assignment: "07-assignment"
   
   - title: '<span class="fake-header-table">Evaluating and implementing policies</span>'
   - title: "Cost-benefit analysis I"
     date: "March 26 (M)"
+    reading: "21-reading"
     
   - title: "⊞ **Sign up for an economic briefing**"
   
   - title: "Cost-benefit analysis II"
     date: "March 28 (W)"
+    reading: "22-reading"
   
   - title: "Lab 12"
     date: "March 30 (F)"
   
-  - title: "⊞ **Problem set 8 due**"
-    assignment: "09-assignment"
+  - title: "⊞ **Midterm 2 due by 11:59 PM**"
   
   - title: "Cost-benefit analysis III"
     date: "April 2 (M)"
+    reading: "23-reading"
   
   - title: "Other policy analysis methods"
     date: "April 4 (W)"
+    reading: "24-reading"
   
   - title: "Lab 13"
     date: "April 6 (F)"
 
-  - title: "⊞ **Problem set 9 due**"
-    assignment: "03-assignment"
+  - title: "⊞ **Problem set 8 due**"
+    assignment: "08-assignment"
 
   - title: "⊞ **Complete economic briefing**"
   
   - title: "Politics and institutions I"
     date: "April 9 (M)"
+    reading: "25-reading"
   
   - title: "Politics and institutions II"
     date: "April 11 (W)"
+    reading: "26-reading"
   
   - title: "Lab 14"
     date: "April 13 (F)"
+
+  - title: "⊞ **Problem set 9 due**"
+    assignment: "09-assignment"
   
   - title: "Policy formation"
     date: "April 16 (M)"
+    reading: "27-reading"
   
   - title: "Markets, public policy, and public administration"
     date: "April 18 (W)"
+    reading: "28-reading"
     
   - title: '<span class="fake-header-table">Final</span>'
   - title: "**Final project due** (submit online by 11:59 PM)"

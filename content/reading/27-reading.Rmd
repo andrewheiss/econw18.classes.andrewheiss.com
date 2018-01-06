@@ -1,0 +1,11 @@
+---
+title: "Policy formation"
+date: "2018-04-16"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- Other readings TBA

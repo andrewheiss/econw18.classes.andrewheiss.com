@@ -1,0 +1,12 @@
+---
+title: "Politics and institutions I"
+date: "2018-04-09"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- Chapter 8 in *Naked Economics* [@Wheelan:2010]
+- Other readings TBA

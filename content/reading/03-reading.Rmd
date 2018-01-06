@@ -1,0 +1,13 @@
+---
+title: "Scarcity and productivity I"
+date: "2018-01-17"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 3.1–3.5 in *The Economy* [@core-econ]
+- Chapter 6 in *Naked Economics* [@Wheelan:2010]
+- Other readings TBA

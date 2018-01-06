@@ -1,0 +1,12 @@
+---
+title: "Scarcity and productivity II"
+date: "2018-01-22"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 3.6–3.11 in *The Economy* [@core-econ]
+- Other readings TBA

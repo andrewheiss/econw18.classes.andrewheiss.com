@@ -1,0 +1,12 @@
+---
+title: "Firms and customers I"
+date: "2018-02-12"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 7.1–7.7 in *The Economy* [@core-econ]
+- Other readings TBA

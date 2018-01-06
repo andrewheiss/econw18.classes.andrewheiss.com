@@ -1,0 +1,12 @@
+---
+title: "Government institutions II"
+date: "2018-03-14"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+# Required
+
+- 12.6–12.10 in *The Economy* [@core-econ]
+- Other readings TBA
