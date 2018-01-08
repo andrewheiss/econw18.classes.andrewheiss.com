@@ -1,0 +1,93 @@
+---
+title: "Markets and Measurement I"
+date: "2018-01-08"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-08.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-08.png)](/slides/MPA-612_2018-01-08.pdf)
+</figure>
+
+
+# Game results
+
+```{r show-results, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+source(file.path(here::here(), "lib", "graphics.R"))
+
+tribble(
+  ~round, ~section_8, ~section_930,
+  1,      21,         24,
+  2,      18,         24,
+  3,      14,         16,
+  4,      12,         16,
+  5,      12,         13,
+  6,      17,         18,
+  7,      9,          20,
+  8,      18,         10,
+  9,      13,         10,
+  10,     12,         NA_integer_
+) %>%
+  gather(section, total, -round) %>%
+  filter(!is.na(total)) %>%
+  mutate(section = factor(section, labels = c("8:00 section", "9:30 section"), 
+                          ordered = TRUE)) %>%
+  ggplot(aes(x = as.factor(round), y = total, color = section, group = section)) + 
+  geom_line(size = 2) + 
+  geom_vline(xintercept = c(5, 8), size = 0.25) +
+  scale_color_manual(values = c(nord_orange, nord_purple)) +
+  scale_y_continuous(labels = scales::dollar, breaks = seq(8, 24, 4)) +
+  coord_cartesian(ylim = c(8, 24)) +
+  labs(x = "Round", y = "Public dollars",
+       title = "Dollars contributed to public pool",
+       subtitle = "Vertical lines indicate rule changes") +
+  guides(color = guide_legend(title = NULL)) +
+  theme_econ(13) + 
+  theme(legend.position = "bottom",
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_blank())
+
+```
+
+
+# Additional references
+
+Van Halen brown M&M contract rider:
+
+- [This American Life #386: Fine Print](https://www.thisamericanlife.org/radio-archives/episode/386/fine-print?act=0#play)
+
+[Thomas Thwaites: How I built a toaster—from scratch](https://www.youtube.com/watch?v=5ODzO7Lz_pw)
+
+Public goods card game:
+
+- @HoltLaury:1997
+
+[2009 Spock and public goods](https://www.youtube.com/watch?v=KvMxLpce3Xw) (at 0:23)
+
+Facebook and elections:
+
+- [Facebook experiment boosts US voter turnout](https://www.nature.com/news/facebook-experiment-boosts-us-voter-turnout-1.11401)
+- [How Facebook Could Skew an Election](https://www.theatlantic.com/technology/archive/2014/11/how-facebook-could-skew-an-election/382334/)
+- [Facebook Had an Insane Effect on Voter Registration](https://gizmodo.com/facebook-had-an-insane-effect-on-voter-registration-1787704079)
+
+[^waqf] The historical institutional consequences of *waqf*s in the economic development of the Middle East:
+
+- @Kuran:2004
+- @Kuran:2011
+
+[^waqf]: {-} ![](/images/class/temple-mount-waqf.jpg)

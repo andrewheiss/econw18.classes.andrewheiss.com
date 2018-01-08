@@ -8,3 +8,9 @@ output:
 ---
 
 Helpful resources, references, and definitions will go here soon. Super soon. [Sooner than this.](https://www.nytimes.com/interactive/2017/09/27/upshot/trump-statements-soon.html)
+
+# Citations and bibliography
+
+[^bibtex] You can [download a BibTeX file](/bib/references.bib) of all the non-web-based readings in the course. I will update it periodically throughout the semester.
+
+[^bibtex]: {-} You can open the file in [BibDesk on macOS](http://bibdesk.sourceforge.net/), [JabRef on Windows](http://www.jabref.org/), or [Zotero](https://www.zotero.org/) or [Mendeley](https://www.mendeley.com/) online.
