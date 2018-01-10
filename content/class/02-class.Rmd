@@ -1,0 +1,136 @@
+---
+title: "Markets and Measurement II"
+date: "2018-01-10"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-10.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-10.png)](/slides/MPA-612_2018-01-10.pdf)
+</figure>
+
+
+# Adjusting for inflation
+
+## Indicators
+
+- [<i class="fa fa-line-chart" aria-hidden="true"></i> Nominal GDP](https://fred.stlouisfed.org/series/GDP)
+- [<i class="fa fa-line-chart" aria-hidden="true"></i> GDP deflator](https://fred.stlouisfed.org/series/GDPDEF)
+- [<i class="fa fa-line-chart" aria-hidden="true"></i> CPI](https://fred.stlouisfed.org/series/CPIAUCSL)
+
+## Adjusting for inflation
+
+$$ \text{Real GDP} = \frac{\text{Nominal GDP}}{\text{Price Index / 100}} $$
+
+- [<i class="fa fa-download" aria-hidden="true"></i> Worksheet we created in class](/files/nominal-real-adjustment.xlsx)
+- Or, use the BLS's [CPI inflation calculator](https://www.bls.gov/data/inflation_calculator.htm)
+
+
+# Measuring inequality with Gini coefficients
+
+Calculating Gini coefficients with R is trivial with the `ineq` package—create a vector of incomes and feed it into `ineq()`. Here's what you do for a fictional country with the following incomes:
+
+```{r show-incomes, warning=FALSE, message=FALSE, echo=FALSE, results="asis"}
+library(tidyverse)
+data_frame(Person = 1:5, Income = c(10000, 20000, 50000, 100000, 200000)) %>%
+  mutate(Income = scales::dollar(Income)) %>%
+  pander::pandoc.table(justify = "ll")
+```
+
+&nbsp;
+
+```{r calc-gini, warning=FALSE, message=FALSE}
+library(ineq)
+
+incomes <- c(10000, 20000, 50000, 100000, 200000)
+ineq(incomes, type = "Gini")
+```
+
+There are other types of inequality measures too. The default is Gini, but if you look at the documentation of `ineq()` with `?ineq`, you can see the others.
+
+You can plot the Lorenz curve easily too:
+
+```{r plot-gini-base}
+plot(Lc(incomes))
+```
+
+Alternatively you can extract the Lorenz curve that's returned from `Lc()` and use ggplot2 to create a nicer plot:
+
+```{r plot-gini-ggplot}
+library(tidyverse)
+# This file is on GitHub at https://github.com/andrewheiss/econw18.classes.andrewheiss.com/blob/master/lib/graphics.R
+source(file.path(here::here(), "lib", "graphics.R"))  # Load theme and colors
+
+lorenz <- Lc(incomes)
+
+plot_data <- data_frame(prop_population = lorenz$p,
+                        prop_income = lorenz$L)
+
+plot_labels <- tribble(
+  ~x, ~y, ~label,
+  0.6, 0.4, "A",
+  0.8, 0.2, "B"
+)
+
+ggplot(plot_data, aes(x = prop_population, y = prop_income)) +
+  geom_line() +
+  geom_segment(x = 0, xend = 1, y = 0, yend = 1) +
+  geom_ribbon(aes(ymax = prop_population, ymin = prop_income), fill = nord_red) +
+  geom_ribbon(aes(ymax = prop_income, ymin = 0), fill = "grey80") +
+  geom_point(size = 2) +
+  geom_text(x = 0.2, y = 0.8, label = "Gini == frac(A, A + B)", parse = TRUE,
+            size = 6, family = "Roboto Condensed Light") +
+  geom_text(data = plot_labels, aes(x = x, y = y, label = label), 
+            color = "white", size = 9, family = "Roboto Condensed Bold") +
+  labs(x = "Cumulative % of population", y = "Cumulative % of income") +
+  scale_x_continuous(labels = scales::percent, breaks = seq(0, 1, 0.2)) +
+  scale_y_continuous(labels = scales::percent, breaks = seq(0, 1, 0.2)) +
+  theme_econ(13) +
+  theme(panel.grid = element_blank())
+```
+
+
+# Additional references to things brought up in class
+
+- [Bitcoin Losers](https://www.npr.org/sections/money/2018/01/05/576087864/episode-816-bitcoin-losers)
+- [Kik, cryptocurrency, and initial coin offerings](https://gimletmedia.com/episode/new-money-season-6-episode-6/)
+- [Kodak launching its own cryptocurrency](https://qz.com/1176495/kodakcoin-kodak-is-trying-to-stay-relevant-with-a-cryptocurrency-scheme-run-by-paparazzis/)
+- [Job:vacancy ratio](https://www.npr.org/sections/money/2018/01/09/576829352/why-quitting-is-awesome)
+- [Walmart and the tropickle](https://www.npr.org/sections/money/2017/11/17/564956657/episode-806-walmarts-pickle)
+
+
+```{r production-frontiers, eval=FALSE, include=FALSE}
+comp_adv <- tribble(
+  ~person, ~apples, ~wheat,
+  "Greta", 1250, 50,
+  "Carlos", 1000, 20
+)
+
+comp_adv_plot <- comp_adv %>%
+  gather(product, amount, -person) %>%
+  mutate(x = ifelse(product == "apples", amount, 0),
+         y = ifelse(product == "wheat", amount, 0))
+
+ggplot(comp_adv_plot, aes(x = x, y = y, color = person)) +
+  geom_line(size = 3) +
+  scale_x_continuous(expand = c(0, 0), labels = scales::comma) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_manual(values = c(nord_orange, nord_yellow)) +
+  labs(x = "Apples", y = "Wheat") +
+  guides(color = guide_legend(title = NULL)) +
+  coord_cartesian(xlim = c(0, 1400), ylim = c(0, 55)) +
+  theme_econ(13) +
+  theme(panel.grid = element_blank(), legend.position = "bottom",
+        axis.line = element_line(color = "black", size = 0.25))
+```
