@@ -8,6 +8,6 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- 1.6–1.12 in *The Economy* [@core-econ]
-- Chapter 9 in *Naked Economics* [@Wheelan:2010]
-- Planet Money, ["The Invention Of 'The Economy',"](https://www.npr.org/sections/money/2017/03/15/520294083/episode-522-the-invention-of-the-economy) episode 522
+- <i class="fa fa-book" aria-hidden="true"></i> 1.6–1.12 in *The Economy* [@core-econ]
+- <i class="fa fa-book" aria-hidden="true"></i> Chapter 9 in *Naked Economics* [@Wheelan:2010]
+- <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["The Invention Of 'The Economy',"](https://www.npr.org/sections/money/2017/03/15/520294083/episode-522-the-invention-of-the-economy) episode 522
