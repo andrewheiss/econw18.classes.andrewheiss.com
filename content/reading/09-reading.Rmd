@@ -9,4 +9,5 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 # Required
 
 - 6.6–6.11 in *The Economy* [@core-econ]
-- Other readings TBA
+- Chapter 5 in *Naked Economics* [@Wheelan:2010]
+- Sam Dolnick, ["Air-Conditioners That Run When Nobody's Home,"](http://www.nytimes.com/2010/08/16/nyregion/16chill.html) New York Times, August 15, 2010

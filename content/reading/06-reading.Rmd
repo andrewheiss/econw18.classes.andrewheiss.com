@@ -8,5 +8,9 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- 4.8–4.14 in *The Economy* [@core-econ]
-- Other readings TBA
+***Important***: The PDFs of the individual chapters are posted on Learning Suite.
+
+- <i class="fa fa-book" aria-hidden="true"></i> 4.9–4.14 in *The Economy* [@core-econ]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 2 in Frederick W. Mayer, *Narrative Politics: Stories and Collective Action* [@Mayer:2014]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 1 in Brian Skyrms, *The Stag Hunt and the Evolution of Social Structure* [@Skyrms:2003]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 1 in Timur Kuran, *Private Truths, Public Lies: The Social Consequences of Preference Falsification* [@Kuran:1995]

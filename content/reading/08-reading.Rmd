@@ -9,5 +9,3 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 # Required
 
 - 6.1–6.5 in *The Economy* [@core-econ]
-- Chapter 5 in *Naked Economics* [@Wheelan:2010]
-- Other readings TBA

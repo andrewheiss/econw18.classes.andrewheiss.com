@@ -8,5 +8,6 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- 3.6–3.11 in *The Economy* [@core-econ]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> 3.6–3.11 in *The Economy* [@core-econ]
+- <i class="fa fa-podcast" aria-hidden="true"></i> Freakonomics Radio, ["Are We Running Out of Ideas?,"](http://freakonomics.com/podcast/no-new-ideas/) November 30, 2017
+- <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["Why We Work So Much,"](https://www.npr.org/sections/money/2015/07/24/426017148/episode-641-why-we-work-so-much) episode 641
