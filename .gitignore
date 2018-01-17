@@ -8,3 +8,4 @@ public/
 assets/*
 static/slides/*
 static/**.zip
+.httr-oauth
