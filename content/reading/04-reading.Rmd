@@ -1,6 +1,6 @@
 ---
 title: "Scarcity and productivity II"
-date: "2018-01-22"
+date: "2018-01-24"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
