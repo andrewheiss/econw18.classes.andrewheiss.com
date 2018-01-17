@@ -28,16 +28,16 @@ lessons:
   - title: "⊞ **Problem set 1 due**"
     assignment: "01-problem-set"
   
-  - title: "Scarcity and productivity II"
+  - title: "*No class; I'm out of town*"
     date: "January 22 (M)"
+  
+  - title: "Scarcity and productivity II"
+    date: "January 24 (W)"
     reading: "04-reading"
   
-  - title: "Social interactions and incentives I"
-    date: "January 24 (W)"
-    reading: "05-reading"
-  
-  - title: "Lab 3"
+  - title: "Social interactions and incentives I (replaces Lab 3)"
     date: "January 26 (F)"
+    reading: "05-reading"
   
   - title: "⊞ **Problem set 2 due**"
     assignment: "02-assignment"
