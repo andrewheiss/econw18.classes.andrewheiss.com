@@ -8,7 +8,8 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-***Important***: The PDF of the Putnam chapter is posted on Learning Suite.
+***Important***: The PDFs of the North and Putnam chapters are posted on Learning Suite.
 
 - <i class="fa fa-book" aria-hidden="true"></i> 5.8–5.14 in *The Economy* [@core-econ]
-- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 6 in Robert Putnam, *Making Democracy Work: Civic Traditions in Modern Italy* [@Putnam:1994]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 1 in Douglass C. North, *Institutions, Institutional Change, and Economic Performance* [@North:1990]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 6 in Robert D. Putnam, *Making Democracy Work: Civic Traditions in Modern Italy* [@Putnam:1994]
