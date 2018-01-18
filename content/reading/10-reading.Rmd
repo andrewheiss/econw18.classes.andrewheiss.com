@@ -4,12 +4,11 @@ date: "2018-02-12"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
-stuff-to-add: >-
-  https://www.theonion.com/continued-existence-of-edible-arrangements-disproves-ce-1819572513
-  https://www.kdnuggets.com/2017/12/how-ai-learns-different-prices.html
 ---
 
 # Required
 
-- 7.1–7.7 in *The Economy* [@core-econ]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> 7.1–7.7 in *The Economy* [@core-econ]
+- <i class="fa fa-external-link" aria-hidden="true"></i> Steve Sexton, ["The Inefficiency of Local Food"](http://freakonomics.com/2011/11/14/the-inefficiency-of-local-food/), Freakonomics Blog, November 14, 2011
+- <i class="fa fa-external-link" aria-hidden="true"></i> ["Continued Existence Of Edible Arrangements Disproves Central Tenets Of Capitalism,"](https://www.theonion.com/continued-existence-of-edible-arrangements-disproves-ce-1819572513), The Onion, March 31, 2011
+- <i class="fa fa-external-link" aria-hidden="true"></i> John Gruber's summary of ["Apple's Risky Balancing Act with the Next iPhone,"](https://daringfireball.net/linked/2017/07/17/iphone-2017-snell), Daring Fireball, July 17, 2017

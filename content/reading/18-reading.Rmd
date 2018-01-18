@@ -4,9 +4,15 @@ date: "2018-03-14"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+stuff-to-add: >-
+  Externalities, pollution, public goods, limits of markets, market failures
 ---
 
 # Required
 
-- 12.6–12.10 in *The Economy* [@core-econ]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> 12.7–12.10 in *The Economy* [@core-econ]
+- <i class="fa fa-book" aria-hidden="true"></i> Chapter 4 in *Naked Economics* [@Wheelan:2010]
+- <i class="fa fa-podcast" aria-hidden="true"></i> The Uncertain Hour, ["The Peanut Butter Grandma goes to Washington,"](https://www.marketplace.org/2017/10/25/business/uncertain-hour/s02-1-peanut-butter-grandma-goes-washington) season 2, episode 1
+- <i class="fa fa-podcast" aria-hidden="true"></i> The Uncertain Hour, ["The Peanut Butter Wars,"](https://www.marketplace.org/2017/11/10/business/uncertain-hour/s02-2-peanut-butter-wars) season 2, episode 2
+- <i class="fa fa-podcast" aria-hidden="true"></i> The Uncertain Hour, ["The Peanut Butter Verdict,"](https://www.marketplace.org/2017/11/22/business/uncertain-hour/s02-3-peanut-butter-verdict) season 2, episode 3
+

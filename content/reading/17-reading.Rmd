@@ -4,10 +4,15 @@ date: "2018-03-12"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+stuff-to-add: >-
+  Externalities, pollution, public goods, incomplete information, insurance, lemons
+  Externality game from SAFEA
+  Externality slides from SAFEA
 ---
 
 # Required
 
-- 12.1–12.5 in *The Economy* [@core-econ]
-- Chapter 3 in *Naked Economics* [@Wheelan:2010]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> 12.1–12.6 in *The Economy* [@core-econ]
+- <i class="fa fa-book" aria-hidden="true"></i> Chapter 3 in *Naked Economics* [@Wheelan:2010]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> A. Danny Ellerman, ["US Experience with Emissions Trading"](http://www.cesifo-group.de/DocDL/dicereport407-forum3.pdf) [@Ellerman:2007]
+- <i class="fa fa-youtube" aria-hidden="true"></i> *The Lorax*, ["How Bad Can I Be?"](https://www.youtube.com/watch?v=W_HUdf89hI8)

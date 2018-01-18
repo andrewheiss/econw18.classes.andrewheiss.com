@@ -8,5 +8,6 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- 7.8–7.13 in *The Economy* [@core-econ]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> 7.8–7.13 in *The Economy* [@core-econ]
+- <i class="fa fa-podcast" aria-hidden="true"></i> Freakonomics Podcast, ["Why Uber Is an Economist's Dream,"](http://freakonomics.com/podcast/uber-economists-dream/) September 7, 2016
+- <i class="fa fa-external-link" aria-hidden="true"></i> Ted Gaubert, ["How AI Learns What You're Willing to Pay,"](https://www.kdnuggets.com/2017/12/how-ai-learns-different-prices.html)
