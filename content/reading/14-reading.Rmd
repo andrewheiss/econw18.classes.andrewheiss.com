@@ -8,5 +8,6 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- Chapters 7 and 10 in *Naked Economics* [@Wheelan:2010]
-- Other readings TBA
+- <i class="fa fa-book" aria-hidden="true"></i> Chapters 7 and 10 in *Naked Economics* [@Wheelan:2010]
+- <i class="fa fa-podcast" aria-hidden="true"></i> This American Life, ["The Giant Pool of Money,"](https://www.thisamericanlife.org/355/the-giant-pool-of-money) episode 355, May 9, 2008^[This episode inspired [*The Big Short* (2015)](http://www.imdb.com/title/tt1596363/), which, because we're at BYU, I can't recommend to you (there are 90 uses of f\*\*\*!).]
+- <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["A Locked Door, a Secret Meeting, and the Birth of the Fed,"](https://www.npr.org/sections/money/2013/12/20/255839292/episode-505-a-locked-door-a-secret-meeting-and-the-birth-of-the-fed) episode 505, December 20, 2013
