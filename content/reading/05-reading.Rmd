@@ -13,3 +13,4 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 - <i class="fa fa-podcast" aria-hidden="true"></i> Radiolab, ["One Good Deed Deserves Another,"](http://www.radiolab.org/story/104010-one-good-deed-deserves-another/) part 3 in ["The Good Show,"](http://www.radiolab.org/story/103951-the-good-show/) season 9, episode 1
 - <i class="fa fa-podcast" aria-hidden="true"></i> Radiolab, ["The Golden Rule,"](http://www.radiolab.org/story/golden-rule/) part 1 in ["What's Left When You're Right?,"](http://www.radiolab.org/story/whats-left-when-youre-right/) season 12, episode 6
 - <i class="fa fa-youtube" aria-hidden="true"></i> [Golden Balls Split or Steal video clip](https://www.youtube.com/watch?v=S0qjK3TWZE8) (*watch after listening to "The Golden Rule"*)
+- <i class="fa fa-youtube" aria-hidden="true"></i> [Another Golden Balls Split or Steal video clip](https://www.youtube.com/watch?v=p3Uos2fzIJ0)
