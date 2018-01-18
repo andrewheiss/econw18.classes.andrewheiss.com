@@ -11,6 +11,6 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 - <i class="fa fa-book" aria-hidden="true"></i> 5.1–5.7 in *The Economy* [@core-econ]
 - <i class="fa fa-book" aria-hidden="true"></i> Chapter 12 in *Naked Economics* [@Wheelan:2010]
 - <i class="fa fa-podcast" aria-hidden="true"></i> Freakonomics Radio, ["Earth 2.0: What Would Our Economy Look Like?,"](http://freakonomics.com/podcast/earth-2-0-economics-edition-part-1/) April 12, 2017
-- At least one of these episodes (two if you're adventurous):
+- At least one of these episodes (both if you're adventurous):
     - <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["The Dollar at the Center of the World,"](https://www.npr.org/sections/money/2014/07/16/331743569/episode-552-the-dollar-at-the-center-of-the-world) episode 553, July 16, 2014
     - <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["Retraining Day,"](https://www.npr.org/sections/money/2017/01/27/512060753/episode-750-retraining-day) episode 750, January 27, 2017
