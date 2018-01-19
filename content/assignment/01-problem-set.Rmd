@@ -138,8 +138,6 @@ incomes %>%
 cpi <- read_csv(file.path(here::here(), "static", "data", "CPIAUCSL.csv"))
 ```
 
-The consumer price index (1982–84 = 100) in December 1980 was `r filter(cpi, DATE == "1980-12-01") %>% pull(CPIAUCSL)`, and it was `r filter(cpi, DATE == "2017-12-01") %>% pull(CPIAUCSL)` in December 2017.^[Source: [`CPIAUCSL` from FRED](https://fred.stlouisfed.org/series/CPIAUCSL)] How much inflation has there been between 1980 and 2017?
-
-In December 1980 the average price of unleaded regular gasoline was $1.34; in December 2017, it was $2.48.^[Source: [Weekly U. S. Regular All Formulations Retail Gasoline Prices](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPMR_PTE_NUS_DPG&f=W) from the US EIA] Did the price of gasoline increase or decrease in real terms over this period? By what percentage has the price of gasoline increased (in real terms) over this 37-year period? What is the implied average annual rate of growth or decline in the real price over this period?
-
-In 1980 the federal minimum wage was $3.10 per hour; today it is $7.25. Has its real value increased or decreased over this period? What policy and managerial implications does this have?
+1. The consumer price index (1982–84 = 100) in December 1980 was `r filter(cpi, DATE == "1980-12-01") %>% pull(CPIAUCSL)`, and it was `r filter(cpi, DATE == "2017-12-01") %>% pull(CPIAUCSL)` in December 2017.^[Source: [`CPIAUCSL` from FRED](https://fred.stlouisfed.org/series/CPIAUCSL)] How much inflation has there been between 1980 and 2017?
+2. In December 1980 the average price of unleaded regular gasoline was $1.34; in December 2017, it was $2.48.^[Source: [Weekly U. S. Regular All Formulations Retail Gasoline Prices](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPMR_PTE_NUS_DPG&f=W) from the US EIA] Did the price of gasoline increase or decrease in real terms over this period? By what percentage has the price of gasoline increased (in real terms) over this 37-year period? What is the implied average annual rate of growth or decline in the real price over this period?
+3. In 1980 the federal minimum wage was $3.10 per hour; today it is $7.25. Has its real value increased or decreased over this period? What policy and managerial implications does this have?
