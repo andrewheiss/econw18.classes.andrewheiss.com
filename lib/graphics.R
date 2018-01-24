@@ -8,7 +8,7 @@ nord_purple <- "#B48EAD"  # nord15
 nord_lt_blue <- "#81A1C1"  # nord9
 nord_dk_blue <- "#5E81AC"  # nord10
 
-theme_econ <- function(base_size = 11, base_family = "Roboto Condensed") {
+theme_econ <- function(base_size = 11, base_family = "Roboto Condensed", axis_line = FALSE) {
   update_geom_defaults("label", list(family = "Roboto Condensed Light"))
   update_geom_defaults("text", list(family = "Roboto Condensed Light"))
   
@@ -29,6 +29,11 @@ theme_econ <- function(base_size = 11, base_family = "Roboto Condensed") {
           strip.background = element_rect(fill = "#ffffff", colour=NA),
           panel.spacing.y = unit(1.5, "lines"),
           legend.key = element_blank(),
-          legend.spacing = unit(0.2, "lines"))
+          legend.spacing = unit(0.1, "lines"))
+  
+  if (axis_line) {
+    ret <- ret + theme(axis.line = element_line(color = "black", size = 0.25))
+  }
+  
   ret
 }
