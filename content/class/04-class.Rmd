@@ -1,0 +1,78 @@
+---
+title: "Scarcity and productivity II"
+date: "2018-01-24"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-24.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-24.png)](/slides/MPA-612_2018-01-24.pdf)
+</figure>
+
+
+# Income and substitution effects
+
+Again, it can be hard to wrap your head around how income and substitution effects work, especially since indifference curves are generally imaginary. 
+
+This video is an extremely helpful demonstration of how to find income and substitution effects for normal and inferior goods:^[[This one is really good too.](https://www.youtube.com/watch?v=6ObXpWgYbJ8&t=284s)]
+
+<figure>
+`r blogdown::shortcode("youtube", "pLhh_D5b_Lg")`
+</figure>
+
+
+# Additional references to things brought up in class
+
+- [New Fed chair](https://www.npr.org/sections/thetwo-way/2018/01/23/580157250/senate-confirms-jerome-powell-as-new-federal-reserve-chair)
+- [Substitution effect of base metals as production frontier grows](https://www.npr.org/sections/money/2018/01/19/579192124/episode-508-a-bet-on-the-future-of-humanity)
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/mXQXiS2PybhXF5zG2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+
+```{r figures-for-slides,  eval=FALSE, include=FALSE}
+library(tidyverse)
+source(file.path(here::here(), "lib", "graphics.R"))
+utility_ice_cream <- data.frame(Hmisc::bezier(c(0, 0, 6, 7), c(0, 20, 20, 18)))
+
+ggplot(utility_ice_cream, aes(x = x, y = y)) +
+  geom_line(size = 3, color = nord_green) +
+  labs(x = "Bowls of ice cream", y = "Utils") +
+  theme_econ(13, axis_line = TRUE)
+
+
+ic_utils <- as.data.frame(Hmisc::bezier(c(1, 2, 3, 4), c(12, 6, 4, 3)))
+
+ic_utils_points <- tribble(
+  ~x1, ~x2, ~x3,
+  1, 12, 12,
+  2, 6, 3.5,
+  3, 4, 4,
+  4, 3, 3
+)
+
+ic_utils_curve <- as.data.frame(Hmisc::bezier(ic_utils_points$x1, ic_utils_points$x3))
+
+ggplot() +
+  geom_line(data = ic_utils_curve, aes(x = x, y = y), size = 3, color = nord_green) +
+  geom_point(data = ic_utils_points, aes(x = x1, y = x2), size = 3) +
+  labs(x = expression(x[1]), y = expression(x[2])) +
+  theme_econ(13, axis_line = TRUE)
+```
