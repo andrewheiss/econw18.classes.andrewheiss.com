@@ -1,0 +1,52 @@
+---
+title: "Social Interactions and Incentives I"
+date: "2018-01-26"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-26.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-26.png)](/slides/MPA-612_2018-01-26.pdf)
+</figure>
+
+
+# Additional references to things brought up in class
+
+- [Cape Town about to run out of water](http://www.newsweek.com/day-zero-drought-cape-town-792036)
+- [Nutella riots](https://www.npr.org/sections/thetwo-way/2018/01/26/581031630/this-is-not-normal-nutella-riots-hit-france-after-stores-slash-prices)
+- [Benefits of a universal basic income](https://www.bloomberg.com/view/articles/2018-01-23/a-basic-income-for-everyone-it-s-not-a-crazy-idea)
+- ["The impact of basic income on the propensity to work: Theoretical issues and micro-econometric results"](https://www.sciencedirect.com/science/article/pii/S1053535705001411)
+
+
+# Parable of the polygons
+
+Play through the [Parable of the Polygons](http://ncase.me/polygons/) for more details about how rational individual choices can lead to suboptimal social outcomes.
+
+
+# Helpful game theory resources
+
+There are hundreds of examples and tutorials of how to solve game theoretic problems online. Here are some of the best:
+
+- [Battle of the Sexes](http://policonomics.com/battle-of-the-sexes/) and [mixed strategies](http://policonomics.com/mixed-strategy/)
+- [Prisoner's Dilemma and payoffs](http://policonomics.com/video-d3-prisoners-dilemma/)
+- [Chicken](https://www.youtube.com/watch?v=sww-Zsl0IRY)
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/AUtBtZuRrpQGJJ9u2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
