@@ -1,0 +1,284 @@
+---
+title: "Social Interactions and Incentives II"
+date: "2018-01-29"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+stuff-to-add: >-
+  Helpful links:
+  
+  - Game Theory 101: Battle of the Sexes: https://www.youtube.com/watch?v=VjkShMpDzLc
+  - Game Theory 101: Chicken: https://www.youtube.com/watch?v=sww-Zsl0IRY
+  - Game Theory 101: Calculating Payoffs in Mixed Strategy Nash Equilibria: https://www.youtube.com/watch?v=08JlYCgckDQ
+  - 2×2 game solver to check answers: http://mindyourdecisions.com/GameSolver.html
+  - Mixed strategies: https://saylordotorg.github.io/text_introduction-to-economic-analysis/s17-03-mixed-strategies.html
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-29.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-29.png)](/slides/MPA-612_2018-01-29.pdf)
+</figure>
+
+
+# Game theory mixed strategy calcuations
+
+```{r load-libraries, include=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(pander)
+```
+
+
+Overall process:
+
+1. Determine if there are pure equilibria (cover each row/column and ask what each player's best strategy would be). If there are multiple equilibria, you need to find the mixed strategy.
+2. Calculate the expected utility for each choice for each player and find the probability cutoff for each choice.
+3. Calculate the expected payoff for each player.
+
+
+\
+
+## Battle of the Sexes example
+
+```{r battle-sexes-initial, echo=FALSE, results="asis"}
+battle_sexes_payoffs <- c(
+  "",              "",      "**Player 2**", "",
+  "",              "",      "Boxing",       "Opera",
+  "**Player 1**", "Boxing", "2, 1",         "0, 0",
+  "",              "Opera", "0, 0",         "1, 2"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(battle_sexes_payoffs, style = "simple")
+```
+
+**First**, find the pure equilibria:
+
+- Best response for Player 1 if Player 2 chooses boxing = boxing
+- Best response for Player 1 if Player 2 chooses opera = opera
+- Best response for Player 2 if Player 1 chooses boxing = boxing
+- Best response for Player 2 if Player 1 chooses opera = opera
+
+The game has two Nash equilibria, so it has a mixed strategy.
+
+**Second**, calculate the expected utility for each choice for each player. Assume some probability ($p$, $1 - p$) for Player 1's choice and ($q$, $1 - q$) for Player 2.
+
+```{r battle-sexes-probs, echo=FALSE, results="asis"}
+battle_sexes_payoffs_probs <- c(
+  "",              "",      "**Player 2**", "",
+  "",              "",      "Boxing ($q$)",       "Opera ($1-q$)",
+  "**Player 1**", "Boxing ($p$)", "2, 1",         "0, 0",
+  "",              "Opera ($1 - p$)", "0, 0",         "1, 2"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(battle_sexes_payoffs_probs, style = "simple")
+```
+
+To find the expected utility for a choice, add the utility × probability for each choice in the row (or column, for Player 2). Thus,
+
+$$
+\begin{aligned}
+EU_{\text{Player 1, boxing}} &= 2q + 0(1-q) =& 2q \\
+EU_{\text{Player 1, opera}} &= 0q + 1(1-q) =& 1 - q \\
+EU_{\text{Player 2, boxing}} &= 1p + 0(1-p) =& p \\
+EU_{\text{Player 2, opera}} &= 0p + 2(1-p) =& 2 - 2p
+\end{aligned}
+$$
+
+With these formulas, you can then determine $q$ and $p$ by setting the expected utilities for each player equal to each other and solving for the variable:
+
+$$
+\begin{aligned}
+2q &= 1 - q & p &= 2 - 2p \\
+3q &= 1 & 3p &= 2 \\
+q &= \frac{1}{3} & p &= \frac{2}{3}
+\end{aligned}
+$$
+
+Player 1's best response is determined by what Player 2's $q$ is in real life:
+
+$$
+\text{Best response}_{\text{Player 1}} = 
+\left \{ 
+\begin{aligned}
+&\text{Opera } & \text{if } q > \frac{1}{3} \\
+&\text{Boxing } & \text{if } q < \frac{1}{3} \\
+&\text{indifferent between opera and boxing } & \text{if } q = \frac{1}{3} \\
+\end{aligned}
+\right \}
+$$
+
+Similarly, Player 2's best response is determined by what Player 1's $p$ is in real life:
+
+$$
+\text{Best response}_{\text{Player 2}} = 
+\left \{ 
+\begin{aligned}
+&\text{Boxing } & \text{if } p > \frac{2}{3} \\
+&\text{Opera } & \text{if } p < \frac{2}{3} \\
+&\text{indifferent between opera and boxing } & \text{if } p = \frac{2}{3} \\
+\end{aligned}
+\right \}
+$$
+
+**Third**, with these probabilities, we can calculate the expected payoff for each player when playing the mixed strategy. This is the utility × probability for each cell, added together. First, calculate the joint probabilities for each cell by multiplying the row and column probabilities: 
+
+```{r battle-sexes-joint-probs, echo=FALSE, results="asis"}
+battle_sexes_payoffs_joint_probs <- c(
+  "",              "",      "**Player 2**", "",
+  "",              "",      "Boxing ($\\frac{1}{3}$)",       "Opera ($\\frac{2}{3}$)",
+  "**Player 1**", "Boxing ($\\frac{2}{3}$)", 
+  "$\\frac{2}{3} \\times \\frac{1}{3} = \\frac{2}{9}$",  
+  "$\\frac{2}{3} \\times \\frac{2}{3} = \\frac{4}{9}$",
+  "",              "Opera ($\\frac{1}{3}$)", 
+  "$\\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}$", 
+  "$\\frac{1}{3} \\times \\frac{2}{3} = \\frac{2}{9}$"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(battle_sexes_payoffs_joint_probs, style = "simple", split.tables = Inf)
+```
+
+Then multiply each probability by the payoff and add all the cells together:
+
+$$
+\begin{aligned}
+EP_{\text{Player 1}} &= (2 \times \frac{2}{9}) + (0 \times \frac{4}{9}) + (0 \times \frac{1}{9}) + (1 \times \frac{2}{9}) =& \frac{2}{3} \\
+EP_{\text{Player 2}} &= (1 \times \frac{2}{9}) + (0 \times \frac{4}{9}) + (0 \times \frac{1}{9}) + (2 \times \frac{2}{9}) =& \frac{2}{3}
+\end{aligned}
+$$
+
+The expected payoff for each player in the mixed strategy is $\frac{2}{3}$, which is less than what either player would make if they coordinated on their least preferred outcome. That is, it's better for the man to compromise and go to the ballet and get 1 unit of utility rather than gamble on the mixed strategy.
+
+\
+
+## Chicken example
+
+```{r chicken-initial, echo=FALSE, results="asis"}
+chicken_payoffs <- c(
+  "",              "",          "**Player 2**", "",
+  "",              "",          "Keep going",   "Swerve",
+  "**Player 1**", "Keep going", "-100, -100",   "5, -5",
+  "",             "Swerve",     "-5, 5",        "0, 0"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(chicken_payoffs, style = "simple")
+```
+
+**First**, find the pure equilibria:
+
+- Best response for Player 1 if Player 2 chooses to keep going = swerve
+- Best response for Player 1 if Player 2 chooses to swerve = keep going
+- Best response for Player 2 if Player 1 chooses to keep going = swerve
+- Best response for Player 2 if Player 1 chooses to serve = keep going
+
+The game has two Nash equilibria, so it has a mixed strategy.
+
+**Second**, calculate the expected utility for each choice for each player. Assume some probability ($p$, $1 - p$) for Player 1's choice and ($q$, $1 - q$) for Player 2.
+
+```{r chicken-probs, echo=FALSE, results="asis"}
+chicken_payoffs_probs <- c(
+  "",              "",          "**Player 2**", "",
+  "",              "",          "Keep going ($q$)",   "Swerve ($1 - q$)",
+  "**Player 1**", "Keep going ($p$)", "-100, -100",   "5, -5",
+  "",             "Swerve ($1 - p$)",     "-5, 5",        "0, 0"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(chicken_payoffs_probs, style = "simple")
+```
+
+Find the expected utility for each choice for each player:
+
+$$
+\begin{aligned}
+EU_{\text{Player 1, keep going}} &= -100q + 5(1-q) =& -105q + 5 \\
+EU_{\text{Player 1, swerve}} &= -5q + 0(1-q) =& -5q \\
+EU_{\text{Player 2, keep going}} &= -100p + 5(1-p) =& -105p + 5 \\
+EU_{\text{Player 2, swerve}} &= -5p + 0(1-p) =& -5p
+\end{aligned}
+$$
+
+With these formulas, you can then determine $q$ and $p$ by setting the expected utilities for each player equal to each other and solving for the variable:
+
+$$
+\begin{aligned}
+-105q + 5 &= -5q & 105p + 5 &= -5p \\
+-100q &= -5 & -100p &= -5 \\
+q &= \frac{1}{20} & p &= \frac{1}{20}
+\end{aligned}
+$$
+
+Player 1's best response is determined by what Player 2's $q$ is in real life:
+
+$$
+\text{Best response}_{\text{Player 1}} = 
+\left \{ 
+\begin{aligned}
+&\text{Swerve } & \text{if } q > \frac{1}{20} \\
+&\text{Keep going } & \text{if } q < \frac{1}{20} \\
+&\text{indifferent between swerving and going } & \text{if } q = \frac{1}{20} \\
+\end{aligned}
+\right \}
+$$
+
+Similarly, Player 2's best response is determined by what Player 1's $p$ is in real life:
+
+$$
+\text{Best response}_{\text{Player 2}} = 
+\left \{ 
+\begin{aligned}
+&\text{Swerve } & \text{if } p > \frac{1}{20} \\
+&\text{Keep going } & \text{if } p < \frac{1}{20} \\
+&\text{indifferent between swerving and going } & \text{if } p = \frac{1}{20} \\
+\end{aligned}
+\right \}
+$$
+
+**Third**, with these probabilities, we can calculate the expected payoff for each player when playing the mixed strategy. This is the utility × probability for each cell, added together. First, calculate the joint probabilities for each cell by multiplying the row and column probabilities: 
+
+```{r chicken-joint-probs, echo=FALSE, results="asis"}
+chicken_payoffs_joint_probs <- c(
+  "",              "",      "**Player 2**", "",
+  "",              "",      "Keep going ($\\frac{1}{20}$)",       "Swerve ($\\frac{19}{20}$)",
+  "**Player 1**", "Keep going ($\\frac{1}{20}$)", 
+  "$\\frac{1}{20} \\times \\frac{1}{20} = \\frac{1}{400}$",  
+  "$\\frac{1}{20} \\times \\frac{19}{20} = \\frac{19}{400}$",
+  "",              "Swerve ($\\frac{19}{20}$)", 
+  "$\\frac{19}{20} \\times \\frac{1}{20} = \\frac{19}{400}$", 
+  "$\\frac{19}{20} \\times \\frac{19}{20} = \\frac{361}{400}$"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(chicken_payoffs_joint_probs, style = "simple", split.tables = Inf)
+```
+
+Then multiply each probability by the payoff and add all the cells together:
+
+$$
+\begin{aligned}
+EP_{\text{Player 1}} &= (-100 \times \frac{1}{400}) + (5 \times \frac{19}{400}) + (-5 \times \frac{19}{400}) + (0 \times \frac{361}{400}) =& -\frac{1}{4} \\
+EP_{\text{Player 2}} &= (-100 \times \frac{1}{400}) + (-5 \times \frac{19}{400}) + (5 \times \frac{19}{400}) + (0 \times \frac{361}{400}) =& -\frac{1}{4}
+\end{aligned}
+$$
+
+The expected payoff for each player in the mixed strategy is $-\frac{1}{4}$, which is less than the best outcome in the pure strategy (a player would get 5 if they won), and greater than the worst outcome in the pure strategy (a player would get $-5$ if they lost). This means that it might be worth gambling—getting an average of $-\frac{1}{4}$ is better than possibly getting a $-5$.
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/5oFxgZFkybUUAaEx1) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
