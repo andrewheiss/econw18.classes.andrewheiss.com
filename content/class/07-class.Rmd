@@ -1,0 +1,175 @@
+---
+title: "Incentives and human behavior"
+date: "2018-01-31"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+    fig_height: 4.5
+    fig_width: 7
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-01-31.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-01-31.png)](/slides/MPA-612_2018-01-31.pdf)
+</figure>
+
+
+# Heuristics and biases
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(ggstance)
+source(file.path(here::here(), "lib", "graphics.R"))
+```
+
+## Insensitivity to prior probability of outcomes
+
+> *Vignette*: Sarah loves to listen to New Age music and faithfully reads her horoscope each day. In her spare time, she enjoys aromatherapy and participating in a local spirituality community.
+
+This example followed expectations. Few of you chose the more probable outcome—there are far more teachers than holistic healers in the world.
+
+```{r q1, message=FALSE, warning=FALSE, echo=FALSE, fig.height=4}
+q1 <- read_csv(file.path(here::here(), "static", "data", "q1_prior_probability.csv")) %>%
+  mutate(Timestamp = mdy_hms(Timestamp),
+         hour_taken = hour(Timestamp),
+         section = factor(hour_taken, levels = c(8, 9), 
+                          labels = c("8:00 section", "9:30 section"), ordered = TRUE))
+
+q1_plot_data <- q1 %>%
+  count(section, Q1) %>%
+  group_by(section) %>%
+  mutate(nn = sum(n)) %>%
+  ungroup() %>%
+  mutate(perc = n / nn)
+
+ggplot(q1_plot_data, aes(x = perc, y = Q1, color = fct_rev(section))) + 
+  geom_pointrangeh(aes(xmin = 0, xmax = perc), size = 1.5,
+                   position = position_dodgev(height = 0.25)) +
+  scale_color_manual(values = c(nord_purple, nord_orange), name = NULL,
+                     guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = NULL, y = NULL) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank())
+```
+
+## Insensitivity to sample size
+
+> *Vignette*: Provo is served by two hospitals. In the larger hospital, about 45 babies are born each day, and in the smaller hospital about 15 babies are born each day. As you know, about 50% of all babies are boys, but the exact percentage varies from day to day—sometimes it's a bit higher than 50%, and sometimes it's lower. The hospitals make special note of when more than 60% of the babies born that day are boys. Which hospital do you thing recorded more of these boy-heavy days?
+
+This example followed expectations too. The smaller hospital has fewer births and thus has higher variance (i.e. a less stable mean), so it's more likely to see variations in outcomes.
+
+```{r q2, message=FALSE, warning=FALSE, echo=FALSE}
+q2 <- read_csv(file.path(here::here(), "static", "data", "q2_sample_size.csv")) %>%
+  mutate(Timestamp = mdy_hms(Timestamp),
+         hour_taken = hour(Timestamp),
+         section = factor(hour_taken, levels = c(8, 9), 
+                          labels = c("8:00 section", "9:30 section"), ordered = TRUE))
+
+q2_plot_data <- q2 %>%
+  count(section, Q2) %>%
+  group_by(section) %>%
+  mutate(nn = sum(n)) %>%
+  ungroup() %>%
+  mutate(perc = n / nn)
+
+ggplot(q2_plot_data, aes(x = perc, y = Q2, color = fct_rev(section))) + 
+  geom_pointrangeh(aes(xmin = 0, xmax = perc), size = 1.5,
+                   position = position_dodgev(height = 0.25)) +
+  scale_color_manual(values = c(nord_purple, nord_orange), name = NULL,
+                     guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = NULL, y = NULL) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank())
+```
+
+## Anchoring
+
+> *Low vignette*: International NGOs don't have regular access to regional international organizations. Today, NGOs participate in only **5%** of African Union meetings.
+
+> *High vignette*: Regional international organizations have become increasingly important. Today, nearly **100%** of African countries are part of the African Union.
+
+> *Question*: What percent of North American and European countries are members of NATO (the North American Treaty Organizations)?
+
+Ha, this example ***did not*** follow expectations. Those with the high frame should have given answers that were higher, and vice versa, but they did not in either section. The difference between the mean responses across the vignettes, however, is not statistically significant.
+
+```{r q3, message=FALSE, warning=FALSE, echo=FALSE}
+q3 <- read_csv(file.path(here::here(), "static", "data", "q3_anchoring.csv")) %>%
+  mutate(hour_taken = hour(RecordedDate),
+         section = factor(hour_taken, levels = c(8, 9), 
+                          labels = c("8:00 section", "9:30 section"), ordered = TRUE)) %>%
+  select(starts_with("Q3"), section) %>%
+  gather(condition, value, -section) %>%
+  filter(!is.na(value)) %>%
+  mutate(condition = recode(condition, 
+                            Q3_low = "Low anchored vignette",
+                            Q3_high = "High anchored vignette"),
+         condition = fct_inorder(condition, ordered = TRUE),
+         value = value / 100)
+
+mean_cl_booth <- function(...) {
+  mean_cl_boot(...) %>%
+    rename(x = y, xmin = ymin, xmax = ymax)
+}
+
+ggplot(q3, aes(x = value, y = condition)) + 
+  stat_summaryh(fun.data = mean_cl_booth, geom = "pointrangeh", 
+                colour = nord_red, size = 1.5) +
+  geom_point(alpha = 0.6) +
+  scale_x_continuous(labels = scales::percent) +
+  coord_cartesian(xlim = c(0, 1)) +
+  labs(x = NULL, y = NULL) +
+  theme_econ(13) +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank()) +
+  facet_wrap(~ section, ncol = 1)
+```
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/jLSQOtZtyoaOKqfF3) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+
+```{r slide-figs, eval=FALSE, include=FALSE}
+discounting_regular <- function(tau, delta) delta^tau
+discounting_hyperbolic <- function(tau, alpha, lambda) {
+  (1 + (alpha * lambda))^(-tau / alpha)
+}
+
+discounting <- data_frame(years = seq(0, 50, 1)) %>%
+  mutate(exponential = discounting_regular(years, delta = 0.944),
+         hyperbolic = discounting_hyperbolic(years, alpha = 4, lambda = 1)) %>%
+  gather(type, value, -years)
+
+faux_hyperbolic <- as.data.frame(Hmisc::bezier(c(0, 0, 50),
+                                               c(1, 0.25, 0.25)))
+
+ggplot() +
+  stat_function(aes(x = 0:50, color = "Exponential"), size = 2,
+                fun = discounting_regular, args = list(delta = 0.944)) + 
+  geom_line(data = faux_hyperbolic, aes(x = x, y = y, color = "Hyperbolic"), size = 2) +
+  labs(x = "Delay (years)", y = "Value of delayed util") +
+  scale_color_manual(values = c(nord_dk_blue, nord_orange), name = NULL) +
+  theme_econ(20) +
+  theme(legend.position = "bottom")
+```
