@@ -3,7 +3,7 @@ title: "Incentives and human behavior"
 date: "2018-01-31"
 citeproc: false
 bibliography: ../../static/bib/references.bib
-csl: ../../static/bib/chicago-syllabus-no-bib.csl
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 output:
   blogdown::html_page:
     template: ../../pandoc/toc-title_html.template
@@ -34,7 +34,7 @@ source(file.path(here::here(), "lib", "graphics.R"))
 
 ## Insensitivity to prior probability of outcomes
 
-> *Vignette*: Sarah loves to listen to New Age music and faithfully reads her horoscope each day. In her spare time, she enjoys aromatherapy and participating in a local spirituality community.
+> *Vignette*: Sarah loves to listen to New Age music and faithfully reads her horoscope each day. In her spare time, she enjoys aromatherapy and participating in a local spirituality community.^[Borrowed from Kendra Cherry, ["What is the Representativeness Heuristic?,"](https://www.verywell.com/representativeness-heuristic-2795805) July 21, 2017.]
 
 This example followed expectations. Few of you chose the more probable outcome—there are far more teachers than holistic healers in the world.
 
@@ -67,7 +67,7 @@ ggplot(q1_plot_data, aes(x = perc, y = Q1, color = fct_rev(section))) +
 
 ## Insensitivity to sample size
 
-> *Vignette*: Provo is served by two hospitals. In the larger hospital, about 45 babies are born each day, and in the smaller hospital about 15 babies are born each day. As you know, about 50% of all babies are boys, but the exact percentage varies from day to day—sometimes it's a bit higher than 50%, and sometimes it's lower. The hospitals make special note of when more than 60% of the babies born that day are boys. Which hospital do you thing recorded more of these boy-heavy days?
+> *Vignette*: Provo is served by two hospitals. In the larger hospital, about 45 babies are born each day, and in the smaller hospital about 15 babies are born each day. As you know, about 50% of all babies are boys, but the exact percentage varies from day to day—sometimes it's a bit higher than 50%, and sometimes it's lower. The hospitals make special note of when more than 60% of the babies born that day are boys. Which hospital do you thing recorded more of these boy-heavy days? [Adapted from @TverskyKahneman:1974]
 
 This example followed expectations too. The smaller hospital has fewer births and thus has higher variance (i.e. a less stable mean), so it's more likely to see variations in outcomes.
 
@@ -104,7 +104,7 @@ ggplot(q2_plot_data, aes(x = perc, y = Q2, color = fct_rev(section))) +
 
 > *High vignette*: Regional international organizations have become increasingly important. Today, nearly **100%** of African countries are part of the African Union.
 
-> *Question*: What percent of North American and European countries are members of NATO (the North American Treaty Organizations)?
+> *Question*: What percent of North American and European countries are members of NATO (the North American Treaty Organizations)? [Adapted from @TverskyKahneman:1974]
 
 Ha, this example ***did not*** follow expectations. Those with the high frame should have given answers that were higher, and vice versa, but they did not in either section. The difference between the mean responses across the vignettes, however, is not statistically significant.
 
