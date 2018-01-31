@@ -127,6 +127,7 @@ mean_cl_booth <- function(...) {
     rename(x = y, xmin = ymin, xmax = ymax)
 }
 
+set.seed(1234)
 ggplot(q3, aes(x = value, y = condition)) + 
   stat_summaryh(fun.data = mean_cl_booth, geom = "pointrangeh", 
                 colour = nord_red, size = 1.5) +
