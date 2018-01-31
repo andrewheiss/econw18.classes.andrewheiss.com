@@ -104,7 +104,7 @@ ggplot(q2_plot_data, aes(x = perc, y = Q2, color = fct_rev(section))) +
 
 > *High vignette*: Regional international organizations have become increasingly important. Today, nearly **100%** of African countries are part of the African Union.
 
-> *Question*: What percent of North American and European countries are members of NATO (the North American Treaty Organizations)? [Adapted from @TverskyKahneman:1974]
+> *Question*: What percent of North American and European countries are members of NATO (the North American Treaty Organization)? [Adapted from @TverskyKahneman:1974]
 
 Ha, this example ***did not*** follow expectations. Those with the high frame should have given answers that were higher, and vice versa, but they did not in either section. The difference between the mean responses across the vignettes, however, is not statistically significant.
 
