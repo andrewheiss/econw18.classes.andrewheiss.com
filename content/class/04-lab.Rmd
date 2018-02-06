@@ -1,0 +1,18 @@
+---
+title: "Lab 4"
+date: "2018-02-02"
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+---
+
+# Income and substitution effects
+
+- [Example Income and Subsitution Effects For Normal and Inferior Goods](https://www.youtube.com/watch?v=pLhh_D5b_Lg)
+- [Income and Substitution Effects (with downloadable Excel file)](https://www.youtube.com/watch?v=GgzS04HCVbw)
+
+
+# Game theory
+
+- [2×2 game solver to check answers](http://mindyourdecisions.com/GameSolver.html)
