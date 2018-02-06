@@ -1,0 +1,143 @@
+---
+title: "Problem set 3"
+date: "2018-02-09"
+due_date: "2018-02-09"
+due_time: "11:59 PM"
+editor_options: 
+  chunk_output_type: console
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(pander)
+source(file.path(here::here(), "lib", "graphics.R"))
+```
+
+**Submit this as a PDF on Learning Suite.** Show your work when possible. You can use whatever you want to make your drawings, including Adobe Illustrator, Excel, PowerPoint, Microsoft Paint, [Desmos](https://www.desmos.com/), or scanned pen and paper.
+
+**Cite your sources and show your work.**
+
+
+# 1
+
+Consider a repeated prisoners' dilemma game with a finite number of rounds.
+
+1. If we assume that all parties are narrowly rational, and that they know which is the last period, why would we predict no cooperation during the whole game?
+2. Why, in practice, might parties not behave this way?
+
+In the prisoners' dilemma computer tournament described in the Radiolab episode, the *Tit for Tat* strategy won. This was also the case in the ["Evolution of Trust"](http://ncase.me/trust/) game that you played.
+
+3. In what sense, exactly, did it win?  
+4. How robust was this finding? Are there situations where *Tit for Tat* is too nice? Too provocable? Too forgiving?
+
+
+# 2
+
+The following game represents the interaction between two software engineers, Astrid and Bettina, who are working together to write code as a part of a project. Astrid is better at writing Java code, while Bettina prefers C++. The numbers represent the pay in dollars for completion of the project. 
+
+```{r java-cpp-payoffs, echo=FALSE, results="asis"}
+java_cpp_payoffs <- c(
+  "",           "",     "**Bettina**",    "",
+  "",           "",     "Java",           "C++",
+  "**Astrid**", "Java", "$4,000, $3,000", "$2,000, $2,000",
+  "",           "C++",  "$0, $0",         "$3,000, $6,000"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(java_cpp_payoffs, style = "simple", split.tables = Inf)
+```
+
+\
+
+Based on this information, which of the following are true? Why or why not?
+
+1. There are two Nash equilibria: (Java, Java) and (C++, C++).
+2. If Astrid can choose the language first and commit to it, then (Java, Java) will be chosen.
+3. If the two can make an agreement beforehand, including a transfer of $500 from Bettina to Astrid, then (C++, C++) will be chosen.
+4. If the two can make an agreement beforehand, including a transfer of $2,000 from Bettina to Astrid, then (C++, C++) will be chosen.
+5. If the two cannot make an agreement beforehand, then they may end up with the (Java, C++) outcome.
+
+
+# 3
+
+After Hurricane Maria, hundreds of nonprofit organizations streamed to Puerto Rico and other Caribbean islands to provide disaster relief. [Research has found](https://theconversation.com/response-to-natural-disasters-like-harvey-could-be-helped-with-game-theory-83125) that coordination between nonprofits during disasters is difficult to maintain—it's easy for individual nonprofits to fundraise and pursue programming on their own while ignoring other organizations working on the same issues. Additionally, there are incentives to do projects that are cheap and have fast turnaround, since [donors respond to the visibility of organizations providing disaster relief](https://www.sciencedirect.com/science/article/pii/S092552730900365X).
+
+Consider two nonprofit organizations working in Puerto Rico. Together, they could spend time coordinating their efforts and run a shelter for hurricane victims, providing each organization with 100 utils. Alternatively, they could individually distribute paper towels—a simple, low-cost, fast, and [visible](https://www.cnn.com/videos/politics/2017/10/03/donald-trump-puerto-rico-supplies-von.cnn/video/playlists/trumps-response-to-puerto-rico-crisis/) project—and receive 5 utils. 
+
+This situation can be modeled with the following payoff matrix:
+
+```{r maria-payoffs, echo=FALSE, results="asis"}
+maria_payoffs <- c(
+  "",                "",                        "**Nonprofit 2**", "",
+  "",                "",                        "Run shelter",     "Distribute paper towels",
+  "**Nonprofit 1**", "Run shelter",             "100, 100",        "0, 5",
+  "",                "Distribute paper towels", "5, 0",            "5, 5"
+) %>%
+  matrix(ncol = 4, byrow = TRUE)
+
+pandoc.table(maria_payoffs, style = "simple", split.tables = Inf)
+```
+
+1. What are the consequences of this kind of interaction? What will the two organizations naturally tend to do? Why? (i.e. what are the equilibria?)
+
+2. In the absence of communication, what are the two nonprofits' mixed strategies? How will they guess what the other organization will do? Under what conditions will organization 1 choose to run the shelter? (i.e. what are the probability cutoffs for each nonprofit choosing to run the shelter or distribute paper towels?) **Show your work.**
+
+3. What is the expected payoff of engaging in a mixed strategy? (i.e. choosing to gamble based on probability cutoffs rather than communicate and coordinate in person?) **Show your work.**
+
+4. What kind of game is this? Why? Can cooperation be ensured? How?
+
+
+# 4
+
+[A recent poll by the Edelman Trust Barometer](https://www.edelman.com/trust-barometer) shows a staggering drop in trust in private and public institutions in the United States. Only 33% of Americans surveyed have trust in government, and "no country saw steeper declines than the United States, with a 37-point aggregate drop in trust across all institutions"
+
+1. Why does a community with a high level of trust have an advantage over one with lower levels of trust? [*Hint*: recall @Mayer:2014.]
+2. To what extent can the institution of trust be thought of as a cooperative equilibrium in a stag hunt game?  	
+3. How might a cooperative equilibrium degenerate into a non-cooperative equilibrium? Explain this by describing neighborhood dynamics.
+
+
+# 5
+
+*True or false*: The substitution effect of a price change always goes in the opposite direction from the income effect. Explain with a graph.
+
+
+# 6
+
+In an effort to encourage parents to read to their children, suppose that the state created "Utah Reads," a new program that subsidizes the purchase of children's books. Under this proposal, every time a children's book is purchased from a store in Utah, the store would charge just *half* of the retail price and would be reimbursed directly by the state for the other half. The market price for a children's book is $10 and books are a normal good.
+
+1. For a family with an income of $1,000 per month, draw budget lines before and after Utah Reads, labeling all known curves, axes, and points.^[*Hint*: put "books" on the x-axis and "all other goods" (or "AOG") on the y-axis.]
+2. Show the income and substitution effects. Use actual numbers. Note that your numbers will differ, since everyone's indifference curves are different.
+3. What do the income and substitution effects mean in this situation?
+4. What would be the family’s consumption if instead it were given an equal-cost cash grant by the government?
+5. Would the family be better off with the Utah Reads program or with an equal-cost cash grant? Why?
+
+
+# 7
+
+Suppose residents of a rural community in a developing nation spend all of their income on two goods: clothing and food. The price of clothing is 10 dinar per package and the price of food is 5 dinar per kilogram.
+
+Consider a family with income of 200 dinar per week. In the absence of any government program, the family would consume 30 kg of food. 
+
+1. Draw the family's budget line, labeling all axes and all points whose value you know. Mark the family's equilibrium consuption point as $A$. 
+2. On the same graph, draw a new budget line for a program that provides each family with 5 free packages of clothing. 
+3. In a new graph, draw the family's original budget line. Show the effect of an increase in the price of clothing to 20 dinar per package, assuming that clothing is a normal good. Show the income and substitution effects. Use actual numbers.
+4. What do the income and substitution effects mean in this situation?
+
+
+# 8
+
+1. How are people likely to judge the likelihood of shark attack at the ocean beach? What kinds of information will influence that judgment, and the choice of whether to go swimming? Use specific heuristics to explain your answer.
+2. In *Nudge*, Thaler and Sunstein note that credit card companies try to stop retailers from requiring that customers pay a fee if they use a credit card. The credit card companies would rather that retailers offer a discount for customers who pay cash. What's the difference?
+3. Is a tax a nudge? Why or why not?
+
+
+# 9
+
+Universities have typically had a hard time recruiting female students in STEM^[Science, technology, engineering, and math] fields. Suppose that the introduction to computer science class (CS 142) at BYU has typically been all male. This year, though, 30 female students enrolled in CS 142 after transferring to BYU from different schools. To the ASB's surprise, 40 additional female BYU students enrolled in the course after the first week of classes. 
+
+1. Provide a possible explanation for this surge in enrollment. Illustrate your explanation with a diagram that illustrates why there were no female students in the past and a jump to 70 this year.^[*Hint*: Think of preference falsification and the disconnect between expected and actual values.]
+2. Does this situation reflect a stag hunt game? Create a payoff matrix and explain why or why not.
+3. What do you think will happen to female enrollment in CS 142 next year, assuming that there are no more transfer students?
