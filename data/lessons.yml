@@ -75,7 +75,8 @@ lessons:
   - title: "Firms and customers I"
     date: "February 12 (M)"
     reading: "10-reading"
-  
+    class: "10-class"
+
   - title: "Firms and customers II"
     date: "February 14 (W)"
     reading: "11-reading"
