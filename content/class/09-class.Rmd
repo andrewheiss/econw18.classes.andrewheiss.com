@@ -1,0 +1,32 @@
+---
+title: "Firms and labor II"
+date: "2018-02-07"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+    fig_height: 4.5
+    fig_width: 7
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-07.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-07.png)](/slides/MPA-612_2018-02-07.pdf)
+</figure>
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/pGcA7T4hw65ZYeXy1) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
