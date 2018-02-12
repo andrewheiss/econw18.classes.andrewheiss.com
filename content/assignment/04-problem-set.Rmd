@@ -1,0 +1,111 @@
+---
+title: "Problem set 4"
+date: "2018-02-16"
+due_date: "2018-02-16"
+due_time: "11:59 PM"
+editor_options: 
+  chunk_output_type: console
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+**Submit this as a PDF on Learning Suite.** Show your work when possible. You can use whatever you want to make your drawings, including Adobe Illustrator, Excel, PowerPoint, Microsoft Paint, [Desmos](https://www.desmos.com/), or scanned pen and paper.
+
+**Cite your sources and show your work.**
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)
+```
+
+
+# 1
+
+Which of the following statements are correct regarding the difference between markets and firms? ***Why or why not?***
+
+1. Transactions within firms can be seen as contracts. Market transactions are not contracts.
+2. Working in a firm involves accumulation of firm-specific assets that will be lost if the connection to the firm is severed.
+3. Markets involve a decentralization of power, while firms represent a concentration of economic power.
+4. It is possible to employ division of labor within firms, while it is not possible in markets.
+
+
+# 2
+
+Think of two or three public or nonprofit sector jobs. In each case, describe why the employment contract is necessarily incomplete. What important parts of the person's job—things that the employer would like to see the employee do or not do—cannot be covered in a contract, or if they are, cannot be enforced? ***Discuss in ≈100 words***.
+
+
+# 3
+
+The figure below depicts the effect of an increase in the unemployment benefit on the workers’ best response curve when the unemployment rate is 12%. Which of the following statements is correct following a rise in the unemployment benefit? ***Why or why not?***
+
+1. The firm's profit level falls.
+2. The workers’ reservation wage falls.
+3. The efficiency wage at any given level of employment falls.
+4. The firm sets a lower efficiency wage.
+
+<figure class="fullwidth">
+
+![](/images/assignments/response-functions.png)
+
+</figure>
+
+
+# 4
+
+What are the essential tradeoffs involved in the "make or buy" choice? What are the possible pitfalls to government provision of public services? What are the possible pitfalls to contracting out public services? Why do @HartShleiferVishny:1997 conclude that there is a "plausible theoretical case can be made against prison privatization," particularly for maximum security prisons? ***Discuss in ≈100 words***.
+
+
+# 5
+
+Most cocaine is sold illegally to recreational users.^[Don't do drugs, ya'll. Follow the Word of Wisdom.] The cocaine sold on the street is not pure, but rather heavily diluted with other substances. Buyers are not able to determine the purity of the cocaine being offered for sale until they actually use it, and even then will be uncertain.
+
+1. Explain why the only cocaine available for sale on the street is diluted—users who would prefer purer cocaine (and are willing to pay a premium for it) will not be served. ***Discuss in ≈40 words***
+2. Would this situation be different if cocaine were legal? ***Discuss in ≈40 words***
+
+
+# 6
+
+Which of the following statements best describes the game played by the employer and the employee in the labor discipline model? ***Why or why not?***
+
+1. The game is a simultaneous game where the employer chooses the wage level and the employee chooses the effort level simultaneously.
+2. The game is a one-off game where the wage and effort levels are determined once and for all.
+3. The worker selects the effort level that balances her desire to keep her job with her desire to not exhaust herself on the job.
+4. The employer will attempt to maximize the firm's profits by offering a wage equal to the worker's reservation wage.
+
+
+# 7
+
+The British Road Safety Act of 1967 created a mandatory penalty for drunken driving—those convicted of a DUI lost their licenses for one year. Several insurance companies began offering policies that insured against loss of license. Policyholders were guaranteed a chauffeur-driven vehicle if they were convicted of DUI.
+
+It is reasonable to predict that people who chose to buy this insurance would subsequently have a higher rate of DUI arrests than those who did not buy the insurance.
+
+1. Justify this prediction using adverse selection. What is adverse selection and how does it apply here? ***Discuss in ≈50 words***
+2. Justify this prediction using moral hazard. What is moral hazard and how does it apply here? ***Discuss in ≈50 words***
+
+
+# 8
+
+Two landlords, Cain and Abel, control all the rental apartment buildings in the downtown residential neighborhood of East Eden. Historically, these buildings have been run-down. If Cain were to invest in improvements in his buildings but Abel did not, Cain would make \$3,000 since he would not be able to raise his rents due to the continued dilapidated condition of other apartment buildings in the neighborhood. If Cain does nothing to improve his properties and Abel invests in his, Cain will make \$10,000. The same is true for Abel's return from investing in his properties. If both landlords invest in their buildings, the entire town would improve, crime would decrease, and the general appearance of the neighborhood would be better; both landlords would realize a \$7,000 return on their investments. If neither invests, both will make \$4,000 on their properties.
+
+1. What is Abel's best strategy? Create a payoff matrix of their situation.
+2. Does Cain have a mixed strategy? (yes or no)
+3. Discuss the following statement in the light of this situation: "The best public policy in this case is to let the free market operate freely." ***Discuss in ≈50 words***
+
+
+# 9
+
+A car insurance company offers a reduced premium to high school students with a good academic record. The insurance company advertises that this offer is its way of recognizing and rewarding academic achievement.
+
+Provide an alternative explanation of why this company would offer such a deal. *Hint*: think about the company's self interest and problems with asymmetric information. ***Discuss in ≈50 words***.
+
+
+# 10
+
+Legislators are frequently frustrated by a common reaction to new policy. Lawmaers pass a new bill that provides grants to local jurisdictions for specific purposes, but most of the money never seems to be spent for what they had hoped it would. This is rarely because local officials break the law—most are careful not to violate the letter of the law.
+
+For instance, imagine that Utah wanted to increase the amount of money local school districts spend on textbooks. Legislators enact the Textbook Act of 2018, which provides grants to local districts equal to $14 per student (so a district with 1,000 students would get $14,000). This new money can only be spent on textbooks. At the end of the year, state officials discover that the average amount spent on textbooks in the state only increased by $3. 
+
+1. Assuming that a school district can have preferences in their consumption of textbooks and other goods,^[Since school districts aren't people, [my friend](https://www.youtube.com/watch?v=KlPQkd_AA6c).] graphically illustrate how this underspending might have happened using budget lines and indifference curves. 
+
+    *Hint*: place "textbooks" on the x-axis, "all other goods (AOG)" on the y-axis, and use dollars as the units for both (since you don't know the price of textbooks).
+2. What is the substitution effect of the Textbook Act of 2018?
