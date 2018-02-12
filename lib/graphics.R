@@ -29,7 +29,9 @@ theme_econ <- function(base_size = 11, base_family = "Roboto Condensed", axis_li
           strip.background = element_rect(fill = "#ffffff", colour=NA),
           panel.spacing.y = unit(1.5, "lines"),
           legend.key = element_blank(),
-          legend.spacing = unit(0.1, "lines"))
+          legend.spacing = unit(0.1, "lines"),
+          legend.box.margin = margin(t = -0.25, unit = "lines"),
+          legend.margin = margin(t = 0))
   
   if (axis_line) {
     ret <- ret + theme(axis.line = element_line(color = "black", size = 0.25))
