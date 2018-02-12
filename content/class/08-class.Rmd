@@ -1,0 +1,303 @@
+---
+title: "Firms and labor I"
+date: "2018-02-05"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+    fig_height: 4.5
+    fig_width: 7
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-05.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-05.png)](/slides/MPA-612_2018-02-05.pdf)
+</figure>
+
+
+# Optimal work effort given promised share in expert contract
+
+```{r load-contracting-results, include=FALSE}
+library(tidyverse)
+library(readxl)
+library(scales)
+library(pander)
+
+source(file.path(here::here(), "lib", "graphics.R"))
+
+contracts <- data_frame(effort = 0:10,
+                        return = 70 * effort,
+                        cost = c(0, 0, 20, 40, 60, 90, 120, 160, 200, 250, 300))
+
+contracts_plot <- contracts %>%
+  gather(key, value, return, cost) %>%
+  mutate(key = factor(key, levels = c("return", "cost"), 
+                      labels = c("Return", "Cost"), ordered = TRUE))
+```
+
+The returns from giving different levels of effort increase constantly, but the cost of providing that much effort increases at a faster rate, since working harder leads to more disutility and incurs additional costs.
+
+```{r marginal-stuff, echo=FALSE}
+marginal_stuff <- ggplot(contracts_plot, aes(x = effort, y = value, color = key)) +
+  geom_line(size = 1.5) +
+  labs(x = "Effort", y = "Amount") +
+  scale_x_continuous(breaks = 0:10) +
+  scale_y_continuous(labels = dollar) +
+  scale_color_manual(values = c(nord_dk_blue, nord_red), name = NULL) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank())
+marginal_stuff
+
+# ggsave(marginal_stuff, filename = "~/Desktop/contracts/marginal_stuff.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+```
+
+The best level of effort is where marginal cost is equal to marignal utility. However, that never happens at any level of effort, which creates an incentive to work at the highest level of effort at each ratio of $\frac{\text{Marginal cost}}{\text{Marginal return}}$. 
+
+```{r tbl-contracts, echo=FALSE, results="asis"}
+contracts_details <- contracts %>%
+  mutate(marginal_return = return - lag(return),
+         marginal_cost = cost - lag(cost),
+         marginal_return_share = marginal_return * (effort / 10),
+         cost_return = marginal_cost / 70)
+
+# write_csv(contracts_details, "~/Desktop/contracts/details.csv", na = "")
+
+pandoc.table(contracts_details, missing = "", split.table = Inf)
+```
+
+This is more apparent when plotting the return shares as marginal returns. Here, 100% of the marginal return is $70, 50% of the marignal return is $35, 10% is $7, etc. The incentive is to work at the maximum effort of each of the marginal cost groups. Which group you choose depends on the return share offered.
+
+Shares induce effort up to the next marginal cost group. Effort level 1 is optimal for shares of 0–20%; 4 for 30–40%, 6 for 50%, 8 for 60–70%, and 10 for 80–100%.
+
+```{r plot-contracts-ideal, echo=FALSE, warning=FALSE}
+contracts_details_plot <- contracts_details %>%
+  mutate(effort_lag = lag(effort),
+         same = marginal_cost == lag(marginal_cost),
+         x = ifelse(!same, effort - 1, effort),
+         x = ifelse(is.na(x), 1, x))
+
+jumps <- contracts_details_plot %>% filter(!same) %>% pull(effort_lag)
+
+# First, show marginal cost
+# Marginal costs are at most 50, but marginal return is always 70
+step_0 <- ggplot(contracts_details_plot) +
+  scale_x_continuous(breaks = 0:10) +
+  scale_y_continuous(labels = dollar, breaks = seq(0, 70, 10)) +
+  labs(x = "Effort", y = "Marginal amounts") +
+  coord_cartesian(xlim = c(0, 10), ylim = c(0, 70)) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank())
+
+step_1 <- step_0 +
+  geom_segment(aes(x = x, y = marginal_cost,
+                   xend = effort_lag, yend = marginal_cost), 
+               size = 1.5, color = nord_red)
+ 
+# ggsave(step_1, filename = "~/Desktop/contracts/step_1.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+
+step_2 <- step_1 +
+  geom_hline(aes(yintercept = marginal_return_share, 
+                 color = factor(marginal_return_share)),
+             linetype = "dashed", size = 0.5) +
+  geom_label(aes(x = 0.5, y = marginal_return_share, 
+                 label = paste0(effort * 10, "%"))) +
+  guides(color = "none")
+
+# ggsave(step_2, filename = "~/Desktop/contracts/step_2.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+
+step_3 <- step_2 +
+  geom_vline(xintercept = c(jumps, 10), color = nord_lt_blue)
+ 
+# ggsave(step_3, filename = "~/Desktop/contracts/step_3.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+
+ideal <- tribble(
+  ~share, ~ideal_effort,
+  0,      1,
+  0.1,    1,
+  0.2,    1,
+  0.3,    4,
+  0.4,    4,
+  0.5,    6,
+  0.6,    8,
+  0.7,    8,
+  0.8,    10,
+  0.9,    10,
+  1.0,    10
+) %>%
+  mutate(amount = share * 70)
+
+step_4 <- step_3 +
+  geom_point(data = ideal, aes(x = ideal_effort, y = amount), size = 3)
+step_4
+
+# ggsave(step_4, filename = "~/Desktop/contracts/step_4.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+```
+
+Only a few of you got this right in the in-class experiment. Most of you chose effort levels in the bottom right area of the plot, meaning that you are working too hard for low shares. A lucky few of you are working too little for high shares (top left area of the plot).
+
+```{r plot-contracts-class, echo=FALSE, warning=FALSE}
+class_results <- read_excel(file.path(here::here(), "static", "data", 
+                                      "expert_contracts.xlsx")) %>%
+  rename(share = `Proposed Return`, effort = `Work effort`) %>%
+  left_join(ideal, by = "share") %>%
+  mutate(correct = effort == ideal_effort)
+
+class_plot <- ggplot(class_results, aes(x = effort, y = share)) +
+  geom_point(aes(color = correct), size = 3) +
+  geom_segment(data = contracts_details_plot, 
+               aes(x = x, y = cost_return,
+                   xend = effort_lag, yend = cost_return), 
+               size = 1.5, color = nord_red) +
+  geom_vline(xintercept = c(jumps, 10), color = nord_lt_blue) +
+  scale_color_manual(values = c("grey70", nord_orange),
+                     guide = "none") +
+  scale_x_continuous(breaks = 0:10) +
+  scale_y_continuous(labels = percent, breaks = seq(0, 1, 0.1)) +
+  labs(x = "Effort", y = "Return share") +
+  coord_cartesian(xlim = c(0, 10), ylim = c(0, 1)) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank())
+class_plot
+
+# ggsave(class_plot, filename = "~/Desktop/contracts/class_plot.png",
+#        width = 7, height = 5, type = "cairo", dpi = 300)
+```
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/jusVDmQia64rwV5V2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+```{r figs-for-slides, eval=FALSE, include=FALSE}
+library(tidyverse)
+source(file.path(here::here(), "lib", "graphics.R"))
+
+budget <- function(x) 50 - (2 * x)
+budget_new <- function(x) 50 - x
+budget_shifted <- function(x) 35.5 - x
+
+utility <- function(x, good_x, good_y, adj = 0) sqrt(good_x * good_y)^2 / x + adj
+
+points_to_show <- tribble(
+  ~x,   ~y,  ~label,
+  12.5, 25,  "A",
+  22,   28,  "B",
+  17.5, 18,  "C"
+)
+
+effects <- data_frame(x_start = c(filter(points_to_show, label == "A") %>% pull(x),
+                                  filter(points_to_show, label == "C") %>% pull(x),
+                                  filter(points_to_show, label == "A") %>% pull(x)),
+                      x_end = c(filter(points_to_show, label == "C") %>% pull(x),
+                                filter(points_to_show, label == "B") %>% pull(x),
+                                filter(points_to_show, label == "B") %>% pull(x)),
+                      label = c("SE", "IE", "TE"),
+                      y = c(12, 8, 4))
+
+p1 <- ggplot(data = points_to_show, aes(x = x, y = y)) +
+  stat_function(data = data_frame(x = 0:60), inherit.aes = FALSE,
+                aes(x = x, color = "Original budget", size = "Original budget"), 
+                fun = budget) +
+  stat_function(data = data_frame(x = 1:25), inherit.aes = FALSE,
+                aes(x = x, color = "Original indifference", size = "Original indifference"), 
+                fun = utility, args = list(good_x = 12.5, good_y = 25)) +
+  scale_x_continuous(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_manual(values = c("Original budget" = nord_green, 
+                                "New budget" = nord_orange, 
+                                "Original indifference" = nord_dk_blue, 
+                                "New indifference" = nord_lt_blue), 
+                     guide = guide_legend(reverse = TRUE), name = NULL) +
+  scale_size_manual(values = c("Original budget" = 2.5, 
+                                "New budget" = 2.5, 
+                                "Original indifference" = 1, 
+                                "New indifference" = 1), 
+                     guide = guide_legend(reverse = TRUE), name = NULL) +
+  coord_equal(xlim = c(0, 50), ylim = c(0, 50)) +
+  labs(x = "Milk", y = "All other goods (AOG)") +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank(),
+        legend.position = "bottom")
+
+ggsave(p8, filename = "~/Desktop/asdf/8.png", width = 6, height = 6,
+       type = "cairo", dpi = 300)
+
+p2 <- p1 + 
+  stat_function(data = data_frame(x = 0:25), inherit.aes = FALSE,
+                aes(x = x, color = "New budget", size = "New budget"),
+                fun = budget_new) +
+  stat_function(data = data_frame(x = 1:25), inherit.aes = FALSE,
+                aes(x = x, color = "New indifference", size = "New indifference"),
+                fun = utility, args = list(good_x = 15.5, good_y = 30, adj = 7)) +
+  geom_segment(data = filter(points_to_show, label != "C"), aes(xend = x, yend = 0), 
+               size = 1, color = nord_yellow, linetype = "dotted") +
+  geom_point(data = filter(points_to_show, label != "C"), size = 2) +
+  geom_text(data = filter(points_to_show, label != "C"),
+            aes(label = label), hjust = "left", nudge_x = 1, size = 6)
+
+p3 <- p2 + 
+  geom_segment(data = filter(effects, label == "TE"), 
+               aes(x = x_start, xend = x_end, y = y, yend = y)) +
+  geom_segment(data = filter(effects, label == "TE"), 
+               aes(x = x_start, xend = x_end, y = y, yend = y)) +
+  geom_text(data = filter(effects, label == "TE"), 
+            aes(x = (x_start + x_end) / 2, y = y, label = label),
+            vjust = 1.3)
+
+p4 <- p3 + 
+  stat_function(data = data_frame(x = 0:25), inherit.aes = FALSE,
+                aes(x = x), color = "grey70", linetype = "dashed",
+                size = 0.5, fun = budget_shifted)
+
+p5 <- p4 + 
+  geom_segment(data = filter(points_to_show, label == "C"), aes(xend = x, yend = 0), 
+               size = 1, color = nord_yellow, linetype = "dotted") +
+  geom_point(data = filter(points_to_show, label == "C"), size = 2) +
+  geom_text(data = filter(points_to_show, label == "C"),
+            aes(label = label), hjust = "left", nudge_x = 1, size = 6)
+
+p6 <- p5 +
+  geom_segment(data = filter(effects, label != "TE"), 
+               aes(x = x_start, xend = x_end, y = y, yend = y)) +
+  geom_segment(data = filter(effects, label != "TE"), 
+               aes(x = x_start, xend = x_end, y = y, yend = y)) +
+  geom_text(data = filter(effects, label != "TE"), 
+            aes(x = (x_start + x_end) / 2, y = y, label = label),
+            vjust = 1.3)
+
+budget_snap <- function(x) 72 - (2 * x)
+
+
+p7 <- p5 + stat_function(data = data_frame(x = 0:25), inherit.aes = FALSE,
+                aes(x = x), color = nord_purple, size = 2.5, fun = budget_snap) 
+
+
+p8 <- p7 +
+  stat_function(data = data_frame(x = 1:25), inherit.aes = FALSE,
+                aes(x = x), color = nord_dk_blue, size = 1,
+                fun = utility, args = list(good_x = 15.5, good_y = 30, adj = 11)) +
+  geom_point(x = 14.5, y = budget_snap(14.5)) +
+  geom_text(aes(x = 14.5, y = budget_snap(14.5)), label = "D", 
+            hjust = "left", nudge_x = 1, size = 6) +
+  geom_segment(aes(x = 14.5, xend = 14.5, y = 0, yend = budget_snap(14.5)))
+```

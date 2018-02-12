@@ -1,0 +1,170 @@
+---
+title: "Firms and labor I"
+date: "2018-02-05"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+    fig_height: 4.5
+    fig_width: 7
+editor_options: 
+  chunk_output_type: console
+---
+
+
+<h2>Contents</h2>
+<div id="TOC">
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#optimal-work-effort-given-promised-share-in-expert-contract">Optimal work effort given promised share in expert contract</a></li>
+<li><a href="#feedback-for-today">Feedback for today</a></li>
+</ul>
+</div>
+
+<h2 id="slides">Slides</h2>
+<p><a href="/slides/MPA-612_2018-02-05.pdf">Download the slides from today’s lecture</a>.</p>
+<figure>
+<a href="/slides/MPA-612_2018-02-05.pdf"><img src="/images/slides/slides_2018-02-05.png" alt="First slide" /></a>
+</figure>
+<h2 id="optimal-work-effort-given-promised-share-in-expert-contract">Optimal work effort given promised share in expert contract</h2>
+<p>The returns from giving different levels of effort increase constantly, but the cost of providing that much effort increases at a faster rate, since working harder leads to more disutility and incurs additional costs.</p>
+<p><img src="/class/08-class_files/figure-html/marginal-stuff-1.png" width="672" /></p>
+<p>The best level of effort is where marginal cost is equal to marignal utility. However, that never happens at any level of effort, which creates an incentive to work at the highest level of effort at each ratio of <span class="math inline">\(\frac{\text{Marginal cost}}{\text{Marginal return}}\)</span>.</p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 7%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 25%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">effort</th>
+<th style="text-align: center;">return</th>
+<th style="text-align: center;">cost</th>
+<th style="text-align: center;">marginal_return</th>
+<th style="text-align: center;">marginal_cost</th>
+<th style="text-align: center;">marginal_return_share</th>
+<th style="text-align: center;">cost_return</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0.2857</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">210</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">0.2857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">280</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">0.2857</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">350</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">0.4286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">420</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">0.4286</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">490</td>
+<td style="text-align: center;">160</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">0.5714</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">560</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">0.5714</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">630</td>
+<td style="text-align: center;">250</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">0.7143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">700</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">0.7143</td>
+</tr>
+</tbody>
+</table>
+<p>This is more apparent when plotting the return shares as marginal returns. Here, 100% of the marginal return is $70, 50% of the marignal return is $35, 10% is $7, etc. The incentive is to work at the maximum effort of each of the marginal cost groups. Which group you choose depends on the return share offered.</p>
+<p>Shares induce effort up to the next marginal cost group. Effort level 1 is optimal for shares of 0–20%; 4 for 30–40%, 6 for 50%, 8 for 60–70%, and 10 for 80–100%.</p>
+<p><img src="/class/08-class_files/figure-html/plot-contracts-ideal-1.png" width="672" /></p>
+<p>Only a few of you got this right in the in-class experiment. Most of you chose effort levels in the bottom right area of the plot, meaning that you are working too hard for low shares. A lucky few of you are working too little for high shares (top left area of the plot).</p>
+<p><img src="/class/08-class_files/figure-html/plot-contracts-class-1.png" width="672" /></p>
+<h2 id="feedback-for-today">Feedback for today</h2>
+<p>Go to <a href="https://goo.gl/forms/jusVDmQia64rwV5V2">this form</a> and answer these three questions (anonymously if you want):</p>
+<ol type="1">
+<li>What new thing did you learn today?</li>
+<li>What was the most unclear thing about today’s class?</li>
+<li>What was the most exciting thing you learned today?</li>
+</ol>
