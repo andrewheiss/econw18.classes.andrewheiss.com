@@ -1,0 +1,58 @@
+---
+title: "Problem set 5"
+date: "2018-03-02"
+due_date: "2018-03-02"
+due_time: "11:59 PM"
+editor_options: 
+  chunk_output_type: console
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+**Submit this as a PDF on Learning Suite.** Show your work when possible. You can use whatever you want to make your drawings, including Adobe Illustrator, Excel, PowerPoint, Microsoft Paint, [Desmos](https://www.desmos.com/), or scanned pen and paper.
+
+**Cite your sources and show your work.**
+
+
+# 1
+
+A recent Trump administration proposal called for replacing portions of the Supplemental Nutrition Assitation Program (SNAP, or food stamps) with a ["Blue Apron"-style in-kind food assistance](https://www.washingtonpost.com/news/wonk/wp/2018/02/12/trump-wants-to-slash-food-stamps-and-replace-them-with-a-blue-apron-type-program/)^[Make sure you read this article for this question; see also NPR, ["Trump Administration Wants To Decide What Food SNAP Recipients Will Get"](https://www.npr.org/sections/thesalt/2018/02/12/585130274/trump-administration-wants-to-decide-what-food-snap-recipients-will-get).] called "America's Harvest Box."
+
+When announcing the program, Secretary of Agriculture Sonny Perdue stated that "It maintains the same level of food value as SNAP participants currently receive, provides states flexibility in administering the program, and is responsible to the taxpayers." In response, Kathy Fisher, policy director at Philadelphia’s Coalition Against Hunger stated "We know SNAP works now, when people can choose what they need. How they would distribute foods to people with specialized diets, or [to people in] rural areas … It's very expensive and very complicated."
+
+Use indifference curve analysis to evaluate each of these statements. Under models of rational consumer behavior, where food is a normal good, does America's Harvest Box maintain the same level of food value for SNAP recipients? What kind of income and substitution effects would such a program have? What does Kathy Fisher mean when she says that "people can choose what they need?" and how does that statement relate to income and substitution effects and government subsidies of food? What are the possible consequences of America's Harvest Box? **Discuss in ≈100 words and a graph.**
+
+
+```{r notes, eval=FALSE, include=FALSE}
+# X
+
+# Estimate demand curve from WTP surveys
+
+# y = price, x = q, or cumulative percent of people responding
+
+
+# Supply demand tax things with Q*s and P*s
+
+
+# # Employment rent
+# 47000 / 10 month contract * 3 to get estimated quarterly effort
+# Quarter = 14000
+
+# Divide quarterly amount by 26 (per state law) - 5 (also per state law) - 537.30/week
+# Unemployment = $13.43/hour
+
+# Average wage = $27.32
+
+# Disutility of work = $5
+
+# Utah rules = 10 week minimum, up to 26 weeks
+
+
+# # Labor discipline
+
+# Effort 0-1, Jared reservation wage = $5
+# $15/hour = .6 effort - $30/hour = .8 effort
+
+# isocost curve - reservation price changes because of unemployment or paternity leave or some other policy
+```
