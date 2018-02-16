@@ -295,7 +295,7 @@ cordial_elasticities %>%
   pandoc.table(missing = "—")
 ```
 
-Demand is elastic as long as the slope of the revenue function is positive, and demand is inelastic when the sloge of revenue is negative, as seen here:
+Demand is elastic as long as the slope of the revenue function is positive, and demand is inelastic when the slope of revenue is negative, as seen here:
 
 ```{r plot-elasticities, echo=FALSE}
 labels_horizontal <- tribble(
