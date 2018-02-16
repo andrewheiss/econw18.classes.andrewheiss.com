@@ -274,7 +274,7 @@ $$
 \end{align}
 $$
 
-That's the final version of the price elasticity of demand formula: $\varepsilon = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$. Conveniently, $\frac{\Delta Q}{\Delta P}$ is also the slope of the demand curve
+That's the final version of the price elasticity of demand formula: $\varepsilon = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$. Conveniently, $\frac{\Delta Q}{\Delta P}$ is also the slope of the demand curve.
 
 ```{r cordial-elasticies, echo=FALSE, warning=FALSE, results="asis"}
 dqdp <- cordial_mr %>%
@@ -288,7 +288,7 @@ cordial_elasticities <- cordial_mr %>%
   filter(Quantity > 0) %>% 
   mutate(`$\\frac{\\Delta Q}{\\Delta P}$` = dqdp,
          `$\\frac{P}{Q}$` = Price / Quantity,
-         `ϵ` = -dqdp * (Price / Quantity))
+         `ε` = -dqdp * (Price / Quantity))
 
 cordial_elasticities %>% 
   mutate(Price = dollar(Price)) %>% 
@@ -332,7 +332,7 @@ plot_revenue <- ggplot() +
   theme_econ(9, axis_line = TRUE) +
   theme(panel.grid.minor = element_blank())
 
-plot_elasticity <- ggplot(cordial_elasticities, aes(x = Quantity, y = `ϵ`)) +
+plot_elasticity <- ggplot(cordial_elasticities, aes(x = Quantity, y = `ε`)) +
   geom_line(size = 1.5, color = nord_dk_blue) +
   geom_hline(yintercept = 1, size = 0.5, color = "grey50") +
   geom_vline(xintercept = q_optimum_tr, size = 0.5, color = "grey50") +
