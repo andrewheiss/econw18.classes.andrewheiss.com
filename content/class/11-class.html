@@ -626,20 +626,37 @@ editor_options:
  &amp;= - \frac{\% \Delta Q}{\% \Delta P}
 \end{align}
 \]</span></p>
-<table style="width:64%;">
+<p>Remember that <span class="math inline">\(\% \Delta Q = \frac{Q_{\text{new}} - Q}{Q}\)</span> and that <span class="math inline">\(\% \Delta P = \frac{P_{\text{new}} - P}{P}\)</span> (or just <span class="math inline">\(\frac{\text{new} - \text{old}}{\text{old}}\)</span>). We can also write <span class="math inline">\(Q_{\text{new}} - Q\)</span> as <span class="math inline">\(\Delta Q\)</span>, or just the change in <span class="math inline">\(Q\)</span> (and also <span class="math inline">\(\Delta P\)</span>) This means we can rewrite the equation like so:</p>
+<p><span class="math display">\[
+\begin{align}
+\varepsilon &amp;= - \frac{\% \Delta Q}{\% \Delta P} \\
+ &amp;= - \frac{\frac{Q_{\text{new}} - Q}{Q}}{\frac{P_{\text{new}} - P}{P}} \\
+ &amp;= - \frac{\frac{\Delta Q}{Q}}{\frac{\Delta P}{P}}
+\end{align}
+\]</span></p>
+<p>We can then simplify this huge hairy fraction by multiplying both the numerator and denominator by the inverse of the denominator, <span class="math inline">\(\frac{P}{\Delta P}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+\varepsilon &amp;= - \frac{\frac{\Delta Q}{Q}}{\frac{\Delta P}{P}} \times \frac{\frac{P}{\Delta P}}{\frac{P}{\Delta P}} \\
+ &amp;= - \frac{\Delta Q}{Q} \times \frac{P}{\Delta P} \\
+ &amp;= - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
+\end{align}
+\]</span></p>
+<p>That’s the final version of the price elasticity of demand formula: <span class="math inline">\(\varepsilon = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}\)</span>. Conveniently, <span class="math inline">\(\frac{\Delta Q}{\Delta P}\)</span> is also the slope of the demand curve</p>
+<table>
 <colgroup>
 <col style="width: 15%" />
-<col style="width: 11%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 41%" />
+<col style="width: 21%" />
+<col style="width: 10%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Quantity</th>
 <th style="text-align: center;">Price</th>
-<th style="text-align: center;">%∆Q</th>
-<th style="text-align: center;">%∆P</th>
+<th style="text-align: center;"><span class="math inline">\(\frac{\Delta Q}{\Delta P}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{P}{Q}\)</span></th>
 <th style="text-align: center;">ϵ</th>
 </tr>
 </thead>
@@ -647,72 +664,72 @@ editor_options:
 <tr class="odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">$50</td>
-<td style="text-align: center;">—</td>
-<td style="text-align: center;">—</td>
-<td style="text-align: center;">—</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">10</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">$45</td>
-<td style="text-align: center;">100.0%</td>
-<td style="text-align: center;">-10.0%</td>
-<td style="text-align: center;">10</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">22.5</td>
+<td style="text-align: center;">4.5</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">$40</td>
-<td style="text-align: center;">50.0%</td>
-<td style="text-align: center;">-11.1%</td>
-<td style="text-align: center;">4.5</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">13.33</td>
+<td style="text-align: center;">2.667</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">$35</td>
-<td style="text-align: center;">33.3%</td>
-<td style="text-align: center;">-12.5%</td>
-<td style="text-align: center;">2.667</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">8.75</td>
+<td style="text-align: center;">1.75</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">$30</td>
-<td style="text-align: center;">25.0%</td>
-<td style="text-align: center;">-14.3%</td>
-<td style="text-align: center;">1.75</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1.2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">$25</td>
-<td style="text-align: center;">20.0%</td>
-<td style="text-align: center;">-16.7%</td>
-<td style="text-align: center;">1.2</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">4.167</td>
+<td style="text-align: center;">0.8333</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">$20</td>
-<td style="text-align: center;">16.7%</td>
-<td style="text-align: center;">-20.0%</td>
-<td style="text-align: center;">0.8333</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">2.857</td>
+<td style="text-align: center;">0.5714</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">$15</td>
-<td style="text-align: center;">14.3%</td>
-<td style="text-align: center;">-25.0%</td>
-<td style="text-align: center;">0.5714</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">1.875</td>
+<td style="text-align: center;">0.375</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">9</td>
 <td style="text-align: center;">$10</td>
-<td style="text-align: center;">12.5%</td>
-<td style="text-align: center;">-33.3%</td>
-<td style="text-align: center;">0.375</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">1.111</td>
+<td style="text-align: center;">0.2222</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">10</td>
 <td style="text-align: center;">$5</td>
-<td style="text-align: center;">11.1%</td>
-<td style="text-align: center;">-50.0%</td>
-<td style="text-align: center;">0.2222</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.1</td>
 </tr>
 </tbody>
 </table>

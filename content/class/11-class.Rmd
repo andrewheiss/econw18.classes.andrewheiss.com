@@ -28,6 +28,7 @@ editor_options:
 
 ```{r load-data-libraries, include=FALSE}
 library(tidyverse)
+library(broom)
 library(readxl)
 library(scales)
 library(patchwork)
@@ -253,18 +254,44 @@ $$
 \end{align}
 $$
 
-```{r cordial-elasticies, echo=FALSE, results="asis"}
+Remember that $\% \Delta Q = \frac{Q_{\text{new}} - Q}{Q}$ and that $\% \Delta P = \frac{P_{\text{new}} - P}{P}$ (or just $\frac{\text{new} - \text{old}}{\text{old}}$). We can also write $Q_{\text{new}} - Q$ as $\Delta Q$, or just the change in $Q$ (and also $\Delta P$) This means we can rewrite the equation like so:
+
+$$
+\begin{align}
+\varepsilon &= - \frac{\% \Delta Q}{\% \Delta P} \\
+ &= - \frac{\frac{Q_{\text{new}} - Q}{Q}}{\frac{P_{\text{new}} - P}{P}} \\
+ &= - \frac{\frac{\Delta Q}{Q}}{\frac{\Delta P}{P}}
+\end{align}
+$$
+
+We can then simplify this huge hairy fraction by multiplying both the numerator and denominator by the inverse of the denominator, $\frac{P}{\Delta P}$:
+
+$$
+\begin{align}
+\varepsilon &= - \frac{\frac{\Delta Q}{Q}}{\frac{\Delta P}{P}} \times \frac{\frac{P}{\Delta P}}{\frac{P}{\Delta P}} \\
+ &= - \frac{\Delta Q}{Q} \times \frac{P}{\Delta P} \\
+ &= - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
+\end{align}
+$$
+
+That's the final version of the price elasticity of demand formula: $\varepsilon = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$. Conveniently, $\frac{\Delta Q}{\Delta P}$ is also the slope of the demand curve
+
+```{r cordial-elasticies, echo=FALSE, warning=FALSE, results="asis"}
+dqdp <- cordial_mr %>%
+  lm(Quantity ~ Price, data = .) %>%
+  tidy() %>%
+  filter(term == "Price") %>%
+  pull(estimate)
+
 cordial_elasticities <- cordial_mr %>%
   select(Quantity, Price) %>%
   filter(Quantity > 0) %>% 
-  mutate(`%∆Q` = (Quantity - lag(Quantity)) / lag(Quantity),
-         `%∆P` = (Price - lag(Price)) / lag(Price),
-         `ϵ` = -`%∆Q` / `%∆P`)
+  mutate(`$\\frac{\\Delta Q}{\\Delta P}$` = dqdp,
+         `$\\frac{P}{Q}$` = Price / Quantity,
+         `ϵ` = -dqdp * (Price / Quantity))
 
 cordial_elasticities %>% 
   mutate(Price = dollar(Price)) %>% 
-  mutate_at(vars(contains("∆")),
-            funs(ifelse(is.na(.), NA, percent(.)))) %>%
   pandoc.table(missing = "—")
 ```
 
@@ -305,8 +332,7 @@ plot_revenue <- ggplot() +
   theme_econ(9, axis_line = TRUE) +
   theme(panel.grid.minor = element_blank())
 
-plot_elasticity <- ggplot(filter(cordial_elasticities, Quantity > 1), 
-                          aes(x = Quantity, y = `ϵ`)) +
+plot_elasticity <- ggplot(cordial_elasticities, aes(x = Quantity, y = `ϵ`)) +
   geom_line(size = 1.5, color = nord_dk_blue) +
   geom_hline(yintercept = 1, size = 0.5, color = "grey50") +
   geom_vline(xintercept = q_optimum_tr, size = 0.5, color = "grey50") +
@@ -314,8 +340,7 @@ plot_elasticity <- ggplot(filter(cordial_elasticities, Quantity > 1),
   scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) + 
   scale_y_continuous(expand = c(0, 0)) +
   coord_cartesian(ylim = c(0, 11), xlim = c(0, 10)) +
-  labs(x = NULL, y = "Elasticity", title = "Elasticity",
-       subtitle = "Elasticity ≠ 1 at 5.5 because we didn't use an instant derivative") +
+  labs(x = NULL, y = "Elasticity", title = "Elasticity") +
   theme_econ(9, axis_line = TRUE) +
   theme(panel.grid.minor = element_blank())
 
