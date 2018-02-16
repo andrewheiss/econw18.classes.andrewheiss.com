@@ -1,0 +1,332 @@
+---
+title: "Firms and customers II"
+date: "2018-02-14"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-12.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-12.png)](/slides/MPA-612_2018-02-12.pdf)
+</figure>
+
+
+# Raspberry Cordials
+
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Raspberry cordials, empty file](/files/raspberry-cordials.xlsx)
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Raspberry cordials, filled out](/files/raspberry-cordials-filled.xlsx)
+
+```{r load-data-libraries, include=FALSE}
+library(tidyverse)
+library(readxl)
+library(scales)
+library(patchwork)
+library(pander)
+library(here)
+
+source(file.path(here(), "lib", "graphics.R"))
+
+cordial_workbook <- file.path(here(), "static", "files", "raspberry-cordials.xlsx")
+cordial_costs <- read_excel(cordial_workbook, sheet = "Costs")
+cordial_demand <- read_excel(cordial_workbook, sheet = "Demand and prices")
+```
+
+## Finding the cheapest cost of production
+
+### Cost function
+
+```{r cost-function, echo=FALSE, results="asis"}
+cordial_costs %>%
+  mutate_at(vars(-Quantity), funs(dollar)) %>% 
+  pandoc.table(split.tables = Inf)
+```
+
+### Total costs
+
+```{r costs-total, echo=FALSE, results="asis"}
+costs_total <- cordial_costs %>%
+  mutate(TFC = Spoon + Pot + Stove,
+         TVC = Berries + Sugar + Water,
+         TC = TFC + TVC) %>%
+  select(Quantity, TFC, TVC, TC) 
+
+costs_total %>%
+  mutate_at(vars(-Quantity), funs(dollar)) %>%
+  pandoc.table(split.tables = Inf)
+```
+
+If we decompose total costs into fixed and variable costs, we see that the rise in costs is driven almost entirely by increasing variable costs.
+
+```{r costs-total-fig, echo=FALSE}
+costs_total_plot <- costs_total %>%
+  gather(cost_type, value, -Quantity) %>%
+  mutate(cost_type = fct_inorder(cost_type, ordered = TRUE))
+
+ggplot(costs_total_plot, aes(x = Quantity, y = value, color = cost_type)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(nord_red, nord_dk_blue, nord_green),
+                     name = NULL) +
+  scale_x_continuous(breaks = seq(0, 10, 2)) +
+  scale_y_continuous(labels = dollar) + 
+  labs(x = "Gallons of cordial", y = "Amount") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(legend.position = "bottom")
+```
+
+
+### Average costs
+
+```{r costs-average, echo=FALSE, results="asis"}
+tc_fun <- splinefun(costs_total$Quantity, costs_total$TC)
+
+costs_avg <- costs_total %>%
+  mutate(AFC = TFC / Quantity,
+         AVC = TVC / Quantity,
+         ATC = AFC + AVC,
+         MC_chunk = (TC - lag(TC)) / (Quantity - lag(Quantity)),
+         MC_instant = tc_fun(Quantity, deriv = 1)) %>%
+  select(Quantity, TC, AFC, AVC, ATC, MC_chunk, MC_instant) 
+
+costs_avg %>%
+  mutate_at(vars(-Quantity), funs(ifelse(is.nan(.) | is.infinite(.) | is.na(.), NA, dollar(.)))) %>%
+  pandoc.table(split.tables = Inf, missing = "—")
+
+atc_fun <- approxfun(costs_avg$Quantity, costs_avg$ATC, rule = 2)
+mc_atc <- uniroot(function(x) tc_fun(x, deriv = 1) - atc_fun(x), c(1, 10))
+```
+
+The optimal point on the ATC curve occurs when Q = `r round(mc_atc$root, 2)`. This is also not coincidentally where the MC curve intersects the ATC curve. The optimal price at this quantity is \$`r round(atc_fun(mc_atc$root), 2)` per gallon of cordial, but the firm won't necessarily be able to set the price at that point on its own (unless it's a monopoly; and even then, they'll set it higher).
+
+**IMPORTANT NOTE**: Because we're dealing with curves and not lines, calculating marginal values with Excel by subtracting the previous value from the current value *will not be 100% accurate*. The only way to get perfectly accurate marginal values is to use calculus to find the instantaneous derivative at exactly that point. 
+
+```{r costs-average-fig, echo=FALSE}
+costs_avg_plot <- costs_avg %>%
+  select(-TC, -MC_chunk) %>%
+  filter(Quantity > 0) %>% 
+  gather(cost_type, value, -Quantity) %>%
+  mutate(cost_type = fct_inorder(cost_type, ordered = TRUE))
+
+ggplot(costs_avg_plot, aes(x = Quantity, y = value, color = cost_type)) +
+  geom_line(size = 1.5) +
+  geom_vline(xintercept = mc_atc$root, linetype = "dashed", color = "grey70", size = 0.5) +
+  geom_hline(yintercept = atc_fun(mc_atc$root), linetype = "dashed", color = "grey70", size = 0.5) +
+  scale_color_manual(values = c(nord_red, nord_dk_blue, nord_green, nord_orange),
+                     name = NULL) +
+  scale_x_continuous(breaks = seq(0, 10, 2)) +
+  scale_y_continuous(breaks = seq(0, 30, 5), labels = dollar) +
+  coord_cartesian(ylim = c(0, 30)) +
+  labs(x = "Gallons of cordial", y = "Amount") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank())
+```
+
+
+## Finding the optimal price and quantity
+
+The firm's quantity decision depends on the market demand for raspberry cordial. The demand curve for this market looks like this:
+
+```{r demand-fig, echo=FALSE}
+ggplot(cordial_demand, aes(x = Quantity, y = Price)) + 
+  geom_line(size = 1.5, color = nord_orange) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_econ(9, axis_line = TRUE) +
+  theme(panel.grid.minor = element_blank())
+```
+
+With this demand curve, we can find the price and quantity that would produce the maximum revenue, assuming there were no costs to production.
+
+```{r optimum-revenue-tbl, echo=FALSE, results="asis"}
+cordial_revenue <- cordial_demand %>%
+  mutate(TR = Quantity * Price)
+
+cordial_revenue %>%
+  mutate_at(vars(-Quantity), funs(ifelse(is.nan(.) | is.infinite(.) | is.na(.), NA, dollar(.)))) %>%
+  pandoc.table(split.tables = Inf, missing = "—")
+
+tr_fun <- splinefun(cordial_revenue$Quantity, cordial_revenue$TR)
+q_optimum_tr <- optimize(tr_fun, c(1, 10), maximum = TRUE)$maximum %>% round(2)
+```
+
+The firm can maximize its revenue by producing `r q_optimum_tr` gallons of cordial, which would create \$`r tr_fun(q_optimum_tr)` in revenue.
+
+```{r optimum-revenue, echo=FALSE}
+ggplot(filter(cordial_revenue, Quantity > 0), aes(x = Quantity, y = TR)) +
+  geom_line(size = 1.5, color = nord_yellow) +
+  geom_vline(xintercept = q_optimum_tr, linetype = "dashed", color = "grey70", size = 0.5) +
+  geom_hline(yintercept = tr_fun(q_optimum_tr), linetype = "dashed", color = "grey70", size = 0.5) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) + 
+  scale_y_continuous(expand = c(0, 0), labels = dollar) +
+  coord_cartesian(ylim = c(0, 175), xlim = c(0, 11)) +
+  labs(x = "Gallons of cordial", y = "Total revenue") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(panel.grid.minor = element_blank())
+```
+
+However, this doesn't take into account the firm's costs. The firm's profit maximizing point is defined as $MC = MR$, so we need compare marginal costs and marginal revenues and calculate total profit (π) across all quantities of output.
+
+**Again**, note that using chunky marginal values by subtracting previous values *won't be as accurate* as calculus-based instant marginal values.
+
+```{r marginal-revenue, include=FALSE}
+cordial_mr <- cordial_revenue %>%
+  left_join(select(costs_total, Quantity, TC), by = "Quantity") %>% 
+  mutate(MR_chunk = (TR - lag(TR)) / (Quantity - lag(Quantity)),
+         MR_instant = tr_fun(Quantity, deriv = 1)) %>%
+  left_join(select(costs_avg, Quantity, MC_chunk, MC_instant), by = "Quantity") %>% 
+  mutate(`π` = TR - TC)
+
+profit_fun <- splinefun(cordial_mr$Quantity, cordial_mr$`π`)
+price_fun <- approxfun(cordial_mr$Quantity, cordial_mr$Price, rule = 2)
+
+mr_chunk_fun <- approxfun(cordial_mr$Quantity, cordial_mr$MR_chunk, rule = 2)
+mc_chunk_fun <- approxfun(cordial_mr$Quantity, cordial_mr$MC_chunk, rule = 2)
+
+mr_mc <- uniroot(function(x) tr_fun(x, deriv = 1) - tc_fun(x, deriv = 1), c(1, 10))
+```
+
+The point where $MC = MR$ can't be seen in the table, since it happens between 4 and 5 gallons. If the firm produces `r round(mr_mc$root, 2)` gallons of cordial at a price of \$`r round(tr_fun(mr_mc$root, deriv = 1), 2)` per gallon, it will achieve its maximum profit of \$`r round(profit_fun(mr_mc$root), 2)`.
+
+```{r mr-profit-table, echo=FALSE, results="asis"}
+cordial_mr_optimal <- data_frame(Quantity = mr_mc$root,
+                                 Price = price_fun(Quantity),
+                                 TR = Quantity * Price,
+                                 TC = tc_fun(Quantity),
+                                 MR_chunk = mr_chunk_fun(Quantity),
+                                 MC_chunk = mc_chunk_fun(Quantity),
+                                 MR_instant = tr_fun(Quantity, deriv = 1),
+                                 MC_instant = tc_fun(Quantity, deriv = 1),
+                                 `π` = profit_fun(Quantity))
+
+cordial_mr_all <- bind_rows(cordial_mr, cordial_mr_optimal) %>%
+  arrange(Quantity)
+
+cordial_mr_all %>%
+  mutate_at(vars(-Quantity), funs(ifelse(is.nan(.) | is.infinite(.) | is.na(.), NA, dollar(.)))) %>% 
+  pandoc.table(split.tables = Inf, missing = "—", emphasize.strong.rows = 6)
+```
+
+\
+
+```{r cordial-mr-mc-plot, echo=FALSE}
+cordial_mr_mc_plot <- cordial_mr %>%
+  select(Quantity, MR = MR_instant, MC = MC_instant) %>%
+  filter(Quantity > 0) %>%
+  gather(type, value, -Quantity) %>% 
+  mutate(type = fct_inorder(type, ordered = TRUE))
+
+ggplot(cordial_mr_mc_plot, aes(x = Quantity, y = value, color = type)) +
+  geom_line(size = 1.5) +
+  geom_vline(xintercept = mr_mc$root, linetype = "dashed", color = "grey70", size = 0.5) +
+  geom_hline(yintercept = tr_fun(mr_mc$root, deriv = 1), 
+             linetype = "dashed", color = "grey70", size = 0.5) +
+  scale_color_manual(values = c(nord_red, nord_dk_blue, nord_green, nord_orange),
+                     name = NULL) +
+  scale_x_continuous(breaks = seq(0, 10, 2)) +
+  scale_y_continuous(breaks = seq(0, 30, 5), labels = dollar) +
+  coord_cartesian(ylim = c(0, 30)) +
+  labs(x = "Gallons of cordial", y = "Amount") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(legend.position = "bottom",
+        panel.grid.minor = element_blank())
+```
+
+
+## Elasticity of demand
+
+Finally, we calculated the elasticity of demand of raspberry cordials. Recall the formula for elasticity:
+
+$$
+\begin{align}
+\varepsilon &= -\frac{\% \text{ change in demand}}{\% \text{ change in price}} \\
+ &= - \frac{\% \Delta Q}{\% \Delta P}
+\end{align}
+$$
+
+```{r cordial-elasticies, echo=FALSE, results="asis"}
+cordial_elasticities <- cordial_mr %>%
+  select(Quantity, Price) %>%
+  filter(Quantity > 0) %>% 
+  mutate(`%∆Q` = (Quantity - lag(Quantity)) / lag(Quantity),
+         `%∆P` = (Price - lag(Price)) / lag(Price),
+         `ϵ` = -`%∆Q` / `%∆P`)
+
+cordial_elasticities %>% 
+  mutate(Price = dollar(Price)) %>% 
+  mutate_at(vars(contains("∆")),
+            funs(ifelse(is.na(.), NA, percent(.)))) %>%
+  pandoc.table(missing = "—")
+```
+
+Demand is elastic as long as the slope of the revenue function is positive, and demand is inelastic when the sloge of revenue is negative, as seen here:
+
+```{r plot-elasticities, echo=FALSE}
+labels_horizontal <- tribble(
+  ~x, ~y, ~label,
+  4,  10, "Elastic",
+  7,  10, "Inelastic"
+)
+
+labels_vertical <- tribble(
+  ~x, ~y, ~label,
+  1,  7, "Elastic",
+  1,  1, "Inelastic"
+)
+
+plot_demand <- ggplot() +
+  stat_function(fun = price_fun, aes(x = 0:10), size = 1.5, color = nord_orange) +
+  geom_label(data = labels_horizontal, aes(x = x, y = y, label = label)) +
+  geom_vline(xintercept = q_optimum_tr, size = 0.5, color = "grey50") +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) +
+  scale_y_continuous(expand = c(0, 0), labels = dollar) +
+  coord_cartesian(ylim = c(0, 60)) +
+  labs(x = NULL, y = "Price", title = "Demand curve") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(panel.grid.minor = element_blank())
+
+plot_revenue <- ggplot() +
+  stat_function(fun = tr_fun, aes(x = 1:10), color = nord_yellow, size = 1.5) +
+  geom_label(data = labels_horizontal, aes(x = x, y = y + 70, label = label)) +
+  geom_vline(xintercept = q_optimum_tr, size = 0.5, color = "grey50") +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) + 
+  scale_y_continuous(expand = c(0, 0), labels = dollar) +
+  coord_cartesian(ylim = c(0, 175), xlim = c(0, 10)) +
+  labs(x = "Gallons of cordial", y = "Total revenue", title = "Total revenue") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(panel.grid.minor = element_blank())
+
+plot_elasticity <- ggplot(filter(cordial_elasticities, Quantity > 1), 
+                          aes(x = Quantity, y = `ϵ`)) +
+  geom_line(size = 1.5, color = nord_dk_blue) +
+  geom_hline(yintercept = 1, size = 0.5, color = "grey50") +
+  geom_vline(xintercept = q_optimum_tr, size = 0.5, color = "grey50") +
+  geom_label(data = labels_vertical, aes(x = x, y = y, label = label)) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(ylim = c(0, 11), xlim = c(0, 10)) +
+  labs(x = NULL, y = "Elasticity", title = "Elasticity",
+       subtitle = "Elasticity ≠ 1 at 5.5 because we didn't use an instant derivative") +
+  theme_econ(9, axis_line = TRUE) +
+  theme(panel.grid.minor = element_blank())
+
+plot_demand + plot_elasticity + plot_revenue + plot_layout(ncol = 1)
+```
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/iwuB23WoLRp3r6202) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
