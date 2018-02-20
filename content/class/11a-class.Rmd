@@ -1,0 +1,175 @@
+---
+title: "Firms and customers III"
+date: "2018-02-20"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-20.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-20.png)](/slides/MPA-612_2018-02-20.pdf)
+</figure>
+
+
+# Elasticity of demand
+
+Recall that the simpler version of the formula for elasticity for demand is $- \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$. You can see the algebra behind this on the page for [class 11](class/11-class/#elasticity-of-demand).
+
+$$
+\begin{align}
+\varepsilon &= -\frac{\% \text{ change in demand}}{\% \text{ change in price}} = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
+\end{align}
+$$
+
+```{r figs-for-slides, include=FALSE, eval=FALSE}
+library(tidyverse)
+library(Deriv)
+source(file.path(here::here(), "lib", "graphics.R"))
+
+demand <- function(Q) 30 - (0.4 * Q)
+supply <- function(Q) 0 + (0.2 * Q)
+
+q_ideal <- uniroot(function(x) demand(x) - supply(x), c(0, 100))
+
+demand_firm <- function(Q) demand(q_ideal$root)
+
+ggplot(mapping = aes(x = 0:100)) +
+  stat_function(fun = demand, aes(color = "Demand"), size = 1.5) +
+  stat_function(fun = supply, aes(color = "Supply"), size = 1.5) +
+  geom_vline(xintercept = q_ideal$root, color = "grey50", linetype = "dashed") +
+  geom_hline(yintercept = demand(q_ideal$root), color = "grey50", linetype = "dashed") +
+  coord_cartesian(ylim = c(0, 35)) +
+  labs(x = "Quantity", y = "Price") +
+  scale_color_manual(values = c("Demand" = nord_red, "Supply" = nord_dk_blue),
+                     name = NULL) +
+  scale_y_continuous(labels = scales::dollar) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(legend.position = "bottom")
+
+ggplot(mapping = aes(x = 0:100)) +
+  stat_function(fun = demand_firm, aes(color = "Firm demand"), size = 1.5) +
+  coord_cartesian(ylim = c(0, 35)) +
+  labs(x = "Quantity", y = "Price") +
+  scale_color_manual(values = c("Firm demand" = nord_red), name = NULL) +
+  scale_y_continuous(labels = scales::dollar) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(legend.position = "bottom")
+
+
+demand_monopoly <- function(Q) 40 - Q
+revenue_monopoly <- function(Q) -Q^2 + 40 * Q
+mr <- Deriv(revenue_monopoly, "Q")
+
+cost_monopoly <- function(Q) Q^2 + 140
+atc <- function(Q) cost_monopoly(Q) / Q
+mc <- Deriv(cost_monopoly, "Q")
+
+
+q_ideal <- uniroot(function(x) mc(x) - mr(x), c(0, 100))
+q_ideal_competition <- uniroot(function(x) mc(x) - demand_monopoly(x), c(0, 100))
+
+points_to_add <- tribble(
+  ~x, ~y, ~label,
+  q_ideal$root, mr(q_ideal$root), "A" ,
+  q_ideal$root, demand_monopoly(q_ideal$root), "B",
+  q_ideal_competition$root, demand_monopoly(q_ideal_competition$root), "C"
+)
+
+monopoly1 <- ggplot(mapping = aes(x = 0:40)) +
+  stat_function(fun = demand_monopoly, aes(color = "Demand"), size = 1.5) +
+  stat_function(fun = mc, aes(color = "Marginal cost"), size = 1.5) +
+  stat_function(fun = mr, aes(color = "Marginal revenue"), size = 1.5) +
+  stat_function(fun = atc, aes(color = "Average total cost"), size = 0.5) +
+  geom_segment(data = points_to_add, aes(x = 0, xend = x, y = y, yend = y),
+               color = "grey50", linetype = "dashed") +  
+  geom_segment(data = points_to_add, aes(x = x, xend = x, y = 0, yend = y),
+               color = "grey50", linetype = "dashed") +
+  geom_point(data = points_to_add, aes(x = x, y = y), size = 3.5) +
+  geom_label(data = points_to_add, aes(x = x, y = y, label = label)) +
+  coord_cartesian(xlim = c(0, 40), ylim = c(0, 40)) +
+  labs(x = "Quantity", y = "Price") +
+  scale_color_manual(values = c("Demand" = nord_red, "Marginal cost" = nord_dk_blue,
+                                "Marginal revenue" = nord_green, "Average total cost" = nord_yellow),
+                     name = NULL) +
+  scale_y_continuous(labels = scales::dollar) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())
+monopoly1
+
+
+x_q_monopoly <- seq(0, q_ideal$root, 0.01)
+x_q_competition <- seq(q_ideal$root, q_ideal_competition$root, 0.01)
+
+monopoly1 + 
+  geom_ribbon(aes(x = x_q_monopoly, 
+                  ymin = demand_monopoly(q_ideal$root),
+                  ymax = demand_monopoly(x_q_monopoly),
+                  fill = "Consumer surplus"),
+              alpha = 0.3) +
+  geom_ribbon(aes(x = x_q_monopoly,
+                  ymin = mc(x_q_monopoly), 
+                  ymax = demand_monopoly(q_ideal$root),
+                  fill = "Producer surplus"),
+              alpha = 0.3) +
+  geom_ribbon(aes(x = x_q_competition,
+                  ymin = mc(x_q_competition), 
+                  ymax = demand_monopoly(x_q_competition),
+                  fill = "Deadweight loss"),
+              alpha = 0.3) +
+  scale_fill_manual(values = c("Consumer surplus" = nord_green,
+                               "Producer surplus" = nord_lt_blue,
+                               "Deadweight loss" = nord_yellow),
+                    name = NULL) +
+  guides(fill = guide_legend(ncol = 2),
+         color = guide_legend(ncol = 2))
+
+mc_natural <- function(Q) 10
+atc_natural <- function(Q) ifelse(Q > 30, 13, 0.045 * (Q - 30)^2 + 13)
+
+
+q_ideal_natural <- uniroot(function(x) mc_natural(x) - mr(x), c(0, 100))
+q_ideal_competition_natural <- uniroot(function(x) mc_natural(x) - demand_monopoly(x), c(0, 100))
+q_atc_demand <- uniroot(function(x) atc_natural(x) - demand_monopoly(x), c(20, 40))
+
+points_to_add <- tribble(
+  ~x, ~y, ~label,
+  q_ideal_natural$root, mr(q_ideal_natural$root), "A" ,
+  q_ideal_natural$root, demand_monopoly(q_ideal_natural$root), "B",
+  q_ideal_competition_natural$root, demand_monopoly(q_ideal_competition_natural$root), "C"
+) %>%
+  mutate(ystart = ifelse(label == "C", -20, 0))
+
+monopoly_natural <- ggplot(mapping = aes(x = 0:40)) +
+  # geom_hline(yintercept = 0) +
+  stat_function(fun = demand_monopoly, aes(color = "Demand"), size = 1.5) +
+  stat_function(fun = mc_natural, aes(color = "Marginal cost"), size = 1.5) +
+  stat_function(fun = mr, aes(color = "Marginal revenue"), size = 1.5) +
+  stat_function(fun = atc_natural, aes(color = "Average total cost"), size = 1.5) +
+  # geom_segment(data = points_to_add, aes(x = 0, xend = x, y = y, yend = y),
+  #              color = "grey50", linetype = "dashed") +
+  # geom_segment(data = points_to_add, aes(x = x, xend = x, y = ystart, yend = y),
+  #              color = "grey50", linetype = "dashed") +
+  # geom_point(data = points_to_add, aes(x = x, y = y), size = 3.5) +
+  # geom_label(data = points_to_add, aes(x = x, y = y, label = label)) +
+  coord_cartesian(xlim = c(0, 40), ylim = c(0, 40)) +
+  labs(x = "Quantity", y = "Price") +
+  scale_color_manual(values = c("Demand" = nord_red, "Marginal cost" = nord_dk_blue,
+                                "Marginal revenue" = nord_green, "Average total cost" = nord_yellow),
+                     name = NULL) +
+  scale_y_continuous(labels = scales::dollar) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank())
+monopoly_natural
+```
