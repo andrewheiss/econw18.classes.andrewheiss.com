@@ -1,0 +1,206 @@
+---
+title: "Firms and markets I"
+date: "2018-02-21"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-21.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-21.png)](/slides/MPA-612_2018-02-21.pdf)
+</figure>
+
+
+# Paperclip market
+
+The percentage in each panel shows the market efficiency, or the proportion of pairs that were able to strike a deal. The dotted horizontal line shows the average price in each round.
+
+<figure class="fullwidth">
+
+```{r game-results, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=9}
+library(tidyverse)
+library(ggstance)
+source(file.path(here::here(), "lib", "graphics.R"))
+
+# market_raw <- gs_key("1Sx_kmNpcTao9MR5_MxXLN1NVS7Es9UxJwiKz59ttQmE", verbose=FALSE) %>%
+#   gs_read_csv()
+
+market_raw <- read_csv(file.path(here::here(), "static", "data", "paperclip-market.csv"))
+
+market <- market_raw %>%
+  mutate(Section = recode(Section, `800` = "8:00", `930` = "9:30"),
+         Section = fct_inorder(Section, ordered = TRUE),
+         Round = paste("Round", Round),
+         Round_long = ifelse(Rules == "Regular", Round, paste0(Round, "\n", Rules)),
+         Pairs = ifelse(Section == "8:00", 9, 8)) %>%
+  mutate(`Consumer surplus` = `Buyer WTP` - Price,
+         `Producer surplus` = Price - `Seller WTA`) %>%
+  group_by(Round, Section) %>%
+  mutate(index = 1:n())
+
+avg_prices <- market %>% 
+  group_by(Round_long, Section) %>%
+  summarize(avg_price = mean(Price))
+
+efficiency <- market %>%
+  group_by(Round_long, Section) %>%
+  mutate(num_trades = n(),
+         efficiency = num_trades / Pairs) %>%
+  slice(n()) %>%
+  mutate(efficiency = scales::percent(efficiency))
+
+ggplot(market, aes(x = index, y = Price, color = Round_long)) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3) +
+  geom_hline(data = avg_prices, aes(yintercept = avg_price), color = nord_red,
+             linetype = "dashed", size = 0.5) +
+  geom_label(data = efficiency, aes(x = 1, y = 3, label = efficiency), 
+             inherit.aes = FALSE, hjust = "left", size = 3) +
+  coord_cartesian(ylim = c(2, 10)) +
+  scale_y_continuous(labels = scales::dollar, breaks = seq(2, 10, 2)) +
+  scale_x_continuous(breaks = NULL) +
+  scale_color_manual(values = c(nord_dk_blue, nord_yellow, nord_green,
+                                nord_red, nord_purple, nord_orange, nord_lt_blue)) +
+  labs(x = NULL) +
+  guides(color = FALSE) +
+  theme_econ() +
+  theme(panel.grid.minor = element_blank()) +
+  facet_grid(Section ~ Round_long, scales = "free_x")
+```
+
+</figure>
+
+<figure class="fullwidth">
+
+```{r surplus-results, echo=FALSE, fig.height=5, fig.width=9}
+surplus_plot <- market %>% 
+  gather(Surplus, amount, contains("surplus")) %>%
+  group_by(Section, Round_long, Surplus) %>%
+  summarize(avg_surplus = mean(amount),
+            total_surplus = sum(amount))
+
+ggplot(surplus_plot, aes(y = Surplus, x = total_surplus, 
+                         fill = Round_long, alpha = Surplus)) +
+  geom_barh(stat = "identity") +
+  scale_fill_manual(values = c(nord_dk_blue, nord_yellow, nord_green,
+                               nord_red, nord_purple, nord_orange, nord_lt_blue)) +
+  scale_alpha_manual(values = c(0.5, 1)) +
+  labs(x = "Pieces of candy", y = NULL) +
+  guides(fill = FALSE, alpha = FALSE) +
+  theme_econ() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank()) +
+  facet_grid(Section ~ Round_long)
+```
+
+</figure>
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/Hm0ROcHUnfQ7i5693) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+
+```{r fig-slides, include=FALSE, eval=FALSE}
+demand <- function(Q) 20 - 0.5 * Q
+demand_new <- function(Q) demand(Q) + 5
+supply <- function(Q) 2 + 0.25 * Q
+supply_new <- function(Q) supply(Q) + 5
+
+
+ggplot(mapping = aes(x = 0:40)) + 
+  stat_function(fun = demand, color = nord_red, size = 1.5) +
+  labs(x = "Quantity of books (number of buyers)",
+       y = "Price (buyers' willingness to pay)") +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank())
+
+ggplot(mapping = aes(x = 0:45)) + 
+  stat_function(fun = supply, color = nord_dk_blue, size = 1.5) +
+  labs(x = "Quantity of books (number of sellers)",
+       y = "Price (sellers' reservation prices)") +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank())
+
+equilibrium <- ggplot(mapping = aes(x = 0:45)) + 
+  stat_function(fun = supply, aes(color = "Supply"), size = 1.5) +
+  stat_function(fun = demand, aes(color = "Demand"), size = 1.5) +
+  labs(x = "Quantity of books", y = "Price") +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("Supply" = nord_dk_blue, "Demand" = nord_red,
+                                "Supply (new)" = nord_lt_blue, "Demand (new)" = nord_orange),
+                     name = NULL) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank(),
+        legend.position = "bottom")
+equilibrium
+
+equilibrium +
+  geom_hline(yintercept = 11, linetype = "dashed", color = "grey50")
+
+equilibrium +
+  geom_hline(yintercept = 6, linetype = "dashed", color = "grey50")
+
+equilibrium +
+  geom_hline(yintercept = 8, linetype = "dashed", color = "grey50") +
+  geom_vline(xintercept = 24, linetype = "dashed", color = "grey50") +
+  scale_x_continuous(breaks = c(0, 10, 20, 24, 30, 40),
+                     labels = c(0, 10, 20, "Q*", 30, 40)) +
+  scale_y_continuous(breaks = c(0, 5, 8, 10, 15, 20),
+                     labels = c("$0", "$8", "P*", "$10", "$15", "$20"))
+
+q_new <- uniroot(function(x) demand_new(x) - supply(x), c(0, 40))
+p_new <- supply(q_new$root)
+
+points_to_plot <- tribble(
+  ~x, ~y, ~label,
+  24, 8, "A",
+  q_new$root, 5, "C",
+  q_new$root, 10, "B"
+)
+
+equilibrium +
+  stat_function(fun = demand_new, size = 1.5, aes(color = "Demand (new)")) +
+  geom_segment(aes(x = -Inf, xend = 24, y = 8, yend = 8), linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = 24, xend = 24, y = -Inf, yend = 8), linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = -Inf, xend = q_new$root, y = p_new, yend = p_new), 
+               linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = q_new$root, xend = q_new$root, y = -Inf, yend = p_new), 
+               linetype = "dashed", color = "grey50") +
+  geom_label(data = points_to_plot, aes(x = x, y = y, label = label))
+
+
+q_new <- uniroot(function(x) demand(x) - supply_new(x), c(0, 40))
+p_new <- supply_new(q_new$root)
+
+points_to_plot <- tribble(
+  ~x, ~y, ~label,
+  24, 8, "A",
+  q_new$root, 6.3, "C",
+  q_new$root, p_new, "B"
+)
+
+equilibrium +
+  stat_function(fun = supply_new, size = 1.5, aes(color = "Supply (new)")) +
+  geom_segment(aes(x = -Inf, xend = 24, y = 8, yend = 8), linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = 24, xend = 24, y = -Inf, yend = 8), linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = -Inf, xend = q_new$root, y = p_new, yend = p_new), 
+               linetype = "dashed", color = "grey50") +
+  geom_segment(aes(x = q_new$root, xend = q_new$root, y = -Inf, yend = p_new), 
+               linetype = "dashed", color = "grey50") +
+  geom_label(data = points_to_plot, aes(x = x, y = y, label = label))
+```

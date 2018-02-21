@@ -1,0 +1,62 @@
+Section,Round,Price,Seller WTA,Buyer WTP,Rules
+800,1,6,2,8,Regular
+800,1,5,4,9,Regular
+800,1,5,3,6,Regular
+800,1,9,5,9,Regular
+800,1,6,6,10,Regular
+800,1,5,3,6,Regular
+800,2,8,2,8,Regular
+800,2,4,4,10,Regular
+800,2,5,3,9,Regular
+800,2,5,6,9,Regular
+800,2,4,3,5,Regular
+800,3,9,3,9,Regular
+800,3,2,2,6,Regular
+800,3,6,5,8,Regular
+800,3,6,10,4,Regular
+800,3,6,3,6,Regular
+800,3,8,6,9,Regular
+800,4,9,4,9,Regular
+800,4,5,2,6,Regular
+800,4,3,3,10,Regular
+800,4,6,6,8,Regular
+800,4,9,3,9,Regular
+800,4,6,5,6,Regular
+800,5,6,5,9,$2 tax
+800,5,6,4,8,$2 tax
+800,5,10,6,10,$2 tax
+800,5,9,9,12,$2 tax
+800,5,5,5,9,$2 tax
+930,1,4,2,5,Regular
+930,1,5,4,10,Regular
+930,1,6,7,5,Regular
+930,1,5,3,9,Regular
+930,1,4,2,6,Regular
+930,1,7,6,8,Regular
+930,2,5,3,6,Regular
+930,2,6,4,9,Regular
+930,2,6,2,7,Regular
+930,2,7,6,10,Regular
+930,2,7,5,8,Regular
+930,3,5,4,10,Regular
+930,3,5,2,8,Regular
+930,3,5,3,6,Regular
+930,3,6,5,7,Regular
+930,3,7,6,9,Regular
+930,4,5,3,10,Regular
+930,4,4,2,6,Regular
+930,4,6,5,6,Regular
+930,4,6,4,7,Regular
+930,5,7,6,8,$2 tax
+930,5,8,4,10,$2 tax
+930,5,6,5,6,$2 tax
+930,5,7,6,8,$2 tax
+930,5,7,7,9,$2 tax
+930,6,6,4,8,$2 tax
+930,6,6,6,7,$2 tax
+930,6,8,8,10,$2 tax
+930,6,6,5,6,$2 tax
+930,6,8,7,9,$2 tax
+930,7,4,3,8,$4 price ceiling
+930,7,4,4,5,$4 price ceiling
+930,7,4,2,7,$4 price ceiling
