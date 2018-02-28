@@ -1,0 +1,39 @@
+---
+title: "Markets and macroeconomics"
+date: "2018-02-28"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+stuff-to-add: >-
+  Making money game: https://www.fte.org/teachers/teacher-resources/lesson-plans/efiahlessons/show-me-the-money-activity/
+  https://www.youtube.com/watch?v=HaaqHRjQQCk
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-02-28.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-02-28.png)](/slides/MPA-612_2018-02-28.pdf)
+</figure>
+
+
+# YouTube-based macroeconomics
+
+- Super clear explanation of all the Fed's tools for dealing with monetary policy (watch this one!): [What's all the Yellen About? Monetary Policy and the Federal Reserve](https://www.youtube.com/watch?v=1dq7mMort9o)
+- The Atlanta Fed's explanation of monetary policy: [The Fed Explains Monetary Policy](https://www.youtube.com/watch?v=wOfQPn9Jwpo)
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/yDexEWZ3qSz8qx3n1) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
