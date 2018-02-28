@@ -113,7 +113,7 @@ You were just hired to be the chief economist for a large nonprofit theater and 
 1. Create a scatterplot of price and quantity, with quantity along the x-axis.
 2. Use regression analysis to derive an estimated demand curve for theater tickets.^[You'll need to break out R again.] How well does the model fit the data and predict price? What could you do to get a better estimate?
 3. Based on the results of the regression in #2, create a formula for ticket demand that follows this structure: $P = aQ + b$, where $a$ is the coefficient, or change in quantity, and $b$ is the y-intercept. Round *a* and *b* to nearest hundredth (0.01).
-4. Assume that the equation in #3 is the actual market demand for tickets at theaters of this size and quality. What quantity of tickets would generate the greatest amount of revenue for your theater?^[Remember $TR = PQ$.] What is the revenue-maximizing price?
+4. Assume that the equation in #3 is the actual market demand for tickets at theaters of this size and quality.^[*Super big hint*: your formula should be $P = -0.09Q + 57.89$.] What quantity of tickets would generate the greatest amount of revenue for your theater?^[Remember $TR = PQ$.] What is the revenue-maximizing price?
 5. How many tickets would be sold if they were priced at \$30 (use the assumed market demand from #3)? How elastic are tickets at \$30?[^elasticity] How elastic are tickets at \$50? How elastic are tickets at \$15? What do all these elasticities mean? Interpret them using increments of 10%.
 
 
