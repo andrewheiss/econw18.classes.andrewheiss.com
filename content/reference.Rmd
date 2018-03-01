@@ -59,7 +59,7 @@ source(file.path(here::here(), "lib", "graphics.R"))
 
 - Gini coefficient:
 
-    ```{r gini-example, echo=TRUE, results="hide"}
+    ```{r gini-example, echo=TRUE}
     # R code
     library(ineq)
     incomes <- c(10000, 20000, 50000, 100000, 200000)
@@ -316,6 +316,8 @@ source(file.path(here::here(), "lib", "graphics.R"))
 **Helpful resources:**
 
 - [<i class="fa fa-youtube" aria-hidden="true"></i> Derivatives of Exponential Functions](https://www.youtube.com/watch?v=xgarjF9DP78) (how to calculate derivatives quickly)
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Raspberry cordials, empty file](/files/raspberry-cordials.xlsx)
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Raspberry cordials, filled out](/files/raspberry-cordials-filled.xlsx)
 - [<i class="fa fa-youtube" aria-hidden="true"></i> Jason Welker, "Natural Monopoly and the Need for Government Regulation"](https://www.youtube.com/watch?v=LhiyJlI5xa0)
 
 \
