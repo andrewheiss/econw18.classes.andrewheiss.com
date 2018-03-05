@@ -307,10 +307,10 @@ source(file.path(here::here(), "lib", "graphics.R"))
     max(\pi): MC = MR
     $$
 
-- Elasticity of demand ([see class 11 for an explanation](/class/11-class/#elasticity-of-demand) of how to get to $- \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$):
+- Price elasticity of demand ([see class 11 for an explanation](/class/11-class/#elasticity-of-demand) of how to get to $- \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$):
 
     $$
-    \varepsilon = -\frac{\% \text{ change in demand}}{\% \text{ change in price}} = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
+    \varepsilon = -\frac{\% \text{ change in quantity demand}}{\% \text{ change in price}} = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
     $$
 
 **Helpful resources:**
