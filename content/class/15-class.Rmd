@@ -21,6 +21,85 @@ editor_options:
 </figure>
 
 
+# Veil of ignorance simulation
+
+This simulation comes from ["What is Economic Justice?,"](https://facultystaff.richmond.edu/~jwight/NCEE/Chapters%20PDFs/e10_economic_justice.pdf) created by the National Council on Economic Education.
+
+## Results
+
+```{r voting-results, echo=FALSE, warning=FALSE, message=FALSE, fig.width=8, fig.height=8}
+library(tidyverse)
+library(ggstance)
+library(patchwork)
+library(here)
+
+source(file.path(here(), "lib", "graphics.R"))
+
+results <- tribble(
+  ~section, ~round, ~issue, ~option, ~votes,
+  "8:00",  "1", "Raising government revenue", "Progressive tax", 4, 
+  "8:00",  "1", "Raising government revenue", "Flat tax", 1, 
+  "8:00",  "1", "Unemployment assistance", "Modest assistance", 4,
+  "8:00",  "1", "Unemployment assistance", "Generous assistance", 1,
+  "8:00",  "1", "Immigrant workers", "Guest worker law", 4, 
+  "8:00",  "1", "Immigrant workers", "Stronger immigration law", 1,
+  "8:00",  "1", "Health insurance", "Private insurance", 2,
+  "8:00",  "1", "Health insurance", "National insurance", 3,
+  "8:00",  "2", "Raising government revenue", "Progressive tax", 3,
+  "8:00",  "2", "Raising government revenue", "Flat tax", 2,
+  "8:00",  "2", "Unemployment assistance", "Modest assistance", 1,
+  "8:00",  "2", "Unemployment assistance", "Generous assistance", 4, 
+  "8:00",  "2", "Immigrant workers", "Guest worker law", 4,
+  "8:00",  "2", "Immigrant workers", "Stronger immigration law", 1,
+  "8:00",  "2", "Health insurance", "Private insurance", 2,
+  "8:00",  "2", "Health insurance", "National insurance", 3,
+  "9:30",  "1", "Raising government revenue", "Progressive tax", 3,
+  "9:30",  "1", "Raising government revenue", "Flat tax", 2,
+  "9:30",  "1", "Unemployment assistance", "Modest assistance", 3, 
+  "9:30",  "1", "Unemployment assistance", "Generous assistance", 2,
+  "9:30",  "1", "Immigrant workers", "Guest worker law", 4, 
+  "9:30",  "1", "Immigrant workers", "Stronger immigration law", 1,
+  "9:30",  "1", "Health insurance", "Private insurance", 1, 
+  "9:30",  "1", "Health insurance", "National insurance", 4,
+  "9:30",  "2", "Raising government revenue", "Progressive tax", 3,
+  "9:30",  "2", "Raising government revenue", "Flat tax", 2,
+  "9:30",  "2", "Unemployment assistance", "Modest assistance", 2,
+  "9:30",  "2", "Unemployment assistance", "Generous assistance", 3, 
+  "9:30",  "2", "Immigrant workers", "Guest worker law", 5, 
+  "9:30",  "2", "Immigrant workers", "Stronger immigration law", 0,
+  "9:30",  "2", "Health insurance", "Private insurance", 1,
+  "9:30",  "2", "Health insurance", "National insurance", 4
+) %>%
+  mutate(issue = fct_inorder(issue, ordered = TRUE))
+
+round1 <- ggplot(filter(results, round == 1), aes(x = votes, y = option, color = fct_rev(section))) +
+  geom_pointrangeh(aes(xmin = 0, xmax = votes), position = position_dodgev(height = 0.5)) +
+  facet_wrap(~ issue, scales = "free_y") +
+  scale_color_manual(values = c(nord_dk_blue, nord_red), name = NULL,
+                     guide = guide_legend(reverse = TRUE)) +
+  labs(x = "Votes", y = NULL, title = "Round 1: Roles known") +
+  coord_cartesian(xlim = c(0, 5)) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor = element_blank())
+
+round2 <- ggplot(filter(results, round == 2), aes(x = votes, y = option, color = fct_rev(section))) +
+  geom_pointrangeh(aes(xmin = 0, xmax = votes), position = position_dodgev(height = 0.5)) +
+  facet_wrap(~ issue, scales = "free_y") +
+  scale_color_manual(values = c(nord_dk_blue, nord_red), name = NULL,
+                     guide = guide_legend(reverse = TRUE)) +
+  labs(x = "Votes", y = NULL, title = "Round 2: Veil of ignorance") +
+  coord_cartesian(xlim = c(0, 5)) +
+  theme_econ(13) +
+  theme(legend.position = "bottom",
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor = element_blank())
+
+round1 + round2 + plot_layout(ncol = 1)
+```
+
+
 # Feedback for today
 
 Go to [this form](https://goo.gl/forms/y8mRk7WVQfjRLtom2) and answer these three questions (anonymously if you want):
