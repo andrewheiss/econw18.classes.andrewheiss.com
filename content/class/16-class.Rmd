@@ -1,0 +1,120 @@
+---
+title: "Institutions II"
+date: "2018-03-07"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-03-07.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-03-07.png)](/slides/MPA-612_2018-03-07.pdf)
+</figure>
+
+
+# International Trade Game
+
+This game was originally developed by the international NGO Action Aid and [adapted by Dr. John Sloman from the University of the West of England](https://www.economicsnetwork.ac.uk/showcase/sloman_game).
+
+## Results
+
+```{r calc-results, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(pander)
+library(ggstance)
+library(here)
+
+source(file.path(here(), "lib", "graphics.R"))
+
+results <- tribble(
+  ~section, ~team, ~total,
+  "8:00",   "A1",  17700,
+  "8:00",   "A2",  7400,
+  "8:00",   "B1",  26900,
+  "8:00",   "C1",  26100,
+  "8:00",   "C2",  21700,
+  "9:30",   "A1",  51400,
+  "9:30",   "A2",  130750,
+  "9:30",   "B1",  41700,
+  "9:30",   "C1",  0,
+  "9:30",   "C2",  24950
+) %>%
+  mutate(team = fct_inorder(team, ordered = TRUE) %>% fct_rev())
+
+results_summary <- results %>%
+  group_by(section, team) %>%
+  summarise(`Total earnings` = sum(total)) %>%
+  mutate(`% of world earnings` = `Total earnings` / sum(`Total earnings`)) %>%
+  arrange(desc(`% of world earnings`)) %>%
+  mutate(total = `Total earnings`)
+```
+
+In the 8:00 section, lower income countries (C1 and C2) vastly outperformed the rich countries (A1 and A2). In the 9:30 section, both A1 and A2 outperformed everyone else. A1 and C1 merged countries (hence C1's $0 outcome), and A2 blew everyone away, earning more than 50% of the total global output.
+
+```{r plot-results, echo=FALSE}
+ggplot(results, aes(x = total, y = team, color = fct_rev(section))) +
+  geom_pointrangeh(aes(xmin = 0, xmax = total), size = 0.75,
+                   position = position_dodgev(height = 0.5)) +
+  scale_x_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c(nord_dk_blue, nord_red), name = NULL,
+                     guide = guide_legend(reverse = TRUE)) +
+  labs(x = "Final earnings", y = NULL) +
+  theme_econ(13) +
+  theme(panel.grid.major.y = element_blank(),
+        legend.position = "bottom")
+```
+
+```{r table-results, echo=FALSE, results="asis"}
+results_summary %>%
+  select(Section = section, Country = team, everything(), -total) %>%
+  mutate(`Total earnings` = scales::dollar(`Total earnings`),
+         `% of world earnings` = scales::percent(`% of world earnings`)) %>%
+  pandoc.table()
+```
+
+\
+
+This distribution of wealth created a society with a Gini coefficient of `r ineq::Gini(results_summary$total) %>% round(2)`:
+
+```{r plot-gini, echo=FALSE}
+get_lorenz <- function(x) {
+  lorenz_raw <- ineq::Lc(x)
+  data_frame(prop_population = lorenz_raw$p,
+             prop_income = lorenz_raw$L)
+}
+
+earnings_lc <- get_lorenz(results_summary$`Total earnings`)
+
+ggplot(data = earnings_lc) +
+  geom_ribbon(aes(x = prop_population,
+                  ymin = prop_income,
+                  ymax = prop_population),
+              fill = nord_red, alpha = 0.3) +
+  geom_line(aes(x = prop_population, y = prop_income),
+            size = 2, color = nord_red) +
+  geom_abline(slope = 1, intercept = 0, size = 0.5, color = "grey50") +
+  labs(x = "Cumulative % of population", y = "Cumulative % of income") +
+  scale_x_continuous(expand = c(0, 0), labels = scales::percent, breaks = seq(0, 1, 0.2)) +
+  scale_y_continuous(expand = c(0, 0), labels = scales::percent, breaks = seq(0, 1, 0.2)) +
+  theme_econ(13) +
+  theme(panel.grid = element_blank(),
+        axis.line = element_line(color = "black", size = 0.25))
+```
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/y8mRk7WVQfjRLtom2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
