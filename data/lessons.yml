@@ -134,7 +134,7 @@ lessons:
     reading: "16-reading"
     class: "16-class"
   
-  - title: "Lab 9"
+  - title: "Lab 9 (*just kidding, no lab because of the midterm*)"
     date: "March 9 (F)"
   
   - title: "⊞ **Midterm 1 due by 11:59 PM**"
@@ -142,16 +142,14 @@ lessons:
   - title: "Government institutions I"
     date: "March 12 (M)"
     reading: "17-reading"
+    class: "17-class"
   
   - title: "Government institutions II"
     date: "March 14 (W)"
     reading: "18-reading"
   
-  - title: "Lab 10"
+  - title: "Lab 10 (*just kidding, no lab because this is fake spring break*)"
     date: "March 16 (F)"
-  
-  - title: "⊞ **Problem set 6 due**"
-    assignment: "06-assignment"
   
   - title: "When governments go wrong"
     date: "March 19 (M)"
@@ -164,8 +162,8 @@ lessons:
   - title: "Lab 11"
     date: "March 23 (F)"
     
-  - title: "⊞ **Problem set 7 due**"
-    assignment: "07-assignment"
+  - title: "⊞ **Problem set 6 due**"
+    assignment: "06-assignment"
   
   - title: '<span class="fake-header-table">Evaluating and implementing policies</span>'
   - title: "Cost-benefit analysis I"
@@ -194,8 +192,8 @@ lessons:
   - title: "Lab 13"
     date: "April 6 (F)"
 
-  - title: "⊞ **Problem set 8 due**"
-    assignment: "08-assignment"
+  - title: "⊞ **Problem set 7 due**"
+    assignment: "07-assignment"
 
   - title: "⊞ **Complete economic briefing**"
   
@@ -210,8 +208,8 @@ lessons:
   - title: "Lab 14"
     date: "April 13 (F)"
 
-  - title: "⊞ **Problem set 9 due**"
-    assignment: "09-assignment"
+  - title: "⊞ **Problem set 8 due**"
+    assignment: "08-assignment"
   
   - title: "Policy formation"
     date: "April 16 (M)"
