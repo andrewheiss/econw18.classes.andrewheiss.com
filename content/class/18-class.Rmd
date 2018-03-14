@@ -1,0 +1,118 @@
+---
+title: "Government institutions II"
+date: "2018-03-14"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-03-14.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-03-14.png)](/slides/MPA-612_2018-03-14.pdf)
+</figure>
+
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/zQfgNKUUKF0Jlgfh2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+
+```{r figures-for-slides, eval=FALSE, include=FALSE}
+library(tidyverse)
+library(here)
+
+source(file.path(here(), "lib", "graphics.R"))
+
+invert_function <- function(f, lower = -200, upper = 200) {
+   function (y) uniroot((function (x) f(x) - y), lower = lower, upper = upper, extendInt = "yes")$root
+}
+
+person_1 <- function(Q) 25 - 0.5 * Q
+person_2 <- function(Q) 70 - Q
+person_3 <- function(Q) 80 - Q
+
+person_1_p <- function(Q) Q %>% map_dbl(~ invert_function(person_1)(.))
+person_2_p <- function(Q) Q %>% map_dbl(~ invert_function(person_2)(.))
+person_3_p <- function(Q) Q %>% map_dbl(~ invert_function(person_3)(.))
+
+horizontal_people <- function(P) {
+  P %>% map_dbl(~ max(0, person_1_p(.)) + 
+                  max(0, person_2_p(.)) + 
+                  max(0, person_3_p(.)))
+}
+
+vertical_people <- function(Q) {
+  Q %>% map_dbl(~ max(0, person_1(.)) + 
+                  max(0, person_2(.)) + 
+                  max(0, person_3(.)))
+}
+
+labs_consumers <- tribble(
+  ~x, ~y, ~label,
+  5, person_1(5), "A",
+  5, person_2(5), "B",
+  5, person_3(5), "C"
+)
+
+# All these functions have to be P-based for horizontal summation, so coord_flip
+# is necessary to reverse X and Y (which is easier than trying to use
+# invert_function() on horiztonal_people(), which breaks for whatever reason)
+ggplot(mapping = aes(x = 0:80)) + 
+  stat_function(fun = person_1_p, color = nord_red, size = 0.75) + 
+  stat_function(fun = person_2_p, color = nord_red, size = 0.75) + 
+  stat_function(fun = person_3_p, color = nord_red, size = 0.75) + 
+  stat_function(fun = horizontal_people, color = nord_dk_blue, size = 1.5) + 
+  geom_vline(xintercept = 10, color = nord_yellow, size = 1.5) +
+  geom_label(data = labs_consumers, aes(x = y, y = x, label = label),
+             size = 4, fill = nord_red, color = "white") +
+  annotate(geom = "label", y = 100, x = 25, label = "Market demand",
+           size = 4, fill = nord_dk_blue, color = "white") +
+  annotate(geom = "label", y = 100, x = 10, label = "S",
+           size = 4, fill = nord_yellow, color = "white") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(labels = scales::dollar, expand = c(0, 0)) +
+  labs(x = "P", y = "Q") +
+  coord_flip(xlim = c(0, 80), ylim = c(0, 200)) +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank())
+
+# Vertical summation uses Q-based functions, so there's no need to flip anything
+ggplot(mapping = aes(x = 0:100)) + 
+  stat_function(fun = person_1, color = nord_red, size = 0.75) +
+  stat_function(fun = person_2, color = nord_red, size = 0.75) +
+  stat_function(fun = person_3, color = nord_red, size = 0.75) +
+  stat_function(fun = vertical_people, color = nord_purple, size = 1.5) +
+  geom_hline(yintercept = 60, color = nord_yellow, size = 1.5) +
+  geom_segment(aes(x = 46, xend = 46, y = 0, yend = 60),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  # geom_segment(aes(x = 10, xend = 10, y = 0, yend = 150),
+  #              color = "grey50", linetype = "dashed", size = 0.5) +
+  # geom_segment(aes(x = 60, xend = 60, y = 0, yend = 30),
+  #              color = "grey50", linetype = "dashed", size = 0.5) +
+  geom_label(data = labs_consumers, aes(x = x, y = y, label = label),
+             size = 4, fill = nord_red, color = "white") +
+  annotate(geom = "label", x = 20, y = 125, label = "Social demand",
+           size = 4, fill = nord_purple, color = "white") +
+  annotate(geom = "label", x = 60, y = 60, label = "S",
+           size = 4, fill = nord_yellow, color = "white") +
+  coord_cartesian(xlim = c(0, 80), ylim = c(0, 200)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::dollar, expand = c(0, 0)) +
+  labs(x = "Q", y = "P") +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank())
+```
