@@ -116,7 +116,7 @@ data_frame(col1 = sample(100:999, rounds * qs_per_round, replace = TRUE),
 #   walk(~ write_problems(.$data, .$game_round))
 ```
 
-```{r figures-for-slides, include=FALSE}
+```{r figures-for-slides, include=FALSE, eval=FALSE}
 source(file.path(here(), "lib", "graphics.R"))
 
 mb <- function(Q) 20 - 0.5 * Q
