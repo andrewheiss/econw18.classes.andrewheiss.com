@@ -4,6 +4,7 @@
 .Ruserdata
 blogdown/
 public/
+private/
 .DS_Store
 assets/*
 static/slides/*
