@@ -23,6 +23,7 @@ editor_options:
 
 # Other resources
 
+- For more on Mormonism's self-styled whiteness and the past racialization of the LDS community, see [W. Paul Reeve's *Religion of a Different Color: Race and the Mormon Struggle for Whiteness.*](https://www.amazon.com/gp/product/0199754071/) This [two-part](https://mi.byu.edu/mip-22-reeve-parshall-p1/) [podcast](https://mi.byu.edu/mip-23-mormonism-race-reeve-parshall-p2/) from BYU's Maxwell Institute is a good overview of the argument and findings.
 - Check out this new research on how to possibly use school disctrict gerrymandering to reverse trends in school desegregation: [We can draw school zones to make classrooms less segregated. This is how well your district does.](https://www.vox.com/2018/1/8/16822374/school-segregation-gerrymander-map)
 
 
