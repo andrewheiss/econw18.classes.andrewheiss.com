@@ -5,9 +5,13 @@ citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 stuff-to-add: >-
-    Gruber CBA first, then Wheelan?
+  http://economistsview.typepad.com/economistsview/2008/07/the-value-of-a.html
 ---
 
 # Required
 
-- Other readings TBA
+***Important***: The PDF of the chapter is posted on Learning Suite.
+
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 8 in Jonathan Gruber, *Public Finance and Public Policy* [@Gruber:2005]
+-  <i class="fa fa-youtube" aria-hidden="true"></i> Stephen Colbert, ["The Wørd—Priceless,"](http://www.cc.com/video-clips/e8zxmm/the-colbert-report-the-word---priceless)^[He's kinda wrong here, btw.] July 14, 2008
+- <i class="fa fa-external-link" aria-hidden="true"></i> David Evans, ["What The Martian teaches us about the value of a statistical life"](https://blogs.worldbank.org/publicsphere/voices/what-martian-teaches-us-about-value-statistical-life), *People, Spaces, Deliberation,* The World Bank, October 2, 2015

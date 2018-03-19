@@ -8,4 +8,7 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- Other readings TBA
+***Important***: The PDF of the chapter is posted on Learning Suite.
+
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 12 in Charles Wheelan, *Introduction to Public Policy* [@Wheelan:2010a]
+- <i class="fa fa-external-link" aria-hidden="true"></i> Amy Gallo, ["A Refresher on Net Present Value,"](https://hbr.org/2014/11/a-refresher-on-net-present-value) *Harvard Business Review,* November 19, 2014

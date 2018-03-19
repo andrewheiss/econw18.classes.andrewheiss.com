@@ -8,4 +8,9 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- Other readings TBA
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Richard Fowles and Sofia Nyström, ["Introduction to an Econometric Cost-Benefit Approach"](https://justice.utah.gov/Documents/CCJJ/Cost%20of%20Crime/Utah%20Cost%20of%20Crime%202012%20-%20Methods%20Review%20Cost.pdf), 2012
+    - This is the official guidance and methodology that Utah's Commission on Criminal and Juvenile Justice has used since 2012. You can see more details [here](https://justice.utah.gov/ccjj_costofcrime.html).
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Office of Regulatory Analysis and Evaluation, National Center for Statistics and Analysis, National Highway Traffic Safety Administration, ["Preliminary Cost-Benefit Analysis of Ultrasonic and Camera Backup Systems,"](https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/nhtsa-2006-25579-0002.pdf) August 2006
+    - This is an example of a federal CBA and is a good template for other analyses
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Rebecca Schroeder and Jared L. Howland, "Shelf-ready: A cost-benefit analysis" [@SchroederHowland:2011]
+    - The PDF for this is on Learning Suite. This is an example of a non-governmental, nonprofity CBA.
