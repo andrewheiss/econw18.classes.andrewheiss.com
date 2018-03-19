@@ -16,4 +16,4 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 - <i class="fa fa-file-pdf-o" aria-hidden="true"></i> David C. Hammack, "Nonprofit Organizations in American History" [@Hammack:2002]
     - This one is long. You don't need to read it in as much detail.
 - <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapters 1 and 2 in Elinor Ostrom, *Governing the Commons: The Evolution of Institutions for Collective Action* [@Ostrom:1990]
-    - This one is also long and game theoretical. You can skim through the mathy sections.
+    - This one is also long and game theoretical. You can skim through lots of it (especially the mathy sections). But it's also pretty foundational to public administration, so it *is* important.
