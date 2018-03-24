@@ -370,3 +370,64 @@ source(file.path(here::here(), "lib", "graphics.R"))
 
 - <i class="fa fa-youtube" aria-hidden="true"></i> Super clear explanation of all the Fed's tools for dealing with monetary policy (watch this one!): [What's all the Yellen About? Monetary Policy and the Federal Reserve](https://www.youtube.com/watch?v=1dq7mMort9o)
 -  <i class="fa fa-youtube" aria-hidden="true"></i> The Atlanta Fed's explanation of monetary policy: [The Fed Explains Monetary Policy](https://www.youtube.com/watch?v=wOfQPn9Jwpo)
+
+\
+
+# Things you should know for the second midterm
+
+## Institutions
+
+**You should understand…**
+
+- …why institutions matter for public administration, policy, and governance
+- …the strengths and weaknesses of and the and general differences between three main theoretical approaches to institutions: institutions as rational behavior, institutions as constraints, and institutions as temporary equilibria
+- …the difference between informal and formal institutions
+- …why informal institutions exert influence over our actions even if they're not officially codified
+- …the difference between self-enforcing, self-reinforcing, and self-undermining institutions
+- …the role of path dependency in the emergence of institutions
+
+**Games and simulations played in class**
+
+- *Pólya's Urn*: example of path dependency
+
+\
+
+## Power and fairness
+
+**You should understand…** 
+
+- …the difference between Pareto efficiency and fairness
+- …how we can measure fairness with substantive standards, procedural standards, and Rawlsian standards
+- …how initial allocations of wealth and resource influence institutional emergence^[Remember the shape creation world economy game]
+- …the difference between equality and equity
+- …how ideas of efficiency and fairness apply to international trade
+
+**Games and simulations played in class**
+
+- *Veil of ignorance simulation*: example of how different policies emerge when decided behind a veil of ignorance
+
+\
+
+## Institutions and public goods problems
+
+**You should understand…**
+
+- …what a market failure is
+- …what public goods are and how governments, the private sector, and the third sector can address them
+- …what common pool resources (CPRs) are and how governments, the private sector, and the third sector can address them
+- …the difference between social and private marginal cost (supply) and marginal benefit (demand)
+- …what externalities are and how governments, the private sector, and the third sector can address them
+- …what Coasian bargaining is, when it is advantageous, and why it sometimes fails
+- …how cap and trade systems can fix externalities (and when they can't)
+- …how Pigouvian taxes can fix externalities (and when they can't)
+- …how regulation can fix externalities (and when and why they can't)^[Remember the peanut butter regulation story—regulation is never strictly economic or mathematical]
+- …why not everything should be a market
+- …the difference between income and assets
+- …why shared national identity and strong horizontal networks of institutions are important for a country's social and economic wellbeing
+- …how inequitable public policies lead to decreased public goods provision, unequal institutional access, and increase ethnofractionalization
+- …why slavery has had lasting institutional impacts on the economic system of today and how government policies have contributed to these consequences (specifically in housing and education)
+
+**Games and simulations played in class**
+
+- *International trade game*: example of natural institutional emergence, the importance of initial allocations of resources, and the distribution of bargaining power
+- *The paper river*: example of how Coasian bargaining can address externalities without government involvement and why property rights are essential for successful bargaining
