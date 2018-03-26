@@ -8,6 +8,7 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-***Important***: The PDF of the chapter is posted on Learning Suite.
+***Important***: The PDFs are posted on Learning Suite.
 
 - <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Dina Pomeranz, "Impact Evaluation Methods in Public Economics" [@Pomeranz:2017]
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Gordon C. S. Smith and Jill P. Pell, "Parachute Use to Prevent Death and Major Trauma Related to Gravitational Challenge: Systematic Review of Randomised Controlled Trials" [@SmithPell:2003]
