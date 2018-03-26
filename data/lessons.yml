@@ -164,6 +164,7 @@ lessons:
   
   - title: "Lab 11"
     date: "March 23 (F)"
+    class: "11-lab"
     
   - title: "⊞ **Problem set 6 due**"
     assignment: "06-problem-set"
@@ -172,6 +173,7 @@ lessons:
   - title: "Cost-benefit analysis I"
     date: "March 26 (M)"
     reading: "21-reading"
+    class: "21-class"
     
   - title: "⊞ **Sign up for an economic briefing**"
   
