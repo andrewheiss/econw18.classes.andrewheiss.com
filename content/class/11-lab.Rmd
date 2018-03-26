@@ -1,0 +1,8 @@
+---
+title: "Lab 11"
+date: "2018-03-23"
+---
+
+# Slides
+
+- [Pigovian taxation](/files/pigovian-taxation.pptx)
