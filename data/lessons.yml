@@ -174,12 +174,13 @@ lessons:
     date: "March 26 (M)"
     reading: "21-reading"
     class: "21-class"
-    
-  - title: "⊞ **Sign up for an economic briefing**"
   
   - title: "Cost-benefit analysis II"
     date: "March 28 (W)"
     reading: "22-reading"
+    class: "22-class"
+
+  - title: "⊞ **Sign up for an economic briefing**"
   
   - title: "Lab 12"
     date: "March 30 (F)"
@@ -199,8 +200,6 @@ lessons:
 
   - title: "⊞ **Problem set 7 due**"
     assignment: "07-assignment"
-
-  - title: "⊞ **Complete economic briefing**"
   
   - title: "Politics and institutions I"
     date: "April 9 (M)"
@@ -209,6 +208,8 @@ lessons:
   - title: "Politics and institutions II"
     date: "April 11 (W)"
     reading: "26-reading"
+    
+  - title: "⊞ **Complete economic briefing**"
   
   - title: "Lab 14"
     date: "April 13 (F)"

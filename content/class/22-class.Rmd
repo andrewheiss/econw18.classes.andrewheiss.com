@@ -1,0 +1,96 @@
+---
+title: "Cost benefit analysis II"
+date: "2018-03-28"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-03-28.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-03-28.png)](/slides/MPA-612_2018-03-28.pdf)
+</figure>
+
+
+# Sensitivity analysis
+
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Water treatment project with sensitivity analysis](/files/water-treatment-finished.xlsx)
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/zQfgNKUUKF0Jlgfh2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
+
+
+```{r fig-slides, include=FALSE, eval=FALSE}
+library(tidyverse)
+source(file.path(here::here(), "lib", "graphics.R"))
+source(file.path(here::here(), "lib", "supply-demand-kaldor-hicks.R"))
+
+demand <- function(Q) 20 - 0.5 * Q
+demand_elastic <- function(Q) 10 - 0.05 * Q
+demand_inelastic <- function(Q) 20 - 2 * Q
+
+supply <- function(Q) 5 + 0.25 * Q
+supply_new <- function(Q) supply(Q) - 5
+supply_elastic <- function(Q) 5 + 0.05 * Q
+supply_elastic_new <- function(Q) supply_elastic(Q) - 5
+supply_inelastic <- function(Q) 5 + 1.5 * Q
+supply_inelastic_new <- function(Q) supply_inelastic(Q) - 5
+
+surplus_graph(demand, supply, supply_new)
+surplus_graph(demand_elastic, supply, supply_new)
+surplus_graph(demand_inelastic, supply, supply_new)
+
+equilibrium <- uniroot(function(x) supply(x) - demand(x), c(0, 45))$root
+
+x_q <- seq(0, equilibrium, 0.1)
+
+surplus_labels <- tribble(
+  ~x, ~y, ~text, ~fill,
+  1, midpoint(demand(equilibrium), max(demand(x_q))), "Consumer surplus", nord_green,
+  1, midpoint(min(supply(x_q)), supply(equilibrium)), "Producer surplus", nord_lt_blue
+)
+
+ggplot(mapping = aes(x = 0:45)) +
+  geom_ribbon(aes(x = x_q, 
+                  ymin = demand(equilibrium), ymax = demand(x_q)),
+              alpha = 0.3, fill = nord_green) +
+  geom_ribbon(aes(x = x_q, 
+                  ymin = supply(x_q), ymax = supply(equilibrium)),
+              alpha = 0.3, fill = nord_lt_blue) +
+  geom_segment(aes(x = equilibrium, xend = equilibrium, 
+                   y = -Inf, yend = supply(equilibrium)),
+               color = "grey50", size = 0.5, linetype = "dashed") +
+  geom_segment(aes(x = -Inf, xend = equilibrium,
+                   y = supply(equilibrium), yend = supply(equilibrium)),
+               color = "grey50", size = 0.5, linetype = "dashed") +
+  stat_function(fun = supply, size = 1.5, color = nord_red) +
+  stat_function(fun = demand, size = 1.5, color = nord_dk_blue) +
+  annotate(geom = "label", x = 38, y = supply(38), label = "S", 
+           size = 4, fill = nord_red, color = "white") +
+  annotate(geom = "label", x = 38, y = demand(38), label = "D", 
+           size = 4, fill = nord_dk_blue, color = "white") +
+  geom_label(data = surplus_labels, aes(x = x, y = y, label = text, fill = fill), 
+             hjust = "left", size = 4, color = "white") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0), labels = scales::dollar) +
+  scale_fill_identity() +
+  coord_cartesian(xlim = c(0, 45), ylim = c(0, 20)) +
+  labs(x = "Product (Q)", y = "Price (P)") +
+  theme_econ(13, axis_line = TRUE) +
+  theme(panel.grid = element_blank())
+```
