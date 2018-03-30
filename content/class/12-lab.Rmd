@@ -1,0 +1,91 @@
+---
+title: "Lab 12"
+date: "2018-03-30"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)
+library(here)
+```
+
+```{r generate-attendance, include=FALSE}
+set.seed(1234)
+attendance <- data_frame(year = c(2012, 2013, 2015, 2015, 2016)) %>% 
+  mutate(attendance = year %>%
+           map(~ data_frame(game = 1:23, attendance = rnorm(23, 13500, 1500)))) %>% 
+  unnest(attendance) %>% 
+  mutate(attendance = ifelse(attendance > 15000, 15000, round(attendance, 0)))
+
+write_csv(attendance, file.path(here(), "static", "data", "fake-rsl-attendance.csv"))
+```
+
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Worksheet we created in lab, with simulated attendance](/data/fake-rsl-stadium.xlsx)
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Worksheet with both options](/data/fake-rsl-stadium-both.xlsx)
+
+You are required to perform a project appraisal for a new soccer stadium which is being considered by Real Salt Lake. The new stadium will be constructed on a new site south of Herriman.^[Yes, RSL's Rio Tinto stadium in South Salt Lake is big and glorious and new and shiny. Just go with me here.] The idea of the new stadium is therefore popular with the Salt Lake City council who see the movement of the stadium to an out‐of‐town location as a good way of reducing traffic congestion along I-15.
+
+Real Salt Lake are considering two possible options for their new stadium. Option 1 is a smaller stadium with low costs. Meanwhile, option 2 requires a much greater investment but provides a bigger stadium capable of holding larger crowds, and provides a number of additional facilities which will allow for a higher ticket price to be charged. 
+
+You have been recommended to use a discount rate of 3%.^[This example is adapted from [Dan Wheatley's CBA Builder project](http://www.cbabuilder.co.uk/Files/CBA%20Builder%20Simple%20Worksheet%202.pdf) and used under a Creative Commons license.]
+
+
+# Option 1
+
+## Upfront costs
+
+The site will need to be purchased at a cost of \$1.1 million and the planning process will have to be completed (although agreement in principle has already been reached with the city council). The cost of planning is estimated at \$50,000. Both the purchase of the land and the planning agreement must be in place before construction of the new stadium can begin. These costs are the same regardless of which option is chosen. 
+
+Construction is estimated to take one year, as the stadium will use a number of prefabricated elements. Construction costs estimated by the contractor, which occur in year 0, include site clearance and preparation (including foundations) estimated at around \$1.2 million. The prefabricated elements of the stands cost \$2 million, plant rental costs \$40,000 per month (required for all 12 months). 
+
+Wages for 80 workers cost \$8 per hour, and a site manager costs \$22 per hour. Estimated staffing times are 40 hours per week all year (47 weeks) for the site manager, and 38 hours per week for 80 workers all year (47 weeks). 
+
+The stadium will require around 10 new employees, who will perform a range of jobs (including refreshments serving, cleaning etc.). There is an associated one‐off human resource cost associated with the advertising, interviewing, and training of these staff which is estimated at $22,000. This cost will also occur in year 0. 
+
+## Regular costs
+
+A number of ongoing costs need to be considered in the CBA. These costs need to be considered for the whole CBA period (i.e. 20 years). These include the wages of the staff discussed above, as well as the other 15 employees who will be transferred over from the existing stadium. The annual salary
+for the staff is $14,000 each. The growth rate for all staff wages is 1.5%, but all of these staff will not begin working until year 1. 
+
+In addition, there is a significant maintenance cost associated with the stadium estimated at $150,000 per year. This cost will be incurred from year 1 onwards, and will grow at a rate of 4% per year as the stadium ages.
+
+
+## Benefits
+
+The benefits of the stadium mainly relate to income from ticket receipts. Real Salt Lake have an average attendance of 13,500 in their current stadium, so this will be used as a benchmark figure, although the option 1 stadium can hold up to 15,000 fans. Tickets are currently priced at $10 per match. Real Salt Lake have 23 home matches per year. These benefits will begin in year 1, and grow at a rate of 4% per year.
+
+
+# Option 2
+
+## Upfront costs
+
+Option 2 involves building a larger, more expensive stadium that can hold up to 20,000 fans. Its year 0 costs are as follows:
+
+- Site purchase: $1.1 million
+- Planning process: $50,000
+- Site clearance and preparation: $2.75 million
+- Prefabricated elements of the stands: $4.8 million
+- Plant rental costs: $60,000 per month (required for all 12 months of construction)
+- Wages for 100 workers at $8 per hour (38 hours per week for 47 weeks)
+- Wages for site manager at $22 per hour (40 hours per week for 47 weeks)
+- HR costs for 15 new employees: $32,000
+
+## Regular costs
+
+Ongoing costs are the same as for the smaller stadium but are more expensive due to the size of the larger stadium. These costs should be considered for the whole period. Ongoing costs are as follows: 
+
+- Wages for 30 employees at $14,000 each per year. Growth rate for staff wages = 1.5%
+- Maintenance costs = $250,000 per year, growing at 4% each year as stadium ages
+
+## Benefits
+
+The benefits of the stadium remain the same. However, the extra facilities at the stadium mean that Real Salt Lake will be able to charge fans $15 per game.
+
+
+# Questions
+
+1. What is the NPV and BCR for options 1 and 2?
+2. Given these results, which option should be chosen?
+3. Assume that the new stadium attracts more fans to Real Salt Lake and the team now manages to fill its stadium. If option 1 is chosen this will result in an average gate of 15,000 fans. If option 2 is chosen this will result in an average gate of 20,000 fans. How does this affect the results of the CBA?
+4. Real Salt Lake's marketing department has provided you with attendance numbers for the past several years: [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Fake RSL Attendance](/data/fake-rsl-attendance.csv). Use Monte Carlo simulation to incorporate the uncertainty of attendence into your CBA. Does it change any of your recommendations?
