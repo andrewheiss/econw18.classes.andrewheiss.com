@@ -1,0 +1,87 @@
+---
+title: "Cost benefit analysis III"
+date: "2018-04-02"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-04-02.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-04-02.png)](/slides/MPA-612_2018-04-02.pdf)
+</figure>
+
+
+# Equivalent annual net benefit
+
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Equivalent annual net benefit example](/files/eanb.xlsx)
+
+
+# In-class small group example
+
+- [<i class="fa fa-file-excel-o" aria-hidden="true"></i> Finished example](/files/freeway-finished.xlsx)^[There are three worksheets in this file: one has the NPV + sensitivity analysis, one has the Monte Carlo simulation, and the last shows how to do CBA without creating a row for each year.]
+
+Consider this example:
+
+- UDOT is considering building a new freeway that is estimated to save 100,000 hours of driving and 5 lives each year. 
+- The project will require 1 million bags of asphalt (\$100/bag) and 1 million hours of labor (half at 
+\$20/hour, half at $10/hour). The construction occurs in year 0.
+- Starting in year 1, the freeway will require maintenance that will cost $18 million/year.
+- Assume the following:
+    - Drivers estimate the value of their time at \$17/hour
+    - The value of a statistical life is \$5 million
+    - The costs and benefits of the project will last for 25 years
+    - The discount rate is 4%
+
+Answer these questions:
+
+1. What is the NPV of this project? What is the benefit-cost ratio?
+
+2. Use an Excel data table and a graph to show the NPV across a range of the following values. At what point does the project break even?
+    1. Discount rate
+    2. Hours of driving saved
+    3. Lives saved
+
+3. As we've talked about in class, the VSL is a statistical estimate of the amount people would be willing to pay to reduce their risk of death by 1%, extrapolated out to 100%. 
+
+    Because VSL is an average, it has measures of uncertainty associated with it. According to academic research, there is substantial uncertainty in VSL estimates: in 2008, the [NHTSA reported](https://www.nhtsa.gov/staticfiles/administration/pdf/Value_of_Life_Guidance_020508.pdf) that the 95% confidence interval for VSL ranges from \$1,000,000 to \$10,000,000, which represents a standard deviation of around \$2,000,000. With a \$5 million average, the distribution would look something like this:
+
+    ```{r vsl-distribution, echo=FALSE, warning=FALSE, message=FALSE, fig.width=6, fig.height=3}
+    library(tidyverse)
+    source(file.path(here::here(), "lib", "graphics.R"))
+    
+    vsl <- 5000000
+    vsl_se <- 2000000
+    
+    set.seed(1234)
+    vsl_sim <- data_frame(vsl = rnorm(100000, vsl, 2000000))
+    
+    ggplot(vsl_sim, aes(x = vsl)) +
+      geom_density(color = NA, fill = nord_dk_blue) + 
+      geom_vline(xintercept = vsl) +
+      labs(x = NULL, y = NULL) +
+      scale_x_continuous(labels = scales::dollar) +
+      theme_econ(13) +
+      theme(axis.text.y = element_blank(),
+            axis.title.y = element_blank())
+    ```
+    
+    Use Monte Carlo simulation in Excel to estimate the NPV over 1,000 trials, varying the VSL with a mean of \$5 million and a standard deviation of \$2 million. What is the average NPV over all these trials? What is the probability that the NPV is greater than \$0? Is this still a good project, given the uncertainty of the VSL?
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/55ggByhQd3U8eW6e2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?

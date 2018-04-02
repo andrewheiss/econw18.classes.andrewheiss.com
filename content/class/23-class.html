@@ -1,0 +1,74 @@
+---
+title: "Cost benefit analysis III"
+date: "2018-04-02"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+<h2>Contents</h2>
+<div id="TOC">
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#equivalent-annual-net-benefit">Equivalent annual net benefit</a></li>
+<li><a href="#in-class-small-group-example">In-class small group example</a></li>
+<li><a href="#feedback-for-today">Feedback for today</a></li>
+</ul>
+</div>
+
+<h2 id="slides">Slides</h2>
+<p><a href="/slides/MPA-612_2018-04-02.pdf">Download the slides from today’s lecture</a>.</p>
+<figure>
+<a href="/slides/MPA-612_2018-04-02.pdf"><img src="/images/slides/slides_2018-04-02.png" alt="First slide" /></a>
+</figure>
+<h2 id="equivalent-annual-net-benefit">Equivalent annual net benefit</h2>
+<ul>
+<li><a href="/files/eanb.xlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Equivalent annual net benefit example</a></li>
+</ul>
+<h2 id="in-class-small-group-example">In-class small group example</h2>
+<ul>
+<li><a href="/files/freeway-finished.xlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Finished example</a><span><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span class="sidenote">There are three worksheets in this file: one has the NPV + sensitivity analysis, one has the Monte Carlo simulation, and the last shows how to do CBA without creating a row for each year.<br />
+<br />
+</span></span></li>
+</ul>
+<p>Consider this example:</p>
+<ul>
+<li>UDOT is considering building a new freeway that is estimated to save 100,000 hours of driving and 5 lives each year.</li>
+<li>The project will require 1 million bags of asphalt ($100/bag) and 1 million hours of labor (half at $20/hour, half at $10/hour). The construction occurs in year 0.</li>
+<li>Starting in year 1, the freeway will require maintenance that will cost $18 million/year.</li>
+<li>Assume the following:
+<ul>
+<li>Drivers estimate the value of their time at $17/hour</li>
+<li>The value of a statistical life is $5 million</li>
+<li>The costs and benefits of the project will last for 25 years</li>
+<li>The discount rate is 4%</li>
+</ul></li>
+</ul>
+<p>Answer these questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>What is the NPV of this project? What is the benefit-cost ratio?</p></li>
+<li>Use an Excel data table and a graph to show the NPV across a range of the following values. At what point does the project break even?
+<ol style="list-style-type: decimal">
+<li>Discount rate</li>
+<li>Hours of driving saved</li>
+<li>Lives saved</li>
+</ol></li>
+<li><p>As we’ve talked about in class, the VSL is a statistical estimate of the amount people would be willing to pay to reduce their risk of death by 1%, extrapolated out to 100%.</p>
+<p>Because VSL is an average, it has measures of uncertainty associated with it. According to academic research, there is substantial uncertainty in VSL estimates: in 2008, the <a href="https://www.nhtsa.gov/staticfiles/administration/pdf/Value_of_Life_Guidance_020508.pdf">NHTSA reported</a> that the 95% confidence interval for VSL ranges from $1,000,000 to $10,000,000, which represents a standard deviation of around $2,000,000. With a $5 million average, the distribution would look something like this:</p>
+<p><img src="/class/23-class_files/figure-html/vsl-distribution-1.png" width="576" /></p>
+<p>Use Monte Carlo simulation in Excel to estimate the NPV over 1,000 trials, varying the VSL with a mean of $5 million and a standard deviation of $2 million. What is the average NPV over all these trials? What is the probability that the NPV is greater than $0? Is this still a good project, given the uncertainty of the VSL?</p></li>
+</ol>
+<h2 id="feedback-for-today">Feedback for today</h2>
+<p>Go to <a href="https://goo.gl/forms/55ggByhQd3U8eW6e2">this form</a> and answer these three questions (anonymously if you want):</p>
+<ol style="list-style-type: decimal">
+<li>What new thing did you learn today?</li>
+<li>What was the most unclear thing about today’s class?</li>
+<li>What was the most exciting thing you learned today?</li>
+</ol>
