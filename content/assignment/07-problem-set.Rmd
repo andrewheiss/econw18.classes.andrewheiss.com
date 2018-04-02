@@ -1,0 +1,64 @@
+---
+title: "Problem set 7"
+date: "2018-04-06"
+due_date: "2018-04-06"
+due_time: "11:59 PM"
+editor_options: 
+  chunk_output_type: console
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+**Important instructions**: You should use R and Excel for this assignment. *Show as much work as possible.* Submit a PDF of your answers and the Excel file you used to do your calculations. Make sure your Excel file is well organized and clearly labeled. Consider pasting your R output into your Word file.
+
+
+# 1
+
+To better understand how to estimate benefits with shadow pricing, you get to work with a hedonic wage dataset to compute the value of statistical life. 
+
+Download [<i class="fa fa-table" aria-hidden="true"></i>&nbsp;`wages_risk.csv`](/data/wages_risk.csv) and open it in R (or any other statistical software). The dataset contains the following variables:
+
+- `id`: Unique ID of the anonymous worker
+- `annual_risk`: Annual job-related fatality risk
+- `hourly_wage`: Hourly wage rate
+- `age`: Age
+- `sex`: 1 = male, 0 = female
+- `race`: 1 = white, 0 = not white
+- `work_experience`: 1 = has experience or special training related to job, 0 = otherwise
+- `union`: 1 = member of a union, 0 = not a member of a union
+- `blue_collar`: 1 = blue collar job, 0 = otherwise
+
+Do the following tasks:
+
+1. Briefly explain what the value of statistical life is. What does it represent? How is it related to the intrinsic value of a single life? (**≈40 words**)
+
+2. Specify (write in plain English) a simple hedonic wage statistical model and explain (in a single sentence) the key hypothesis you could test with multivariate regression.
+
+3. Use R or other statistical software to estimate this model. Report the main results, including the coefficients, standard errors, p-values, overall model fit, and sample size.^[*Hints*: Your dependent variable should be *annual* income, and your main dependent variable should be the annual risk of dying. You'll need to create a new variable for income (assume each worker works 2,000 hours in a year). It might also be helpful to multiply `annual_risk` by 100 for ease of interpretability (so you can say something like "for every 1% increase in blah, blah happens").]
+
+4. Compute the VSL estimate implied by your regression analysis, assuming each worker works 2,000 hours a year. What does this number mean?
+
+5. Explain how confident you are with this estimate, given the coefficient and its standard errors. What could you do to improve the analysis?^[Hint: talk about things like other covariates, functional forms, the sample, etc.] 
+
+
+# 2
+
+Inspired by arguments for smart power, global leaders have decided to provide \$5 billion to the UN to develop and deploy a series of coordinated health, education, and environmental programs and institutional capacity building efforts in select regions known to be breeding grounds for terrorists.
+
+In addition, it is anticipated that these programs will incur costs at least as much as 1% (= \$50 million per year) in perpetuity for operations. Rigorous impact evaluations combined with sound theory have produced a rough‐and‐ready estimate that starting in year 18, these programs will reduce civilian deaths by 200 per year in perpetuity.
+
+In your analysis of the cost-worthiness of this project, assume a discount rate of 5% and a VSL based on your answer to question 1 above. Also recall that the present value of a perpetuity is $\frac{a}{r}$, where $a$ is the annual dollar amount and $r$ is the discount rate.
+
+1. What are the present value costs, present value benefits, benefit-cost ratio, and net present value of this program?
+
+2. What is the NPV if the impacts are not felt until year 25? 
+
+3. What is the NPV if deaths were only reduced by 100 per year?
+
+4. Conduct the following sensitivity analyses. Create a graph where appropriate. 
+
+    1. At what discount rate will the present value of costs equal the present value of the benefits (i.e. when will the NPV stop being negative and start being positive)? How responsive is the NPV to the discount rate?
+    2. How many civilian lives does the program need to save in order for the NPV to be greater than 0?
+    3. As designed, the program takes 18 years before any benefits are felt. What is the break-even point for the length of the delay? (i.e. how much different will the NPV be if the benefits start at year 3, 4, 5, etc. and when will it switch from negative to positive?)
+    4. Account for the uncertainty of your VSL estimate using the coefficient and standard errors from your analysis in question 1.^[*Hint:* Use Monte Carlo simulation.] What is the probability the program creates a positive NPV? What is the probability it only loses \$2 billion?
