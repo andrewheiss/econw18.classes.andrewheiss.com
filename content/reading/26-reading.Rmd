@@ -1,5 +1,5 @@
 ---
-title: "Politics and institutions II"
+title: "Policy analysis and formation II"
 date: "2018-04-11"
 citeproc: false
 bibliography: ../../static/bib/references.bib
@@ -8,4 +8,4 @@ csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 
 # Required
 
-- Other readings TBA
+- Nothing!

@@ -1,16 +1,31 @@
 ---
-title: "Politics and institutions I"
+title: "Policy analysis and formation I"
 date: "2018-04-09"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
-stuff-to-add: >-
-  > Most novel about the new market metaphors was their detachment from history and institutions and from questions of power. As the market grew more abstract, society thinned out into highly reduced microeconomic mental pictures: Gilder's heroically independent entrepreneurs, Lucas's forward-looking utility maximizers, Wanniski's fish and coconut traders, the Coase theorem's rancher and farmer maximizing the public good as they stood on the courthouse steps. To imagine the market now was to imagine a socially detached array of economic actors, free to choose and optimize, unconstrained by power or inequalities, governed not by their common deliberative action but only by the impersonal laws of the market.
-
-  Daniel T. Rodgers, *The Age of Fracture*, Harvard University Press, 2011, p. 76
+stuff-to-add: >- 
+  The TCU campus is already suffering a deficit of approximately 755 parking places for its 30,000 full and part-time students, given the number of students on campus during peak hours (an average of 19,000 students on campus between 9:00 AM and 1:00 PM 18,245 available parking spaces). It is expected that this shortage will grow to 1,250 parking places over the next five years if nothing is done (100 per year) given the current and projected enrollment. The amount of available land on or immediately adjacent to The City University would allow for the construction of no more than 300 parking spaces (900 if a parking garage is constructed). Undeveloped city land located between one and two miles from the university, if devoted solely to parking lots, could provide an additional 500 spaces—2,500 if parking garages are constructed. (The City is currently considering selling this land to private developers due to increases in the value of the property (valued at $1,000,000.)) If this land is used for parking purposes, public shuttles/buses would be needed to transport students from the outside parking lots to TCU (costs below). The cost of construction is estimated at $25,000 per 100 parking spaces (the cost is double if a parking garage). The cost is expected to increase by an estimated 5% for each year any project is delayed. The estimated building time for a 300-space parking lot is six months and one month for each additional 100 spaces (double the time for parking garages).
+  
+  The City's public transportation system is currently unable to accommodate an increase in riders, particularly on those routes in and around TCU. If off-campus land is developed, an additional two to three buses would be needed immediately. For the public transportation system to accommodate additional riders it would cost The City $10,000 per 100 riders, per year to cover labor and maintenance. This does not include the initial investment of $30,000 per bus: each bus seating 50. (Note to students: The number of parking spaces and/or bus seats is available only in the prices/quantities as listed. See Table 1)
+  
+  The available annual budget for construction of things such as parking lots is $75,000 per year, with an estimated increase of $5,000 per year over the next 10 years. Based on current and projected revenue, the available annual budget for public transportation is $58,000 per year with an estimated increase of $3,000 per year over the next 10 years. The City can only increase taxes, due to mandated tax limitations, for either type of project, without voter approval, by 0.05% every five years, (which is equal to about $15,000 per year for the first five years and about $21,000 for the second five years) but most get voter approval regarding what projects to apply the additional tax revenue. It can be assumed that you could get voter approval to apply the additional revenue for either construction or public transportation but not both. The City can, with voter approval, raise taxes by as much as 2% every 10 years but local citizens have been reluctant to support tax increases.
+  
+  Student parking fees are currently $100 per student, of which 40% goes into the budget for future parking lot construction. Given the shortage, The City University sells parking permits (20,000) that are approximately equal to the number of spaces. It is assumed that new revenue cannot be expected until more parking is available and as such new revenue from available new parking would not apply until the year after construction. It is also estimated that The City can also raise bus fares by as much as $0.10 without a decline in riders (Bus fares are currently $1). There are approximately 5,000 riders that currently utilize bus routes going to and from the university (about $5,000 per year to the public transportation budget). Each additional 150 riders per year would lead to an increase in bus revenue of $1,500 per year in addition to the amount listed above.
+  
+  
+  Table 1: Construction and Public Transportation Budgets, Costs, and Other Potential Revenue (10 Year Plan)
+  Construction budget: $75,000 per year (increase of $5,000 per year)
+  Costs: $25,000 (per 100 parking space)
+  Tax increase (0.05%): $15,000 (per year)—first five years
+  $21,000 (per year)—second five years
+  
+  Public transportation budget: $58,000 per year (increase of $3,000 per year)
+  Costs: $30,000 (per bus)
+  $10,000 (per 100 riders, per year)
+  Bus fare increase: ($0.10): $1,500 (per 150 riders, per year)
 ---
 
 # Required
 
 - Chapter 8 in *Naked Economics* [@Wheelan:2010]
-- Other readings TBA
