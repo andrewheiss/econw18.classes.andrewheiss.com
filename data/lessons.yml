@@ -230,3 +230,4 @@ lessons:
   - title: '<span class="fake-header-table">Final</span>'
   - title: "**Final project due** (submit online by 11:59 PM)"
     date: "April 25 (W)"
+    assignment: "final-project"
