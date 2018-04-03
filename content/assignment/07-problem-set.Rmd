@@ -35,7 +35,7 @@ Do the following tasks:
 
 2. Specify (write in plain English) a simple hedonic wage statistical model and explain (in a single sentence) the key hypothesis you could test with multivariate regression.
 
-3. Use R or other statistical software to estimate this model. Report the main results, including the coefficients, standard errors, p-values, overall model fit, and sample size.^[*Hints*: Your dependent variable should be *annual* income, and your main dependent variable should be the annual risk of dying. You'll need to create a new variable for income (assume each worker works 2,000 hours in a year). It might also be helpful to multiply `annual_risk` by 100 for ease of interpretability (so you can say something like "for every 1% increase in blah, blah happens").]
+3. Use R or other statistical software to estimate this model. Report the main results, including the coefficients, standard errors, p-values, overall model fit, and sample size.^[*Hints*: Your dependent variable should be *annual* income, and your main independent variable should be the annual risk of dying. You'll need to create a new variable for income (assume each worker works 2,000 hours in a year). It might also be helpful to multiply `annual_risk` by 100 for ease of interpretability (so you can say something like "for every 1% increase in blah, blah happens").]
 
 4. Compute the VSL estimate implied by your regression analysis, assuming each worker works 2,000 hours a year. What does this number mean?
 
