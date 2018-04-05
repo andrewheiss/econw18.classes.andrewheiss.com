@@ -1,0 +1,37 @@
+---
+title: "Other policy analysis methods"
+date: "2018-04-04"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-04-04.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-04-04.png)](/slides/MPA-612_2018-04-04.pdf)
+</figure>
+
+
+# Present value of a delayed perpetuity
+
+$$
+PV_{\text{starting at } t} = \frac{PV_{t - 1}}{r} = \frac{\frac{X}{(1 - r)^{t - 1}}}{r}
+$$
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/55ggByhQd3U8eW6e2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
