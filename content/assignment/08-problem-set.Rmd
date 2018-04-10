@@ -114,7 +114,7 @@ Do the following:
 
 3. How does your ranking change if the city only receives \$1.7 million in sales revenues in years 1 –3? How does the uncertainty of the \$2.35 million estimate influence your ranking?^[Hint: Do some simulation to see how the NPV changes with the revenue uncertainty. How often does the ranking of the projects change? What is the probability that option 2 is the highest ranked project?]
 
-4. Do the project rankings change if the discount rate is 4%? 5%?
+4. Do the project rankings change if the discount rate is 2%? 4%? 5%?
 
 5. What if the estimates for one or more of the costs or benefits are incorrect? Perform some sensitivity analysis and check how robust your ranking is to construction cost estimates and multiplier effect benefit estimates. 
 
