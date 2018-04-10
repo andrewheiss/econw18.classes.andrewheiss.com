@@ -1,0 +1,149 @@
+---
+title: "Policy analysis and formation I"
+date: "2018-04-09"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+<h2>Contents</h2>
+<div id="TOC">
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#parking-in-chetshington">Parking in Chetshington</a><ul>
+<li><a href="#report-from-chetshingtons-office-of-the-financial-analyst">Report from Chetshington’s Office of the Financial Analyst</a></li>
+</ul></li>
+<li><a href="#feedback-for-today">Feedback for today</a></li>
+</ul>
+</div>
+
+<h2 id="slides">Slides</h2>
+<p><a href="/slides/MPA-612_2018-04-09.pdf">Download the slides from today’s lecture</a>.</p>
+<figure>
+<a href="/slides/MPA-612_2018-04-09.pdf"><img src="/images/slides/slides_2018-04-09.png" alt="First slide" /></a>
+</figure>
+<h2 id="parking-in-chetshington">Parking in Chetshington</h2>
+<p>You are all residents of Chetshington, Utah, home of renowned Walnon Gosner University (WGU), a bustling state school with roughly 30,000 students.<span><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span class="sidenote">Fun fact: I generated both these names with a neural network trained on 33,000+ Utah placenames. You can too! See how <a href="https://medium.com/@hondanhon/i-trained-a-neural-net-to-generate-british-placenames-9460e907e4e9">someone did it with British placenames</a>, get placenames from <a href="http://www.geonames.org/">GeoNames</a>, and <a href="https://github.com/spro/practical-pytorch/blob/master/char-rnn-generation/char-rnn-generation.ipynb">use pytorch to actually build and train the model</a>. Science!<br />
+<br />
+</span></span></p>
+<p><span><label for="sn-2" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-2" class="margin-toggle"/><span class="marginnote"> <small>Buildings in Chetshington logo adapted from <a href="https://www.stockio.com/free-vector/to-the-city-illustration">“To the City”</a></small><br />
+<br />
+</span></span></p>
+<figure>
+<img src="/images/class/chetshington-wgu.png" />
+</figure>
+<p>The agenda for Wednesday’s city council meeting has a single item on it—parking problems around WGU. A serious shortage of parking spaces on campus has forced students to park in no-parking zones and in the parking lots of local businesses. In response to constituent concerns, the city council is planning on meeting to determine a solution to this problem.</p>
+<p>Over the next two days, you will do the following:</p>
+<ol style="list-style-type: decimal">
+<li>(<em>Today</em>) Combine your newfound economic reasoning and decision-making skills to develop alternatives for solving this problem</li>
+<li>(<em>Wednesday</em>) Through compromise and debate as a city council, narrow down the number of alternatives to two</li>
+<li>(<em>Wednesday</em>) Vote for (or block the adoption of) one of the two final policy alternatives</li>
+</ol>
+<p>You will work in teams of 2–3 people, randomly assigned by me. Each team consists of one city councilor and their policy advisors. The city’s chief financial analyst has provided you with her description of the problem, included below.</p>
+<p>On Monday, you’ll do the following:</p>
+<ul>
+<li>Each team (city council member + staff) should write up a policy proposal based on the information provided, but please <em>be creative</em> too. Ensure that you examine the economic, social, and political impacts of your proposal.</li>
+<li>Each team’s proposal must also provide an ideological and/or pragmatic justification. Be ready to justify why you think Chetshington’s city council should adopt your proposal.</li>
+<li>One member of the team should keep some notes on the process and debates that occur within each team<span><label for="sn-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-3" class="margin-toggle"/><span class="sidenote">In particular, note the influences on your team’s decision making, how your single policy emerged from your initial brainstorm, what concerns your team had, etc.<br />
+<br />
+</span></span></li>
+</ul>
+<p>For the initial policy analysis on Monday, you <strong>may not</strong> consult or work with other council members or their staff. During Wednesday’s debates and coalition building, you <strong>may</strong> (and should) work with other council members.</p>
+<p>It may seem that this has an easy technical solution, but it does not. Concerned residents, students, faculty, environmental advocates, real estate developers, and local business owners are already planning on attending the meeting on Wednesday and will watch the procedings closely. Additionally, each city council member is up for re-election in June. (See table below for a general overview of the council districts.)</p>
+<p>Proposing to do nothing is not an option, though this may be the end result.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">District 1</td>
+<td align="left">Downtown</td>
+</tr>
+<tr class="even">
+<td align="left">District 2</td>
+<td align="left">Suburbs and industrial parks</td>
+</tr>
+<tr class="odd">
+<td align="left">District 3</td>
+<td align="left">Downtown, suburbs, and WGU</td>
+</tr>
+<tr class="even">
+<td align="left">District 4</td>
+<td align="left">Suburbs and WGU</td>
+</tr>
+<tr class="odd">
+<td align="left">District 5</td>
+<td align="left">Downtown and WGU</td>
+</tr>
+<tr class="even">
+<td align="left">District 6</td>
+<td align="left">Suburbs and industrial parks</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h3 id="report-from-chetshingtons-office-of-the-financial-analyst">Report from Chetshington’s Office of the Financial Analyst</h3>
+<p>Walnon Gosner University is already suffering a deficit of approximately 755 parking places for its 30,000 full and part-time students, given the number of students on campus during peak hours (an average of 19,000 students on campus between 9:00 AM and 1:00 PM 18,245 available parking spaces). It is expected that this shortage will grow to 1,250 parking places over the next five years if nothing is done (100 per year) given the current and projected enrollment. The amount of available land on or immediately adjacent to Walnon Gosner University would allow for the construction of no more than 300 parking spaces (900 if a parking garage is constructed). Undeveloped city land located between one and two miles from the university, if devoted solely to parking lots, could provide an additional 500 spaces—2,500 if parking garages are constructed. (Chetshington is currently considering selling this land to private developers due to increases in the value of the property (valued at $1,000,000.)) If this land is used for parking purposes, public shuttles/buses would be needed to transport students from the outside parking lots to WGU (costs below). The cost of construction is estimated at $25,000 per 100 parking spaces (the cost is double if a parking garage). The cost is expected to increase by an estimated 5% for each year any project is delayed. The estimated building time for a 300-space parking lot is six months and one month for each additional 100 spaces (double the time for parking garages).</p>
+<p>Chetshington’s public transportation system is currently unable to accommodate an increase in riders, particularly on those routes in and around WGU. If off-campus land is developed, an additional two to three buses would be needed immediately. For the public transportation system to accommodate additional riders it would cost Chetshington $10,000 per 100 riders per year to cover labor and maintenance. This does not include the initial investment of $30,000 per bus: each bus seating 50. The number of parking spaces and/or bus seats is available only in the prices and quantities listed in Tables 1 and 2.</p>
+<p>The available annual budget for construction of things such as parking lots is $75,000 per year, with an estimated increase of $5,000 per year over the next 10 years. Based on current and projected revenue, the available annual budget for public transportation is $58,000 per year with an estimated increase of $3,000 per year over the next 10 years. Chetshington can only increase taxes, due to mandated tax limitations, for either type of project, without voter approval, by 0.05% every five years, (which is equal to about $15,000 per year for the first five years and about $21,000 for the second five years) but most get voter approval regarding what projects to apply the additional tax revenue. It can be assumed that you could get voter approval to apply the additional revenue for either construction or public transportation but not both. Chetshington can, with voter approval, raise taxes by as much as 2% every 10 years but local citizens have been reluctant to support tax increases.</p>
+<p>Student parking fees are currently $100 per student, of which 40% goes into the budget for future parking lot construction. Given the shortage, Walnon Gosner University sells parking permits (20,000) that are approximately equal to the number of spaces. It is assumed that new revenue cannot be expected until more parking is available and as such new revenue from available new parking would not apply until the year after construction. It is also estimated that Chetshington can also raise bus fares by as much as $0.10 without a decline in riders (Bus fares are currently $1). There are approximately 5,000 riders that currently utilize bus routes going to and from the university (about $5,000 per year to the public transportation budget). Each additional 150 riders per year would lead to an increase in bus revenue of $1,500 per year in addition to the amount listed above.</p>
+<h4 id="table-1-construction-budget">Table 1: Construction budget</h4>
+<p><span><label for="sn-4" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-4" class="margin-toggle"/><span class="marginnote"> <strong>Important notes</strong>: (1) The number of parking spaces and bus seats are only available in the prices and quantities listed (i.e. you can’t create 37 parking spaces or 45 riders); (2) construction costs double if a parking garage is built; and (3) although it is currently listed under the construction budget, the tax increase could be applied to either the construction or public transportation budget.<br />
+<br />
+</span></span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Funds available</td>
+<td align="left">$75,000 per year (increases $5,000 each year)</td>
+</tr>
+<tr class="even">
+<td align="left">Costs</td>
+<td align="left">$25,000 per 100 parking spaces</td>
+</tr>
+<tr class="odd">
+<td align="left">Tax increase (0.05%)</td>
+<td align="left">$15,000 per year (first five years)</td>
+</tr>
+<tr class="even">
+<td align="left">—</td>
+<td align="left">$21,000 per year (second five years)</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h4 id="table-2-public-transportation-budget">Table 2: Public transportation budget</h4>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Funds available</td>
+<td align="left">$58,000 per year (increases $3,000 per year)</td>
+</tr>
+<tr class="even">
+<td align="left">Costs</td>
+<td align="left">$30,000 per bus</td>
+</tr>
+<tr class="odd">
+<td align="left">—</td>
+<td align="left">$10,000 per 100 riders per year</td>
+</tr>
+<tr class="even">
+<td align="left">Bus fare increase ($0.10)</td>
+<td align="left">$1,500 per 150 riders per year</td>
+</tr>
+</tbody>
+</table>
+<h2 id="feedback-for-today">Feedback for today</h2>
+<p>Go to <a href="https://goo.gl/forms/55ggByhQd3U8eW6e2">this form</a> and answer these three questions (anonymously if you want):</p>
+<ol style="list-style-type: decimal">
+<li>What new thing did you learn today?</li>
+<li>What was the most unclear thing about today’s class?</li>
+<li>What was the most exciting thing you learned today?</li>
+</ol>
