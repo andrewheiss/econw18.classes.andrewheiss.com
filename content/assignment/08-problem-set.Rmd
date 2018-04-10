@@ -24,7 +24,7 @@ The old Sweetums factory in Pawnee, Indiana has become derelict and infested wit
 
 You must analyze the costs and benefits of each of these projects and rank the three options as first, second, and third choices. Each project has different costs and benefits (specified below), and each entails different distributional consequences (not specified below; you'll need to think of those).
 
-Use a discount rate of 3% and calculate costs and benefits for a 20-year period.
+Use a discount rate of 3% and calculate costs and benefits for a 20-year period.^[{-} This example is adapted from [Dan Wheatley's CBA Builder project](http://www.cbabuilder.co.uk/Files/CBA%20Builder%20Simple%20Worksheet%204.pdf) and used under a Creative Commons license.]
 
 
 ## Option 1: Job training center
