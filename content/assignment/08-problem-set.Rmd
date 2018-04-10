@@ -1,0 +1,121 @@
+---
+title: "Problem set 8"
+date: "2018-04-13"
+due_date: "2018-04-13"
+due_time: "11:59 PM"
+editor_options: 
+  chunk_output_type: console
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+---
+
+**Important instructions**: You should use Excel for this assignment. *Show as much work as possible.* Submit a PDF of your answers and the Excel file you used to do your calculations. Make sure your Excel file is well organized and clearly labeled.
+
+```{r load-libraries, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(scales)
+library(pander)
+```
+
+# Background
+
+The old Sweetums factory in Pawnee, Indiana has become derelict and infested with raccoons. Pawnee City Council has approved a motion to develop the site and has received proposals for three different projects.
+
+You must analyze the costs and benefits of each of these projects and rank the three options as first, second, and third choices. Each project has different costs and benefits (specified below), and each entails different distributional consequences (not specified below; you'll need to think of those).
+
+Use a discount rate of 3% and calculate costs and benefits for a 20-year period.
+
+
+## Option 1: Job training center
+
+One proposal is to transform and renovate the old building into a job training center. The training center is popular among the City Council because it will be used to train local youth and help them start up their own businesses. In particular, council members hope the training center will make Pawnee more economically competitive with its richer neighbors, like Eagleton.
+
+```{r option1, echo=FALSE, results="asis"}
+option1_costs <- tribble(
+  ~Costs, ~Amount, 
+  "Construction (*one-time cost; occurs in year 0*)", 2800000,
+  "Staffing (*annual amount; begins in year 1*)", 200000, 
+  "Building maintenance (*annual amount; begins in year 1*)", 10000
+)
+
+option1_benefits <- tribble(
+  ~Benefits, ~Amount,
+  "Training benefits and job creation (*annual amount; begins in year 2*)", 250000,
+  "Multiplier effect on local economy (*total divided evenly across years 2–20*)", 5200000,
+  NA, NA
+)
+
+bind_cols(option1_costs, option1_benefits) %>% 
+  mutate_at(vars(starts_with("Amount")), funs(ifelse(is.na(.), NA, dollar(.)))) %>% 
+  rename(` ` = Amount, `  ` = Amount1) %>% 
+  pandoc.table(justify = "llll", style = "multiline", split.tables = Inf, missing = "")
+```
+
+\
+
+## Option 2: Luxury apartments
+
+The second option under consideration is to convert the factory into luxury urban apartments and sell them to local developers. This option requires some major structural changes to the building, but uses the existing outer shell. This option is popular with the City Council because it creates substantial short term revenues (and could attract richer residents away from neighboring Eagleton).
+
+```{r option2, echo=FALSE, results="asis"}
+option2_costs <- tribble(
+  ~Costs, ~Amount, 
+  "Construction (*one-time cost; occurs in year 0*)", 4200000,
+  "Advertising and real estate agent costs (*annual amount; occurs in years 0–3*)", 40000
+)
+
+option2_benefits <- tribble(
+  ~Benefits, ~Amount,
+  "Income received from sale of apartments (*annual amount; occurs in years 1–3*). **Note:** the exact value depends on the speed and value of sales—Pawnee economists estimate that the standard deviation for this estimate is roughly $500,000.", 2350000,
+  "Multiplier effect on local economy (*total divided evenly across years 2–20*)", 1500000
+)
+
+bind_cols(option2_costs, option2_benefits) %>% 
+  mutate_at(vars(starts_with("Amount")), funs(ifelse(is.na(.), NA, dollar(.)))) %>% 
+  rename(` ` = Amount, `  ` = Amount1) %>% 
+  pandoc.table(justify = "llll", style = "multiline", split.tables = Inf, missing = "")
+```
+
+\
+
+## Option 3: New industrial units
+
+The third option is to demolish the current structure and build eight industrial units on the site, which will then be rented to local business. This idea is popular with the City Council because it is seen as the cheapest option and should create jobs in the city. However, it is likely to result in substantial congestion, noise, and air pollution (and push potential residents towards Eagleton).
+
+```{r option3, echo=FALSE, results="asis"}
+option3_costs <- tribble(
+  ~Costs, ~Amount, 
+  "Demolition (*one-time cost; occurs in year 0*)", 200000,
+  "Construction (*one-time cost; occurs in year 0*)", 2000000,
+  "Maintenance (*annual amount; begins in year 1*)", 100000
+)
+
+option3_benefits <- tribble(
+  ~Benefits, ~Amount,
+  "Income from business rentals (*annual amount; begins in year 1*)", 270000,
+  "Job creation (*annual amount; occurs in years 1–5*)", 300000,
+  "Multiplier effect on local economy (*total divided evenly across years 2–20*)", 2200000
+)
+
+bind_cols(option3_costs, option3_benefits) %>% 
+  mutate_at(vars(starts_with("Amount")), funs(ifelse(is.na(.), NA, dollar(.)))) %>% 
+  rename(` ` = Amount, `  ` = Amount1) %>% 
+  pandoc.table(justify = "llll", style = "multiline", split.tables = Inf, missing = "")
+``` 
+
+# Analysis
+
+Do the following:
+
+1. Calculate the NPV and BCR for each project and rank them according to NPV. Which project should be chosen given the costs and benefits provided?
+
+2. What other impacts (i.e. costs or benefits) should be considered for each project? How could you monetize these?
+
+3. How does your ranking change if the city only receives \$1.7 million in sales revenues in years 1 –3? How does the uncertainty of the \$2.35 million estimate influence your ranking?^[Hint: Do some simulation to see how the NPV changes with the revenue uncertainty. How often does the ranking of the projects change? What is the probability that option 2 is the highest ranked project?]
+
+4. Do the project rankings change if the discount rate is 4%? 5%?
+
+5. What if the estimates for one or more of the costs or benefits are incorrect? Perform some sensitivity analysis and check how robust your ranking is to construction cost estimates and multiplier effect benefit estimates. 
+
+6. What is your final recommendation to the Pawnee City Council? How confident are you in this recommendation? Why?
