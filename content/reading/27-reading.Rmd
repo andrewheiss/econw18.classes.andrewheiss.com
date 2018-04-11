@@ -5,11 +5,23 @@ citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
 stuff-to-add: >-
-  > Most novel about the new market metaphors was their detachment from history and institutions and from questions of power. As the market grew more abstract, society thinned out into highly reduced microeconomic mental pictures: Gilder's heroically independent entrepreneurs, Lucas's forward-looking utility maximizers, Wanniski's fish and coconut traders, the Coase theorem's rancher and farmer maximizing the public good as they stood on the courthouse steps. To imagine the market now was to imagine a socially detached array of economic actors, free to choose and optimize, unconstrained by power or inequalities, governed not by their common deliberative action but only by the impersonal laws of the market.
-
-  Daniel T. Rodgers, *The Age of Fracture*, Harvard University Press, 2011, p. 76
+  http://freakonomics.com/2010/09/24/for-lobbyists-how-much-is-a-senate-connection-worth/
 ---
+
+***Important***: The PDF of the Olson chapter is posted on Learning Suite.
 
 # Required
 
-- Other readings TBA
+- <i class="fa fa-external-link" aria-hidden="true"></i> James Madison, [The Federalist Papers, #10](http://avalon.law.yale.edu/18th_century/fed10.asp)
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Chapter 1 in Mancur Olson, *The Logic of Collective Action* [@Olson:1971]
+    - Like Ostrom's stuff on CPRs, this one is a little long (though deceptively so—there are a ton of really long footnotes) and game theoretical, but also exceptionally important. You can skim through lots of it (especially the mathy sections). Olson conveniently has nontechnical summaries after the more technical sections, so focus on those more than the ancient game theory math.
+    
+        Really, you shouldn't spend an inordinate amount of time with this chapter.
+- <i class="fa fa-podcast" aria-hidden="true"></i> Planet Money, ["A Former Lobbyist Tells All,"](https://www.npr.org/sections/money/2012/01/27/145923803/the-friday-podcast-a-former-lobbyist-tells-all) Episode 341, January 27, 2012
+- <i class="fa fa-youtube" aria-hidden="true"></i> [LSE Research: Washington's Revolving Door](https://www.youtube.com/watch?v=2XLuaebpdAA)
+- <i class="fa fa-external-link" aria-hidden="true"></i> John Sides, ["A new experiment shows how money buys access to Congress,"](https://www.washingtonpost.com/news/monkey-cage/wp/2014/03/11/a-new-experiment-shows-how-money-buys-access-to-congress/?utm_term=.52fe30402280) The Washington Post's Monkey Cage, March 11, 2014
+
+# Highly recommended
+
+- <i class="fa fa-podcast" aria-hidden="true"></i> Freakonomics Radio, ["There’s A War On Sugar. Is It Justified?,"](http://freakonomics.com/podcast/theres-war-sugar-justified/) April 26, 2017
+    - This features BYU(!), so listen to the first few minutes for sure—the rest is also fascinating.

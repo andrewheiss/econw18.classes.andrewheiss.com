@@ -4,8 +4,20 @@ date: "2018-04-18"
 citeproc: false
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-fullnote-bibliography-no-bib.csl
+stuff-to-add: >-
+  http://freakonomics.com/2010/09/24/for-lobbyists-how-much-is-a-senate-connection-worth/
+  > Most novel about the new market metaphors was their detachment from history and institutions and from questions of power. As the market grew more abstract, society thinned out into highly reduced microeconomic mental pictures: Gilder's heroically independent entrepreneurs, Lucas's forward-looking utility maximizers, Wanniski's fish and coconut traders, the Coase theorem's rancher and farmer maximizing the public good as they stood on the courthouse steps. To imagine the market now was to imagine a socially detached array of economic actors, free to choose and optimize, unconstrained by power or inequalities, governed not by their common deliberative action but only by the impersonal laws of the market.
+
+  Daniel T. Rodgers, *The Age of Fracture*, Harvard University Press, 2011, p. 76
+  
+  Charles Lindbloom's "muddling through" strategy:
+  Choose something. Do it. If it works, improve on it. If it doesn't, fix it. If the improvement or fix is good/bad, adjust accordingly. Keep doing that.
 ---
+
+***Important***: PDFs of the readings are on Learning Suite.
 
 # Required
 
-- Other readings TBA
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Charles E. Lindblom, "The Science of 'Muddling Through'" [@Lindblom:1959]
+- <i class="fa fa-external-link" aria-hidden="true"></i> David Bornstein, ["The Dawn of the Evidence-Based Budget,"](https://opinionator.blogs.nytimes.com/2012/05/30/worthy-of-government-funding-prove-it/?pagewanted=all) The New York Times, May 30, 2012
+- <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Esther Duflo, "Policies, Politics: Can Evidence Play a Role in the Fight Against Poverty" [@Duflo:2011]
