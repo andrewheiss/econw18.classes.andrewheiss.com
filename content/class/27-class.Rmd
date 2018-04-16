@@ -1,0 +1,42 @@
+---
+title: "Politics and institutions"
+date: "2018-04-16"
+citeproc: false
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+output:
+  blogdown::html_page:
+    template: ../../pandoc/toc-title_html.template
+    toc: true
+editor_options: 
+  chunk_output_type: console
+stuff-to-add: >-
+  Rational comprehensive
+  Bounded rationality
+  Incrementalism
+  Interest groups, lobbyists, constituents
+  Risk, risk taking - attention and search
+---
+
+# Slides
+
+[Download the slides from today's lecture](/slides/MPA-612_2018-04-16.pdf).
+
+<figure>
+[![First slide](/images/slides/slides_2018-04-16.png)](/slides/MPA-612_2018-04-16.pdf)
+</figure>
+
+
+# Interesting links
+
+- [Visualizations of party control from Washington to Trump](https://historyshots.com/collections/political-financial)
+- [Twitter account that generates profiles of typical American voters](https://twitter.com/American__Voter/) (shows how inconsistent people are with political ideologies)
+
+
+# Feedback for today
+
+Go to [this form](https://goo.gl/forms/55ggByhQd3U8eW6e2) and answer these three questions (anonymously if you want):
+
+1. What new thing did you learn today?
+2. What was the most unclear thing about today's class?
+3. What was the most exciting thing you learned today?
