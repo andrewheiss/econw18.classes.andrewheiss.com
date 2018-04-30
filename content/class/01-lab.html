@@ -7,6 +7,7 @@ output:
     toc: true
 ---
 
+<!-- BLOGDOWN-HEAD -->
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
@@ -75,6 +76,7 @@ code span.va { color: #0057ae; } /* Variable */
 code span.vs { color: #bf0303; } /* VerbatimString */
 code span.wa { color: #bf0303; } /* Warning */
 </style>
+<!-- /BLOGDOWN-HEAD -->
 
 <h2>Contents</h2>
 <div id="TOC">
@@ -152,6 +154,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p><img src="/class/01-lab_files/figure-html/gini-us-1.png" width="672" /></p>
 <h2 id="perecnt-change">Perecnt change</h2>
 <p>To calculate the percent change (i.e inflation rate, growth rate), use the following formula:</p>
-<p><span class="math display">\[ \frac{\text{Current} - \text{Previous}}{\text{Previous}} \]</span> <em>Pay attention</em> to the time periods in data from FRED.<span><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span class="sidenote">Or anywhere, really.<br />
+<p><span class="math display">\[ \frac{\text{Current} - \text{Previous}}{\text{Previous}} \]</span>
+<em>Pay attention</em> to the time periods in data from FRED.<span><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span class="sidenote">Or anywhere, really.<br />
 <br />
 </span></span> Datasets like <a href="https://fred.stlouisfed.org/series/GDP">GDP</a> are reported quarterly, while the <a href="https://fred.stlouisfed.org/series/CPIAUCSL">CPI</a> is monthly. If you need to calculate the annual change (or annual inflation), make sure you either (1) use the same month or quarter as your current and previous times (i.e. January 2016 and January 2017), or (2) add all the percent changes within the year (i.e. add the rates from January 2016, April 2016, July 2017, and October 2017).</p>
