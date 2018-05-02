@@ -4,19 +4,19 @@ library(fuzzyjoin)
 library(here)
 
 grades <- tribble(
-  ~grade, ~lower, ~upper,
-  "A",    93,     150,
-  "A-",   90,     93,
-  "B+",   87,     90,
-  "B",    83,     87,
-  "B-",   80,     83,
-  "C+",   77,     80,
-  "C",    73,     77,
-  "C-",   70,     73,
-  "D+",   67,     70,
-  "D",    63,     67,
-  "D-",   60,     63,
-  "F",    0,      60
+  ~grade, ~lower, ~upper, ~gpa,
+  "A",    93,     150,    4.0,
+  "A-",   90,     93,     3.7,
+  "B+",   87,     90,     3.4,
+  "B",    83,     87,     3.0,
+  "B-",   80,     83,     2.7,
+  "C+",   77,     80,     2.4,
+  "C",    73,     77,     2.0,
+  "C-",   70,     73,     1.7,
+  "D+",   67,     70,     1.4,
+  "D",    63,     67,     1.0,
+  "D-",   60,     63,     0.7,
+  "F",    0,      60,     0.0
 ) %>% 
   mutate_at(vars(lower, upper), funs(. * 0.01)) %>% 
   mutate(grade = fct_inorder(grade, ordered = TRUE))
@@ -68,3 +68,15 @@ midterm_2_scores <- ggplot(plot_midterm_2, aes(x = fct_rev(grade), y = n)) +
   theme_light()
 
 midterm_2_grades + midterm_2_scores + plot_layout(ncol = 1)
+
+
+final_grades_raw <- read_csv(file.path(here(), "private", "final_points.csv")) %>% 
+  rename(points = `Total Points`) 
+
+final_grades <- final_grades_raw %>% 
+  mutate(pct = points / 1148,
+         pct_rnd = round(pct, 2)) %>% 
+  fuzzy_left_join(grades, by = c("pct" = "lower", "pct" = "upper"),
+                  match_fun = list(`>=`, `<`))
+
+mean(final_grades$gpa)
